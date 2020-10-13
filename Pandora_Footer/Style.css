@@ -5,7 +5,8 @@
 }
 
 .footer{
-    background-color: rgb(46, 45, 45);
+    background-color: #040753;
+    font-family: 'Playfair Display', serif;
 
 }
 
@@ -69,4 +70,40 @@ footer p{
     margin-bottom: 10px;
 }
 
+    /* css navbar */
+nav{
+    position: absolute;
+    position: fixed;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    background-color: #040753;
     
+}
+
+.h2{
+    margin-top: 10px;
+}
+
+a{
+    text-decoration: none;
+    margin-top: 10px;
+   
+}
+
+nav .h2{
+    box-shadow: 1px 1px 1px black;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 1px black;
+}
+
+.listnav{
+    padding-left: 35%;
+}
+    /* css navbar */
+
