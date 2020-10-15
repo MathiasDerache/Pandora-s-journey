@@ -88,7 +88,6 @@ nav{
 a{
     text-decoration: none;
     margin-top: 10px;
-   
 }
 
 nav .h2{
@@ -100,7 +99,44 @@ nav ul{
     justify-content: space-around;
     font-size: 1.5em;
     text-shadow: 1px 1px 1px black;
+    margin: 0;
+	padding: 0;
 }
+
+nav a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    position: relative;
+  }
+  
+li a::after{
+    content: "";
+    background:gold;
+    mix-blend-mode: exclusion;
+    width: calc(100% + 20px);
+    height: 0;
+    position: absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+    bottom: -4px;
+    left: -10px;
+    transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    -webkit-transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    -moz-transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    -ms-transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    -o-transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+  
+li a:hover::after{
+      height: calc(10% + 2px);
+      width: calc(80% + 2px);
+      left: 9%;
+  }
+
+/* li {
+	display: inline-flex;
+} */
 
 .listnav{
     padding-left: 35%;
