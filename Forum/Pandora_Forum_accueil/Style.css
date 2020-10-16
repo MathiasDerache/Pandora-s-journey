@@ -8,7 +8,7 @@
 
 body{
     background-color: #04153E;
-    font-family: 'Sitka Banner' ;
+    font-family: 'Playfaire Display' ;
 }
 
 .footer{
@@ -108,7 +108,7 @@ a{
     display: block;
     width: 100%;
     height: 2px;
-    background: rgb(190, 143, 14);
+    background: goldenrod;
     transform: scale(0);
     transition: transform 0.2s ease-in-out;
 }
@@ -158,7 +158,7 @@ nav ul{
     display: block;
     width: 0%;
     height: 3px;
-    background: rgb(190, 143, 14);
+    background: goldenrod;
     transition: width 0.7s ease-in-out;
 }
 

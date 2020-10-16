@@ -94,6 +94,20 @@ a{
    
 }
 
+.listnav li a::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: goldenrod;
+    transform: scale(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.listnav li a:hover::after{
+    transform: scale(1);
+}
+
 nav .h2{
     box-shadow: 1px 1px 1px black;
 }
