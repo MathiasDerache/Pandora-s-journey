@@ -1,6 +1,5 @@
                                                 /*   ↓↓ GENERAL ↓↓ */
-
- html{ 
+html{ 
     overflow-x :hidden ; 
 }
 
@@ -10,7 +9,8 @@
 }
 
 body{
-    background-color: rgb(4, 21, 62);
+    background-color: #04153E;
+    font-family: 'Playfaire Display' ;
 }
 
 .footer{
@@ -37,7 +37,7 @@ footer p{
     margin-bottom: 0px;
 }
 
-                                                /*   ↓↓ COORDONNEES ↓↓ */
+                                                /*   ↓↓ COORDONNEES_FOOTER ↓↓ */
 
 .coordonnees_footer a{
     text-decoration: none;
@@ -47,7 +47,7 @@ footer p{
     padding: 8px;
 }
 
-                                                /*   ↓↓ LOGO ↓↓ */
+                                                /*   ↓↓ LOGO_FOOTER ↓↓ */
 
 .logo_footer img{
     width: 60%;
@@ -57,13 +57,17 @@ footer p{
 }
 
 
-                                                /*   ↓↓ NAV ↓↓ */
+                                                /*   ↓↓ NAV_FOOTER ↓↓ */
 
 .nav_footer li{
     text-align: center;
     list-style: none;
     padding: 3px;
 } 
+.nav_footer{
+    box-sizing: border-box;
+    padding: 0% 12%;
+}
 
 .nav_footer h2{
     margin-top: 5px;
@@ -72,8 +76,8 @@ footer p{
 .nav_footer ul li a{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
-
 }
+
 
 .copyright{
     margin-bottom: 10px;
@@ -99,6 +103,7 @@ a{
     margin-top: 10px;
    
 }
+
 
 .listnav li a::after{
     content: "";
@@ -130,36 +135,68 @@ nav ul{
 }
     /* css navbar */
 
-    /*forum*/
 
-.title-forum{
-    padding-top: 5%;
-    font-family: 'Playfair Display', serif;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 50px;
-
-}
-
-.table-forum{
-    margin-top: 3%;
-    font-family: 'Playfair Display', serif;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 20px;
-    text-align: center;
-}
-
-th{
-    font-size: 30px;
-    font-weight: bold;
-}
+                                               /*   ↓↓ FORUM ↓↓ */
 
 .forum{
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 30px 30px;
+    margin-bottom: 150px;
+    box-sizing: border-box;
+    padding: 0% 10%;
 }
 
-.ajout-sujet{
-    font-family: 'Playfair Display', serif;
-    font-size: 20px
+.forum a{
+    color: white;
+    text-decoration: none;
 }
 
+.forum h2{
+    font-size: 3em;
+    
+}
+
+.forum h2::after{
+    content: "";
+    display: block;
+    width: 0%;
+    height: 3px;
+    background: goldenrod;
+    transition: width 0.7s ease-in-out;
+}
+
+.forum h2:hover::after{
+    width: 100%;
+}
+
+.forum p{
+    color: rgba(255, 254, 254,0.4);
+    font-size: 1.4em;
+}
+
+.titre_forum {
+    margin: 10% 0% 5% 2%;
+}
+
+.titre_forum h1{
+    font-size: 6.7em;
+    color: white;
+}
+
+hr{
+    background-color: white;
+    width: 20%;
+}
+
+
+.annonces{
+    margin-top: 5%;
+}
+
+.lignes{
+    margin-top: 2%;
+}
+
+.lignesN{
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,4 +1,13 @@
                                                 /*   ↓↓ GENERAL ↓↓ */
+
+html{ 
+    overflow-x :hidden ; 
+}
+
+body{
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}
 *{
     margin: 0;
     padding: 0;
