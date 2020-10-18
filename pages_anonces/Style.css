@@ -187,7 +187,7 @@ hr{
     width: 20%;
 }
 
-
+                           /* css annonces */
 .annonces{
     margin-top: 5%;
 }
@@ -199,4 +199,36 @@ hr{
 .lignesN{
     display: flex;
     justify-content: space-around;
+}
+                           /* css annonces */
+
+                          /* css card infons annonce */
+.card{
+    background-color: #040753;
+    color: white;
+    padding-top: 2%;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}
+
+.cardinfos{
+    padding: 4%;
+    text-align: center;
+}
+
+.cardinfos button{
+    margin-top: 4%;
+}
+                          /* css card infons annonce */
+
+.corps{
+    display: flex;
+    justify-content: space-around;
+}
+.reste{
+    padding: 4%;
+    color: white;
+    padding-top: 2%;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
 }
