@@ -221,6 +221,7 @@ hr{
 }
                           /* css card infons annonce */
 
+                          /* css corps annonce */
 .corps{
     display: flex;
     justify-content: space-around;
@@ -232,3 +233,10 @@ hr{
     font-family: 'Playfair Display', serif;
     font-weight: bold;
 }
+
+.content{
+    display: flex;
+    justify-content: space-around;
+}
+
+                          /* css corps annonce */
