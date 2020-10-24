@@ -212,7 +212,7 @@ hr{
 }
 
 .cardinfos{
-    padding: 3%;
+    padding: 2%;
     text-align: center;
 }
 
@@ -237,6 +237,10 @@ hr{
 .content{
     display: flex;
     justify-content: space-around;
+}
+
+.ann{
+    margin-top: 2%;
 }
 
                           /* css corps annonce */
