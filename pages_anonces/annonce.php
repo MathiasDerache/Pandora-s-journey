@@ -11,26 +11,11 @@
     <title>Annonces</title>
 </head>
 
-<body>
+<body class="position-relative">
     <!-- ----------------------------------  navbar ---------------------------------> 
-        <nav class="container-fluid fixed-top">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1">
-                        <a href="#"><img src="images/Logo.png" alt="logo pandora" class="img-fluid" width="90%"></a>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 listnav">
-                        <ul>
-                            <li><a href="#" class="nav-link text-white">Immobilier</a></li>
-                            <li><a href="#"class="nav-link text-white">Travail</a></li>
-                            <li><a href="#" class="nav-link text-white">Loisir</a></li>
-                            <li><a href="#"class="nav-link text-white">Contacts</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                        <h2 class="bg-warning rounded-pill"><a href="#" class="nav-link text-white">Billeterie</a></h2>
-                    </div>
-                </div>
-        </nav>
+        <?php
+            include("../Pandora_nav_footer/nav.html");
+        ?>
     <!-- ----------------------------------  navbar ---------------------------------> 
 
 <div class="container-fluid annonces">
@@ -271,41 +256,11 @@
 </div>
     <!-- ----------------------------------  card infos ---------------------------------> 
 
-    <!-- ----------------------------------  FOOTER ---------------------------------> 
-<footer>
-    <div class ="container-fluid footer">
-        <div class="row align-items-center">
-
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 coordonnees_footer">
-                            <h2>Coordonnées</h2>
-                            <p>AFPA Roubaix</p>
-                            <p>20 Rue du Luxembourg</p>
-                            <p>59100 Roubaix</p>
-                            <a href="mailto:">Contact@contact.com</a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 logo_footer">
-                        <img src="images/Logo.png" alt="Logo">
-                    </div>
-
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 nav_footer">
-                        <h2>Navigation</h2>
-                        <ul>
-                            <li><a href="#">Accueil</a></li>
-                            <li><a href="#">Annonces</a></li>
-                            <li><a href="#">Forum</a></li>
-                            <li><a href="#">Billeterie</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-
-        </div>
-        <div class="row justify-content-center">
-            <div class="copyright">
-                <p>© Pandora's Journey, 2020 - Tous droits réservés</p>
-            </div>
-        </div>
-    </div>
+        <!-- ----------------------------------  FOOTER ---------------------------------> 
+        <footer>
+    <?php
+        include("../Pandora_nav_footer/footer.html");
+    ?>
 </footer>
      <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
 </body>
