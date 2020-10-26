@@ -12,7 +12,7 @@
 <body class="position-relative">
     <!-- ----------------------------------  navbar ---------------------------------> 
         <?php
-            include("../Pandora_nav_footer/nav.html");
+            include("../Pandora_nav_footer/nav.php");
         ?>
     <!-- ----------------------------------  navbar ---------------------------------> 
 
@@ -223,7 +223,7 @@
         <!-- ----------------------------------  FOOTER ---------------------------------> 
         <footer>
     <?php
-        include("../Pandora_nav_footer/footer.html");
+        include("../Pandora_nav_footer/footer.php");
     ?>
 </footer>
      <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 

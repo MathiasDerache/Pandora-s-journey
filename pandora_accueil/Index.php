@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">  
-    <title>Footer</title>
+    <title>Accueil</title>
 </head>
 
 <body class="position-relative">
     <!-- ----------------------------------  navbar ---------------------------------> 
         <?php
-            include("../Pandora_nav_footer/nav.html");
+            include("../Pandora_nav_footer/nav.php");
         ?>
     <!-- ----------------------------------  navbar ---------------------------------> 
 
@@ -23,7 +23,7 @@
     <!-- ----------------------------------  FOOTER ---------------------------------> 
 <footer>
     <?php
-        include("../Pandora_nav_footer/footer.html");
+        include("../Pandora_nav_footer/footer.php");
     ?>
 </footer>
      <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
