@@ -21,13 +21,11 @@ body {
     box-shadow: 0px 0px 100px white;
 }
 
-.connexion h4{
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2px;
-    border: 2px solid #ffc107;
-    
+.titre{
+    color: #ffc107;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: x-large;
 }
 
 input {
