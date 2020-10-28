@@ -27,7 +27,7 @@
         </div>
 
         <div class="row">
-            <table class="table table-bordered table-forum">
+            <table class="table table-hover table-forum">
                 <thead>
                 <tr>
                     <th scope="col-2">Titre</th>
@@ -38,14 +38,14 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td scope="row">Sujet 1
-                    </td><td>4</td>
+                    <td scope="row">Sujet 1</td>
+                    <td>4</td>
                     <td>Pseudo</td>
                     <td>xx/xx/xxxx</td>
                 </tr>
                 <tr>
-                    <td scope="row">Sujet 2
-                    </td><td>120</td>
+                    <td scope="row">Sujet 2</td>
+                    <td>120</td>
                     <td>Pseudo</td>
                     <td>xx/xx/xxxx</td>
                 </tr>

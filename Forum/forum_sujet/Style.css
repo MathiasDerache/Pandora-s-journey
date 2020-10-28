@@ -1,6 +1,6 @@
                                                 /*   ↓↓ GENERAL ↓↓ */
 
- html{ 
+html{ 
     overflow-x :hidden ; 
 }
 
@@ -151,6 +151,7 @@ nav ul{
 th{
     font-size: 30px;
     font-weight: bold;
+    text-align: center;
 }
 
 .forum{
