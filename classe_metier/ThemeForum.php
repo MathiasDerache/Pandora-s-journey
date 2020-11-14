@@ -2,41 +2,41 @@
 
 class ThemeForum{
 
-    private $idThemeForum;
-    private $typeThemeForum;
+    private $idTheme;
+    private $typeTh;
 
     //constructeur par défaut
 
 
     public function __toString() : string {
-        return "[Id thème forum] : " .$this->idThemeForum.
-                "[Type thème forum] : " .$this->typeThemeForum;
+        return "[Id thème forum] : " .$this->idTheme.
+                "[Type thème forum] : " .$this->typeTh;
     }
 
     /**
-     * Get the value of idThemeForum
+     * Get the value of idTheme
      */ 
-    public function getIdThemeForum() : int
+    public function getIdTheme() : int
     {
-        return $this->idThemeForum;
+        return $this->idTheme;
     }
 
     /**
-     * Get the value of typeThemeForum
+     * Get the value of typeTh
      */ 
-    public function getTypeThemeForum() : string
+    public function getTypeTh() : string
     {
-        return $this->typeThemeForum;
+        return $this->typeTh;
     }
 
     /**
-     * Set the value of typeThemeForum
+     * Set the value of typeTh
      *
      * @return  self
      */ 
-    public function setTypeThemeForum(string $typeThemeForum) : self
+    public function setTypeTh(string $typeTh) : self
     {
-        $this->typeThemeForum = $typeThemeForum;
+        $this->typeTh = $typeTh;
 
         return $this;
     }

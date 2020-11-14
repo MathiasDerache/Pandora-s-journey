@@ -2,41 +2,41 @@
 
 class Profil {
 
-    private $idProfil;
-    private $typeProfil;
+    private $idProf;
+    private $typeProf;
 
     //constructeur par défaut
 
     public function __toString() : string {
-        return "[Id Profil] : " .$this->idProfil.
-                "[Type de profil] : " .$this->typeProfil;
+        return "[Id Profil] : " .$this->idProf.
+                "[Type de profil] : " .$this->typeProf;
     }
 
 
     /**
-     * Get the value of idProfil
+     * Get the value of idProf
      */ 
-    public function getIdProfil() : int
+    public function getIdProf() : int
     {
-        return $this->idProfil;
+        return $this->idProf;
     }
 
     /**
-     * Get the value of typeProfil
+     * Get the value of typeProf
      */ 
-    public function getTypeProfil() : string
+    public function getTypeProf() : string
     {
-        return $this->typeProfil;
+        return $this->typeProf;
     }
 
     /**
-     * Set the value of typeProfil
+     * Set the value of typeProf
      *
      * @return  self
      */ 
-    public function setTypeProfil(string $typeProfil) : self
+    public function setTypeProf(string $typeProf) : self
     {
-        $this->typeProfil = $typeProfil;
+        $this->typeProf = $typeProf;
 
         return $this;
     }

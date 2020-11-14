@@ -2,172 +2,172 @@
 
 class Annonces {
 
-    private $idAnnonce;
-    private $typeAnnonce;
-    private $titreAnnonce;
-    private $descriptionAnnonce;
-    private $numContact;
-    private $numAdresse;
-    private $rue;
-    private $codePostal;
+    private $idAnn;
+    private $typeAnn;
+    private $titreAnn;
+    private $descAnn;
+    private $numContAnn;
+    private $numAdressAnn;
+    private $rueAnn;
+    private $codePost;
 
     //cosntructeur par défaut
 
     public function __toString() : string {
-        return "[Id annonce] : " .$this->idAnnonce.
-                "[Type d'annonce] : " .$this->typeAnnonce.
-                "[Titre d'annonce] : " .$this->titreAnnonce.
-                "[Description d'annonce] : " .$this->descriptionAnnonce.
-                "[Numéro de contact] : " .$this->numContact.
-                "[Numéro d'adresse] : " .$this->numAdresse.
-                "[Rue] : " .$this->rue.
-                "[Code postal] : " .$this->codePostal;
+        return "[Id annonce] : " .$this->idAnn.
+                "[Type d'annonce] : " .$this->typeAnn.
+                "[Titre d'annonce] : " .$this->titreAnn.
+                "[Description d'annonce] : " .$this->descAnn.
+                "[Numéro de contact] : " .$this->numContactAnn.
+                "[Numéro d'adresse] : " .$this->numAdressAnn.
+                "[Rue] : " .$this->rueAnn.
+                "[Code postal] : " .$this->codePost;
     }
 
     /**
-     * Get the value of idAnnonce
+     * Get the value of idAnn
      */ 
-    public function getIdAnnonce() : int
+    public function getIdAnn() : int
     {
-        return $this->idAnnonce;
+        return $this->idAnn;
     }
 
     /**
-     * Get the value of typeAnnonce
+     * Get the value of typeAnn
      */ 
-    public function getTypeAnnonce() : string
+    public function getTypeAnn() : string
     {
-        return $this->typeAnnonce;
+        return $this->typeAnn;
     }
 
     /**
-     * Set the value of typeAnnonce
+     * Set the value of typeAnn
      *
      * @return  self
      */ 
-    public function setTypeAnnonce(string $typeAnnonce) : self
+    public function setTypeAnn(string $typeAnn) : self
     {
-        $this->typeAnnonce = $typeAnnonce;
+        $this->typeAnn = $typeAnn;
 
         return $this;
     }
 
     /**
-     * Get the value of titreAnnonce
+     * Get the value of titreAnn
      */ 
-    public function getTitreAnnonce() : string
+    public function getTitreAnn() : string
     {
-        return $this->titreAnnonce;
+        return $this->titreAnn;
     }
 
     /**
-     * Set the value of titreAnnonce
+     * Set the value of titreAnn
      *
      * @return  self
      */ 
-    public function setTitreAnnonce(string $titreAnnonce) : self
+    public function setTitreAnn(string $titreAnn) : self
     {
-        $this->titreAnnonce = $titreAnnonce;
+        $this->titreAnn = $titreAnn;
 
         return $this;
     }
 
     /**
-     * Get the value of descriptionAnnonce
+     * Get the value of descAnn
      */ 
-    public function getDescriptionAnnonce() : string
+    public function getDescAnn() : string
     {
-        return $this->descriptionAnnonce;
+        return $this->descAnn;
     }
 
     /**
-     * Set the value of descriptionAnnonce
+     * Set the value of descAnn
      *
      * @return  self
      */ 
-    public function setDescriptionAnnonce(string $descriptionAnnonce) : self
+    public function setDescAnn(string $descAnn) : self
     {
-        $this->descriptionAnnonce = $descriptionAnnonce;
+        $this->descAnn = $descAnn;
 
         return $this;
     }
 
     /**
-     * Get the value of numContact
+     * Get the value of numContAnn
      */ 
-    public function getNumContact() : int
+    public function getNumContAnn() : int
     {
-        return $this->numContact;
+        return $this->numContAnn;
     }
 
     /**
-     * Set the value of numContact
+     * Set the value of numContAnn
      *
      * @return  self
      */ 
-    public function setNumContact(int $numContact) : self
+    public function setNumContAnn(int $numContAnn) : self
     {
-        $this->numContact = $numContact;
+        $this->numContAnn = $numContAnn;
 
         return $this;
     }
 
     /**
-     * Get the value of numAdresse
+     * Get the value of numAdressAnn
      */ 
-    public function getNumAdresse() : int
+    public function getNumAdressAnn() : int
     {
-        return $this->numAdresse;
+        return $this->numAdressAnn;
     }
 
     /**
-     * Set the value of numAdresse
+     * Set the value of numAdressAnn
      *
      * @return  self
      */ 
-    public function setNumAdresse(int $numAdresse) : self
+    public function setNumAdressAnn(int $numAdressAnn) : self
     {
-        $this->numAdresse = $numAdresse;
+        $this->numAdressAnn = $numAdressAnn;
 
         return $this;
     }
 
     /**
-     * Get the value of rue
+     * Get the value of rueAnn
      */ 
-    public function getRue() : string
+    public function getRueAnn() : string
     {
-        return $this->rue;
+        return $this->rueAnn;
     }
 
     /**
-     * Set the value of rue
+     * Set the value of rueAnn
      *
      * @return  self
      */ 
-    public function setRue(string $rue) : self
+    public function setRueAnn(string $rueAnn) : self
     {
-        $this->rue = $rue;
+        $this->rueAnn = $rueAnn;
 
         return $this;
     }
 
     /**
-     * Get the value of codePostal
+     * Get the value of codePost
      */ 
-    public function getCodePostal() : int
+    public function getCodePost() : int
     {
-        return $this->codePostal;
+        return $this->codePost;
     }
 
     /**
-     * Set the value of codePostal
+     * Set the value of codePost
      *
      * @return  self
      */ 
-    public function setCodePostal(int $codePostal) :self
+    public function setCodePost(int $codePost) :self
     {
-        $this->codePostal = $codePostal;
+        $this->codePost = $codePost;
 
         return $this;
     }

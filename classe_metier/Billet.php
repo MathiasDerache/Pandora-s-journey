@@ -2,40 +2,40 @@
 
 class Billet {
 
-    private $numeroBillet;
-    private $dateEmbarquement;
+    private $numBillet;
+    private $dateEmb;
 
     //constructeur par défaut
 
     public function __toString() : string {
-        return "[Numéro de billet] : " .$this->numeroBillet.
-                "[Date d'embarquement] : " .$this->dateEmbarquement;
+        return "[Numéro de billet] : " .$this->numBillet.
+                "[Date d'embarquement] : " .$this->dateEmb;
     }
 
     /**
-     * Get the value of numeroBillet
+     * Get the value of numBillet
      */ 
-    public function getNumeroBillet() : int
+    public function getNumBillet() : int
     {
-        return $this->numeroBillet;
+        return $this->numBillet;
     }
 
     /**
-     * Get the value of dateEmbarquement
+     * Get the value of dateEmb
      */ 
-    public function getDateEmbarquement() : DateTime
+    public function getDateEmb() : DateTime
     {
-        return $this->dateEmbarquement;
+        return $this->dateEmb;
     }
 
     /**
-     * Set the value of dateEmbarquement
+     * Set the value of dateEmb
      *
      * @return  self
      */ 
-    public function setDateEmbarquement(DateTime $dateEmbarquement) : self
+    public function setDateEmb(DateTime $dateEmb) : self
     {
-        $this->dateEmbarquement = $dateEmbarquement;
+        $this->dateEmb = $dateEmb;
 
         return $this;
     }

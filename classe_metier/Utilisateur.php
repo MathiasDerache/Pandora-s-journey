@@ -2,34 +2,34 @@
 
 class Utilisateur {
 
-    private $idUtilisateur;
+    private $idUti;
     private $nom;
     private $prenom;
     private $pseudo;
     private $email;
-    private $numeroTel;
+    private $numTel;
     private $password;
 
     // constructeur par défaut
 
     public function __toString() : string {
-        return "[Id Utilisateur] : " .$this->idUtilisateur.
+        return "[Id Utilisateur] : " .$this->idUti.
                 "[Nom] : " .$this->nom.
                 "[Prenom] : " .$this->prenom.
                 "[Pseudo] : " .$this->pseudo.
                 "[Email] : " .$this->email.
-                "[Numéro téléphone] : " .$this->numeroTel.
+                "[Numéro téléphone] : " .$this->numTel.
                 "[Password] : " .$this->password;
     }
 
     
 
     /**
-     * Get the value of idUtilisateur
+     * Get the value of idUti
      */ 
-    public function getIdUtilisateur() : int
+    public function getIdUti() : int
     {
-        return $this->idUtilisateur;
+        return $this->idUti;
     }
 
     /**
@@ -113,21 +113,21 @@ class Utilisateur {
     }
 
     /**
-     * Get the value of numeroTel
+     * Get the value of numTel
      */ 
-    public function getNumeroTel() : int
+    public function getNumTel() : int
     {
-        return $this->numeroTel;
+        return $this->numTel;
     }
 
     /**
-     * Set the value of numeroTel
+     * Set the value of numTel
      *
      * @return  self
      */ 
-    public function setNumeroTel(int $numeroTel) : self
+    public function setNumTel(int $numTel) : self
     {
-        $this->numeroTel = $numeroTel;
+        $this->numTel = $numTel;
 
         return $this;
     }
