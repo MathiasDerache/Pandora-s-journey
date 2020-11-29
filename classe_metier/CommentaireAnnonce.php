@@ -5,13 +5,18 @@ class CommentaireAnnonce {
     private $idComm;
     private $contComm;
     private $dateMessAnn;
+    private $idUti;
+    private $idAnn;
+
 
     //constructeur par défaut
 
     public function __toString() : string {
         return "[Id du commentaire] : " .$this->idComm.
                 "[Contenu du commentaire] : " .$this->contComm.
-                "[Date du commentaire] : " .$this->dateMessAnn;
+                "[Date du commentaire] : " .$this->dateMessAnn.
+                "[Id tilisateur] : " .$this->idUti.
+                "[Id annonce] : " .$this->idAnn;
         }
 
     /**
@@ -58,6 +63,46 @@ class CommentaireAnnonce {
     public function setDateMessAnn(DateTime $dateMessAnn) : self
     {
         $this->dateMessAnn = $dateMessAnn;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idUti
+     */ 
+    public function getIdUti() : int
+    {
+        return $this->idUti;
+    }
+
+    /**
+     * Set the value of idUti
+     *
+     * @return  self
+     */ 
+    public function setIdUti(int $idUti) : self
+    {
+        $this->idUti = $idUti;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idAnn
+     */ 
+    public function getIdAnn() : int
+    {
+        return $this->idAnn;
+    }
+
+    /**
+     * Set the value of idAnn
+     *
+     * @return  self
+     */ 
+    public function setIdAnn(int $idAnn) : self
+    {
+        $this->idAnn = $idAnn;
 
         return $this;
     }

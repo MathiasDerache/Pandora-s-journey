@@ -4,12 +4,14 @@ class Billet {
 
     private $numBillet;
     private $dateEmb;
+    private $idUti;
 
     //constructeur par défaut
 
     public function __toString() : string {
         return "[Numéro de billet] : " .$this->numBillet.
-                "[Date d'embarquement] : " .$this->dateEmb;
+                "[Date d'embarquement] : " .$this->dateEmb.
+                "[Id tilisateur] : " .$this->idUti;
     }
 
     /**
@@ -36,6 +38,26 @@ class Billet {
     public function setDateEmb(DateTime $dateEmb) : self
     {
         $this->dateEmb = $dateEmb;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idUti
+     */ 
+    public function getIdUti() : int
+    {
+        return $this->idUti;
+    }
+
+    /**
+     * Set the value of idUti
+     *
+     * @return  self
+     */ 
+    public function setIdUti(int $idUti) : self
+    {
+        $this->idUti = $idUti;
 
         return $this;
     }

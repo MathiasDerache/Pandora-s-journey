@@ -9,6 +9,7 @@ class Utilisateur {
     private $email;
     private $numTel;
     private $password;
+    private $profil;
 
     // constructeur par défaut
 
@@ -19,7 +20,8 @@ class Utilisateur {
                 "[Pseudo] : " .$this->pseudo.
                 "[Email] : " .$this->email.
                 "[Numéro téléphone] : " .$this->numTel.
-                "[Password] : " .$this->password;
+                "[Password] : " .$this->password.
+                "[Profil] : " .$this->profil;
     }
 
     
@@ -148,6 +150,26 @@ class Utilisateur {
     public function setPassword(string $password) : self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of profil
+     */ 
+    public function getProfil() : string
+    {
+        return $this->profil;
+    }
+
+    /**
+     * Set the value of profil
+     *
+     * @return  self
+     */ 
+    public function setProfil(string $profil) :self
+    {
+        $this->profil = $profil;
 
         return $this;
     }

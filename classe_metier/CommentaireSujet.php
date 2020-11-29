@@ -6,6 +6,8 @@ class CommentaireSujet {
     private $pseudoUt;
     private $dateCommSuj;
     private $contCommSuj;
+    private $idUti;
+    private $idSuje;
 
     //constructeur par défaut
 
@@ -14,7 +16,9 @@ class CommentaireSujet {
         return "[Id commenaire sujet] : " .$this->idCommSuj.
                 "[Pseudo utilisateur] : " .$this->pseudoUt.
                 "[Date commentaire sujet] : " .$this->dateCommSuj.
-                "[Contenu commentaire sujet] : " .$this->contCommSuj;
+                "[Contenu commentaire sujet] : " .$this->contCommSuj.
+                "[Id Utilisateur] : " .$this->idUti.
+                "[Id sujet] : " .$this->idSuje;
     }
 
     /**
@@ -81,6 +85,46 @@ class CommentaireSujet {
     public function setContCommSuj(string $contCommSuj) :self
     {
         $this->contCommSuj = $contCommSuj;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idUti
+     */ 
+    public function getIdUti() : int
+    {
+        return $this->idUti;
+    }
+
+    /**
+     * Set the value of idUti
+     *
+     * @return  self
+     */ 
+    public function setIdUti(int $idUti) : self
+    {
+        $this->idUti = $idUti;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idSuje
+     */ 
+    public function getIdSuje() : int
+    {
+        return $this->idSuje;
+    }
+
+    /**
+     * Set the value of idSuje
+     *
+     * @return  self
+     */ 
+    public function setIdSuje(int $idSuje) : self
+    {
+        $this->idSuje = $idSuje;
 
         return $this;
     }

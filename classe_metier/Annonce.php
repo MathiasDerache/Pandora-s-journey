@@ -10,6 +10,7 @@ class Annonces {
     private $numAdressAnn;
     private $rueAnn;
     private $codePost;
+    private $idUti;
 
     //cosntructeur par défaut
 
@@ -21,7 +22,8 @@ class Annonces {
                 "[Numéro de contact] : " .$this->numContactAnn.
                 "[Numéro d'adresse] : " .$this->numAdressAnn.
                 "[Rue] : " .$this->rueAnn.
-                "[Code postal] : " .$this->codePost;
+                "[Code postal] : " .$this->codePost.
+                "[Id tilisateur] : " .$this->idUti;
     }
 
     /**
@@ -168,6 +170,26 @@ class Annonces {
     public function setCodePost(int $codePost) :self
     {
         $this->codePost = $codePost;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idUti
+     */ 
+    public function getIdUti() : int
+    {
+        return $this->idUti;
+    }
+
+    /**
+     * Set the value of idUti
+     *
+     * @return  self
+     */ 
+    public function setIdUti(int $idUti) : self
+    {
+        $this->idUti = $idUti;
 
         return $this;
     }
