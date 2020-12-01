@@ -1,8 +1,10 @@
 <?php
 
-class Annonces {
+class Annonces
+{
 
     private $idAnn;
+    private $datePubAnn;
     private $typeAnn;
     private $titreAnn;
     private $descAnn;
@@ -14,30 +16,31 @@ class Annonces {
 
     //cosntructeur par défaut
 
-    public function __toString() : string {
-        return "[Id annonce] : " .$this->idAnn.
-                "[Type d'annonce] : " .$this->typeAnn.
-                "[Titre d'annonce] : " .$this->titreAnn.
-                "[Description d'annonce] : " .$this->descAnn.
-                "[Numéro de contact] : " .$this->numContactAnn.
-                "[Numéro d'adresse] : " .$this->numAdressAnn.
-                "[Rue] : " .$this->rueAnn.
-                "[Code postal] : " .$this->codePost.
-                "[Id tilisateur] : " .$this->idUti;
+    public function __toString(): string
+    {
+        return "[Id annonce] : " . $this->idAnn .
+            "[Type d'annonce] : " . $this->typeAnn .
+            "[Titre d'annonce] : " . $this->titreAnn .
+            "[Description d'annonce] : " . $this->descAnn .
+            "[Numéro de contact] : " . $this->numContactAnn .
+            "[Numéro d'adresse] : " . $this->numAdressAnn .
+            "[Rue] : " . $this->rueAnn .
+            "[Code postal] : " . $this->codePost .
+            "[Id tilisateur] : " . $this->idUti;
     }
 
     /**
      * Get the value of idAnn
-     */ 
-    public function getIdAnn() : int
+     */
+    public function getIdAnn(): int
     {
         return $this->idAnn;
     }
 
     /**
      * Get the value of typeAnn
-     */ 
-    public function getTypeAnn() : string
+     */
+    public function getTypeAnn(): string
     {
         return $this->typeAnn;
     }
@@ -46,8 +49,8 @@ class Annonces {
      * Set the value of typeAnn
      *
      * @return  self
-     */ 
-    public function setTypeAnn(string $typeAnn) : self
+     */
+    public function setTypeAnn(string $typeAnn): self
     {
         $this->typeAnn = $typeAnn;
 
@@ -56,8 +59,8 @@ class Annonces {
 
     /**
      * Get the value of titreAnn
-     */ 
-    public function getTitreAnn() : string
+     */
+    public function getTitreAnn(): string
     {
         return $this->titreAnn;
     }
@@ -66,8 +69,8 @@ class Annonces {
      * Set the value of titreAnn
      *
      * @return  self
-     */ 
-    public function setTitreAnn(string $titreAnn) : self
+     */
+    public function setTitreAnn(string $titreAnn): self
     {
         $this->titreAnn = $titreAnn;
 
@@ -76,8 +79,8 @@ class Annonces {
 
     /**
      * Get the value of descAnn
-     */ 
-    public function getDescAnn() : string
+     */
+    public function getDescAnn(): string
     {
         return $this->descAnn;
     }
@@ -86,8 +89,8 @@ class Annonces {
      * Set the value of descAnn
      *
      * @return  self
-     */ 
-    public function setDescAnn(string $descAnn) : self
+     */
+    public function setDescAnn(string $descAnn): self
     {
         $this->descAnn = $descAnn;
 
@@ -96,8 +99,8 @@ class Annonces {
 
     /**
      * Get the value of numContAnn
-     */ 
-    public function getNumContAnn() : int
+     */
+    public function getNumContAnn(): int
     {
         return $this->numContAnn;
     }
@@ -106,8 +109,8 @@ class Annonces {
      * Set the value of numContAnn
      *
      * @return  self
-     */ 
-    public function setNumContAnn(int $numContAnn) : self
+     */
+    public function setNumContAnn(int $numContAnn): self
     {
         $this->numContAnn = $numContAnn;
 
@@ -116,8 +119,8 @@ class Annonces {
 
     /**
      * Get the value of numAdressAnn
-     */ 
-    public function getNumAdressAnn() : int
+     */
+    public function getNumAdressAnn(): int
     {
         return $this->numAdressAnn;
     }
@@ -126,8 +129,8 @@ class Annonces {
      * Set the value of numAdressAnn
      *
      * @return  self
-     */ 
-    public function setNumAdressAnn(int $numAdressAnn) : self
+     */
+    public function setNumAdressAnn(int $numAdressAnn): self
     {
         $this->numAdressAnn = $numAdressAnn;
 
@@ -136,8 +139,8 @@ class Annonces {
 
     /**
      * Get the value of rueAnn
-     */ 
-    public function getRueAnn() : string
+     */
+    public function getRueAnn(): string
     {
         return $this->rueAnn;
     }
@@ -146,8 +149,8 @@ class Annonces {
      * Set the value of rueAnn
      *
      * @return  self
-     */ 
-    public function setRueAnn(string $rueAnn) : self
+     */
+    public function setRueAnn(string $rueAnn): self
     {
         $this->rueAnn = $rueAnn;
 
@@ -156,8 +159,8 @@ class Annonces {
 
     /**
      * Get the value of codePost
-     */ 
-    public function getCodePost() : int
+     */
+    public function getCodePost(): int
     {
         return $this->codePost;
     }
@@ -166,8 +169,8 @@ class Annonces {
      * Set the value of codePost
      *
      * @return  self
-     */ 
-    public function setCodePost(int $codePost) :self
+     */
+    public function setCodePost(int $codePost): self
     {
         $this->codePost = $codePost;
 
@@ -176,8 +179,8 @@ class Annonces {
 
     /**
      * Get the value of idUti
-     */ 
-    public function getIdUti() : int
+     */
+    public function getIdUti(): int
     {
         return $this->idUti;
     }
@@ -186,13 +189,43 @@ class Annonces {
      * Set the value of idUti
      *
      * @return  self
-     */ 
-    public function setIdUti(int $idUti) : self
+     */
+    public function setIdUti(int $idUti): self
     {
         $this->idUti = $idUti;
 
         return $this;
     }
-}
 
-?>
+    /**
+     * Set the value of idAnn
+     *
+     * @return  self
+     */
+    public function setIdAnn($idAnn)
+    {
+        $this->idAnn = $idAnn;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of datePubAnn
+     */
+    public function getDatePubAnn()
+    {
+        return $this->datePubAnn;
+    }
+
+    /**
+     * Set the value of datePubAnn
+     *
+     * @return  self
+     */
+    public function setDatePubAnn($datePubAnn)
+    {
+        $this->datePubAnn = $datePubAnn;
+
+        return $this;
+    }
+}

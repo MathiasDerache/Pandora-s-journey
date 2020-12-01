@@ -106,5 +106,16 @@ class CommentaireAnnonce {
 
         return $this;
     }
+
+    /**
+     * Set the value of idComm
+     *
+     * @return  self
+     */ 
+    public function setIdComm($idComm)
+    {
+        $this->idComm = $idComm;
+
+        return $this;
+    }
 }
-?>
