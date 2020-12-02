@@ -6,6 +6,10 @@ include_once __DIR__ . '/conectionBaseDonnees.php';
 
 class CommentaireDao implements InterfDao
 {
+    public function __construct()
+    {
+        $this->db = new ConnectionBaseDonnees();
+    }
     /**
      * ajout de commentaire annonce
      *
