@@ -1,6 +1,6 @@
 <?php
 
-include_once("interfaceDao.php");
+include_once("interfDao.php");
 include_once("connectionBaseDonnees.php");
 include_once("../classe_metier/SujetTheme.php");
 

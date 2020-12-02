@@ -23,6 +23,18 @@ class Billet {
     }
 
     /**
+     * Set the value of dateEmb
+     *
+     * @return  self
+     */ 
+    public function setNumBillet(int $numBillet) : self
+    {
+        $this->numBillet = $numBillet;
+
+        return $this;
+    }
+
+    /**
      * Get the value of dateEmb
      */ 
     public function getDateEmb() : DateTime

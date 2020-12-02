@@ -3,6 +3,7 @@
 class Repondre{
 
     private $idComm;
+    private $idComm_commentaire;
 
     //constructeur par défaut
 
@@ -27,6 +28,28 @@ class Repondre{
     public function setIdComm(int $idComm) : self
     {
         $this->idComm = $idComm;
+
+        return $this;
+    }
+
+    
+
+    /**
+     * Get the value of idComm_commentaire
+     */ 
+    public function getIdComm_commentaire() : int
+    {
+        return $this->idComm_commentaire;
+    }
+
+    /**
+     * Set the value of idComm_commentaire
+     *
+     * @return  self
+     */ 
+    public function setIdComm_commentaire(int $idComm_commentaire) : self
+    {
+        $this->idComm_commentaire = $idComm_commentaire;
 
         return $this;
     }

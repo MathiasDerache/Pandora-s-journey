@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/InterfaceDao.php';
+include_once __DIR__ . '/InterfDao.php';
 include_once __DIR__ . '/../classe_metier/CommentaireAnnonce.php';
 include_once __DIR__ . '/conectionBaseDonnees.php';
 
