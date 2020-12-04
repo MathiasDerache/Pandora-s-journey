@@ -6,6 +6,12 @@ include_once("../classe_metier/Repondre.php");
 
 class RepondreDAO implements InterfDao
 {
+
+    public function __construct()
+    {
+        $this->db = new ConnectionBaseDonnees(); // factorisation de la connection à la base de donnée
+    }
+
     public function creat(Repondre $repondre): void
     {
         $idComm = $repondre->getIdComm();
