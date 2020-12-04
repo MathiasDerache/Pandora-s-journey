@@ -66,8 +66,7 @@ class UtilisateurDao implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("SELECT * FROM utilisateur WHERE idUti=?");
-            $stm->bindValue(1, $idUti);
+            $stm = $db->prepare("SELECT * FROM utilisateur");
             $stm->execute();
             $array = $stm->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $f) {
