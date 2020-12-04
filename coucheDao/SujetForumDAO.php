@@ -6,6 +6,10 @@ include_once("../classe_metier/SujetTheme.php");
 
     class SujetForumDAO implements InterfDao{
 
+        public function __construct()
+        {
+            $this->db = new ConnectionBaseDonnees(); // factorisation de la connection à la base de donnée
+        }
 
         public function create(SujetTheme $sujetTheme){
 
