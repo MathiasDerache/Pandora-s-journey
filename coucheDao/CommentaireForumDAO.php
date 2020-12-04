@@ -11,7 +11,7 @@ include_once("../classe_metier/CommentaireSujet.php");
             $this->db = new ConnectionBaseDonnees(); // factorisation de la connection à la base de donnée
         }
 
-        public function create(CommentaireSujet $commSujet){
+        public function creat(object $commSujet):void{
 
             try{
             $db = $this->db->connectiondb();
@@ -94,4 +94,3 @@ include_once("../classe_metier/CommentaireSujet.php");
             }
         }  
     }
-?>
