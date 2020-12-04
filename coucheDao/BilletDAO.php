@@ -11,6 +11,7 @@ class BilletDAO implements InterfDao
         $this->db = new ConnectionBaseDonnees(); // factorisation de la connection à la base de donnée
     }
 
+    // Récupère l'objet transmis par la couche Service afin de créer le billet dans la base de données
     public function creat(Billet $billet): void
     {
         $numBillet = $billet->getNumBillet();
@@ -28,6 +29,7 @@ class BilletDAO implements InterfDao
         }
     }
 
+    // Transmets un tableau avec toutes les données à la couche Service
     public function read(): array
     {
         try {
@@ -46,6 +48,7 @@ class BilletDAO implements InterfDao
         return $tab;
     }
 
+    // Récupère l'objet transmis par la couche Service afin de modifier le billet dans la base de données
     public function update(Billet $billet): void
     {
         $numBillet = $billet->getNumBillet();
@@ -63,6 +66,7 @@ class BilletDAO implements InterfDao
         }
     }
 
+    // Récupère l'id du billet transmis par la couche Service afin de le supprimer dans la base de données
     public function delete(int $id): void
     {
         try {
@@ -70,7 +74,7 @@ class BilletDAO implements InterfDao
             $stmt = $db->prepare("DELETE FROM billet WHERE idUti = ?");
             $stmt->bindValue(1, $id, PDO::PARAM_INT);
             $stmt->execute();
-        } catch(PDOException $f){
+        } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
     }
