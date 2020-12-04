@@ -1,13 +1,13 @@
 <?php
-include_once("../coucheDao/SujetForumDao.php");
-include_once("InterfService.php");
+include_once __DIR__ . "/../coucheDao/SujetForumDao.php";
+include_once __DIR__ . "/InterfService.php";
 
 
-    class CommentaireForumService implements interfService{
+    class SujetForumService implements interfService{
 
         public function __construct()
         {
-            $this->service = new CommentaireAnnDao();
+            $this->service = new SujetForumDao();
         }
 
         public function creatService(object $object): object
