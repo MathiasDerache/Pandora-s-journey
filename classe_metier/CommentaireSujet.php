@@ -128,6 +128,16 @@ class CommentaireSujet {
 
         return $this;
     }
-}
 
-?>
+    /**
+     * Set the value of idCommSuj
+     *
+     * @return  self
+     */ 
+    public function setIdCommSuj($idCommSuj)
+    {
+        $this->idCommSuj = $idCommSuj;
+
+        return $this;
+    }
+}
