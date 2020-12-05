@@ -1,6 +1,8 @@
 <?php
+include_once __DIR__ . '/Profil.php';
 
-class Utilisateur {
+class Utilisateur
+{
 
     private $idUti;
     private $nom;
@@ -13,31 +15,32 @@ class Utilisateur {
 
     // constructeur par défaut
 
-    public function __toString() : string {
-        return "[Id Utilisateur] : " .$this->idUti.
-                "[Nom] : " .$this->nom.
-                "[Prenom] : " .$this->prenom.
-                "[Pseudo] : " .$this->pseudo.
-                "[Email] : " .$this->email.
-                "[Numéro téléphone] : " .$this->numTel.
-                "[Password] : " .$this->password.
-                "[Profil] : " .$this->profil;
+    public function __toString(): string
+    {
+        return "[Id Utilisateur] : " . $this->idUti .
+            " [Nom] : " . $this->nom .
+            " [Prenom] : " . $this->prenom .
+            " [Pseudo] : " . $this->pseudo .
+            " [Email] : " . $this->email .
+            " [Numéro téléphone] : " . $this->numTel .
+            " [Password] : " . $this->password .
+            " [Profil] : " . $this->profil;
     }
 
-    
+
 
     /**
      * Get the value of idUti
-     */ 
-    public function getIdUti() : int
+     */
+    public function getIdUti(): int
     {
         return $this->idUti;
     }
 
     /**
      * Get the value of nom
-     */ 
-    public function getNom() : string
+     */
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -46,8 +49,8 @@ class Utilisateur {
      * Set the value of nom
      *
      * @return  self
-     */ 
-    public function setNom(string $nom) : self
+     */
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
 
@@ -56,8 +59,8 @@ class Utilisateur {
 
     /**
      * Get the value of prenom
-     */ 
-    public function getPrenom() : string
+     */
+    public function getPrenom(): string
     {
         return $this->prenom;
     }
@@ -66,8 +69,8 @@ class Utilisateur {
      * Set the value of prenom
      *
      * @return  self
-     */ 
-    public function setPrenom(string $prenom) : self
+     */
+    public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
 
@@ -76,8 +79,8 @@ class Utilisateur {
 
     /**
      * Get the value of pseudo
-     */ 
-    public function getPseudo() : string
+     */
+    public function getPseudo(): string
     {
         return $this->pseudo;
     }
@@ -86,8 +89,8 @@ class Utilisateur {
      * Set the value of pseudo
      *
      * @return  self
-     */ 
-    public function setPseudo(string $pseudo) : self
+     */
+    public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
 
@@ -96,8 +99,8 @@ class Utilisateur {
 
     /**
      * Get the value of email
-     */ 
-    public function getEmail() : string
+     */
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -106,8 +109,8 @@ class Utilisateur {
      * Set the value of email
      *
      * @return  self
-     */ 
-    public function setEmail(string $email) :self
+     */
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -116,8 +119,8 @@ class Utilisateur {
 
     /**
      * Get the value of numTel
-     */ 
-    public function getNumTel() : int
+     */
+    public function getNumTel(): int
     {
         return $this->numTel;
     }
@@ -126,8 +129,8 @@ class Utilisateur {
      * Set the value of numTel
      *
      * @return  self
-     */ 
-    public function setNumTel(int $numTel) : self
+     */
+    public function setNumTel(int $numTel): self
     {
         $this->numTel = $numTel;
 
@@ -136,8 +139,8 @@ class Utilisateur {
 
     /**
      * Get the value of password
-     */ 
-    public function getPassword() : string
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -146,8 +149,8 @@ class Utilisateur {
      * Set the value of password
      *
      * @return  self
-     */ 
-    public function setPassword(string $password) : self
+     */
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 
@@ -156,8 +159,8 @@ class Utilisateur {
 
     /**
      * Get the value of profil
-     */ 
-    public function getProfil() : string
+     */
+    public function getProfil(): Profil
     {
         return $this->profil;
     }
@@ -166,13 +169,11 @@ class Utilisateur {
      * Set the value of profil
      *
      * @return  self
-     */ 
-    public function setProfil(string $profil) :self
+     */
+    public function setProfil(Profil $profil): self
     {
         $this->profil = $profil;
 
         return $this;
     }
 }
-
-?>
