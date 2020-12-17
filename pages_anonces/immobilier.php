@@ -24,7 +24,7 @@
                         <div class="card-body">
                         <h5 class="card-title">titre annonce</h5>
                         <p class="card-text">contenu annonces</p>
-                        <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                         </div>
                     </div>
                </div>
@@ -34,7 +34,7 @@
                         <div class="card-body">
                         <h5 class="card-title">titre annonce</h5>
                         <p class="card-text">contenu annonces</p>
-                        <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <div class="card-body">
                         <h5 class="card-title">titre annonce</h5>
                         <p class="card-text">contenu annonces</p>
-                        <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         <div class="card-body">
                         <h5 class="card-title">titre annonce</h5>
                         <p class="card-text">contenu annonces</p>
-                        <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                 </div>
@@ -77,7 +77,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -87,7 +87,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -97,7 +97,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -110,7 +110,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                 </div>
@@ -120,7 +120,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -130,7 +130,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -140,7 +140,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -153,7 +153,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                 </div>
@@ -163,7 +163,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -173,7 +173,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
@@ -183,7 +183,7 @@
                          <div class="card-body">
                          <h5 class="card-title">titre annonce</h5>
                          <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
+                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
                          </div>
                      </div>
                  </div>
