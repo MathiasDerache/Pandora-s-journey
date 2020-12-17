@@ -26,33 +26,33 @@
 
             <div class="row" style="text-align: center;">
                 <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-6 forum">
-                    <a href="#"><h2>Annonces</h2></a>
+                    <a href="../forum_sujet/forum_annonces.php"><h2>Annonces</h2></a>
                     <p>Les annonces officielles de Pandora's Journey</p>
                 </div>
                 <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-6 forum">
-                    <a href="#"><h2>Discussions Générales</h2></a>
+                    <a href="../forum_sujet/forum_discussions_generales.php"><h2>Discussions Générales</h2></a>
                     <p>Les discussions diverses en relation avec nos services</p>
                 </div>
             </div>
             
             <div class="row" style="text-align: center;">
                 <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-6 forum">
-                    <a href="#"><h2>Immobilier</h2></a>
+                    <a href="../forum_sujet/forum_immobilier.php"><h2>Immobilier</h2></a>
                     <p>Une question concernant les biens immobilier sur Pandora ? C'est ici ! </p>
                 </div>
                 <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-6 forum">
-                    <a href="#"><h2>Travail</h2></a>
+                    <a href="../forum_sujet/forum_travail.php"><h2>Travail</h2></a>
                     <p>Les questions concernant le travail sur Pandora sont ici !</p>
                 </div>
             </div>
             
             <div class="row" style="text-align: center;">
                 <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-6 forum">
-                    <a href="#"><h2>Loisirs</h2></a>
+                    <a href="../forum_sujet/forum_loisirs.php"><h2>Loisirs</h2></a>
                     <p>Inquiet sur les loisirs disponible sur Pandora ? Posez vos questions !</p>
                 </div>
                 <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-6 forum">
-                    <a href="#"><h2>Aide & Support</h2></a>
+                    <a href="../forum_sujet/forum_aide_support.php"><h2>Aide & Support</h2></a>
                     <p>Un problème ? Quelqu'un a sûrement la solution !</p>
                 </div>
             </div>

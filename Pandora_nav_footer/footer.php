@@ -16,7 +16,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 nav_footer">
                                 <h2>Navigation</h2>
                                 <ul>
-                                    <li><a href="../pandora_accueil/index.php">Accueil</a></li>
+                                    <li><a href="../../pandora_accueil/index.php">Accueil</a></li>
                                     <li><a href="#">Annonces</a></li>
                                     <li><a href="../forum/Pandora_Forum_accueil/forum.php">Forum</a></li>
                                     <li><a href="#">Billeterie</a></li>

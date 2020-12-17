@@ -1,7 +1,7 @@
         <nav class="container-fluid fixed-top">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1">
-                        <a href="../pandora_accueil/index.php"><img src="images/Logo.png" alt="logo pandora" class="img-fluid" width="90%"></a>
+                        <a href="../../pandora_accueil/index.php"><img src="images/Logo.png" alt="logo pandora" class="img-fluid" width="90%"></a>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 listnav">
                         <ul>
