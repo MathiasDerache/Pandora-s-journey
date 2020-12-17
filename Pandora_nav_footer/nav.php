@@ -5,9 +5,9 @@
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 listnav">
                         <ul>
-                            <li><a href="../pages_anonces/immobilier.php" class="nav-link text-white">Immobilier</a></li>
-                            <li><a href="../pages_anonces/travail.php"class="nav-link text-white">Travail</a></li>
-                            <li><a href="../pages_anonces/loisirs.php" class="nav-link text-white">Loisir</a></li>
+                            <li><a href="#" class="nav-link text-white">Immobilier</a></li>
+                            <li><a href="#"class="nav-link text-white">Travail</a></li>
+                            <li><a href="#" class="nav-link text-white">Loisir</a></li>
                             <li><a href="#"class="nav-link text-white">Contacts</a></li>
                         </ul>
                     </div>
