@@ -31,15 +31,15 @@
                                 <img src="images/voyagez.jpg" alt="" class="img-fluid shadow-lg">
                             </div>
                             <div class="row">
-                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="col-sm-6 col-md-6 col-lg-6 mt-5">
                                     <div class="row">
-                                        <div class="col-12 m-3">
+                                        <div class="col-12 ">
                                             <h2 class="text-center text-white ">COMPTE A REBOURS:</h2>
                                             <img src="images/countdown-twitter.jpg" alt="" class="img-fluid shadow-lg">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-6 col-lg-6 mt-3">
+                                <div class="col-sm-6 col-md-6 col-lg-6 mt-5">
                                     <h2 class="text-center text-white">LOCATIONS / ACHATS</h2>
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
@@ -71,10 +71,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 col-md-10 col-lg-10 m-3 text-center text-white">
-                                <h2 class=" mt-2">ANNONCES POUVANT VOUS CORRESPONDRE :</h2>
+                            <div class="col-sm-12 col-md-10 col-lg-10 mb-5 text-center text-white">
+                                <h2 class=" mt-5">ANNONCES POUVANT VOUS CORRESPONDRE :</h2>
                                 <div class="row lignesN justify-content-between ">
-                                    <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes mt-2">
+                                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 lignes mt-2">
                                         <div class="card" style="width: 18rem;">
                                             <img src="images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
                                             <div class="card-body">
@@ -84,7 +84,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes mt-2">
+                                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 lignes mt-2">
                                         <div class="card" style="width: 18rem;">
                                             <img src="images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
                                             <div class="card-body">
@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes mt-2">
+                                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 lignes mt-2">
                                         <div class="card" style="width: 18rem;">
                                             <img src="images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
                                             <div class="card-body">
