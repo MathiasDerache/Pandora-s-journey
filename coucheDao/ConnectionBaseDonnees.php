@@ -10,7 +10,7 @@ class ConnectionBaseDonnees
      */
     public function connectiondb(): PDO
     {
-        $host = "sql:host=localhost;bdname=pandora";
+        $host = "mysql:host=localhost;dbname=pandora";
         $user = 'root';
         $pass = '';
         //ici se trouve la connexion à la base de donnée pandora vis à PDO

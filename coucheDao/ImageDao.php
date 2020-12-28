@@ -3,7 +3,7 @@ include_once __DIR__ . '/InterfDao.php';
 include_once __DIR__ . '/../classe_metier/Image.php';
 include_once __DIR__ . '/conectionBaseDonnees.php';
 
-class AnnoncesDao implements InterfDao
+class ImageDao implements InterfDao
 {
     public function __construct()
     {
