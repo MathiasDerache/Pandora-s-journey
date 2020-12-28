@@ -1,0 +1,121 @@
+<?php
+include_once __DIR__ . '/InterfDao.php';
+include_once __DIR__ . '/../classe_metier/Image.php';
+include_once __DIR__ . '/conectionBaseDonnees.php';
+
+class AnnoncesDao implements InterfDao
+{
+    public function __construct()
+    {
+        $this->db = new ConnectionBaseDonnees(); // factorisation de la connection à la base de donnée
+    }
+
+    /**
+     * methode d'ajout d'une Image
+     *
+     * @param object $object
+     * @return void
+     */
+    public function creat(object $object): void
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("INSERT INTO image VALUES(null,?,?,?,?,?)");
+            //recuperation des infos de $object instance de la class Annonce
+            $NomFichier = $object->getNomFichier();
+            $NomFichier = $object->getTailleFichier();
+            $TypeImage = $object->getTypeImage();
+            $PathFile = $object->getPathFile();
+            $IdUti = $object->getIdUti();
+
+            //je lie chaque variable à la requete preparée
+            $stm->bindValue(1, $NomFichier);
+            $stm->bindValue(2, $NomFichier, PDO::PARAM_INT);
+            $stm->bindValue(3, $TypeImage);
+            $stm->bindValue(4, $PathFile);
+            $stm->bindValue(5, $IdUti, PDO::PARAM_INT);
+            //execution de la requete preparée
+            $stm->execute();
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+    }
+
+    /**
+     * modification Image
+     *
+     * @param object $object
+     * @return void
+     */
+    public function update(object $object): void
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("UPDATE image SET DatePubAnn=?,typeannoce=?, titre=?, description=?
+                                ,numcontact=? WHERE idannonce=?");
+            //recuperation des infos de $object instance de la class Annonce
+            $NomFichier = $object->getNomFichier();
+            $NomFichier = $object->getTailleFichier();
+            $TypeImage = $object->getTypeImage();
+            $PathFile = $object->getPathFile();
+            $IdUti = $object->getIdUti();
+            $idImage = $object->getId();
+
+            //je lie chaque variable à la requete preparée
+            $stm->bindValue(1, $NomFichier);
+            $stm->bindValue(2, $NomFichier, PDO::PARAM_INT);
+            $stm->bindValue(3, $TypeImage);
+            $stm->bindValue(4, $PathFile);
+            $stm->bindValue(5, $IdUti, PDO::PARAM_INT);
+            $stm->bindValue(6, $idImage, PDO::PARAM_INT);
+            //execution de la requete preparée
+            $stm->execute();
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+    }
+
+    /**
+     * recupere dans un array toutes les annonces et les retourne
+     *
+     * @return array
+     */
+    public function read(): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM image");
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $image = new Image();
+            $image->setId($value['Id'])->setNomFichier($value['NomFichier'])->setTypeImage($value['TypeImage'])
+                ->setPathFile($value['PathFile'])->setIdUti($value['IdUti'])
+                ->setTailleFichier($value['TailleFichier']);
+            $tab[] = $image;
+        }
+        return $tab;
+    }
+
+    /**
+     * supprime l'annonce
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function delete(int $id): void
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("DELETE FROM image WHERE id=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+    }
+}
