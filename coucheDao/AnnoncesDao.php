@@ -122,11 +122,38 @@ class AnnoncesDao implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("DELETE FROM annonces WHERE idannonce=?");
+            $stm = $db->prepare("DELETE FROM annonces WHERE idAnnoce=?");
             $stm->bindValue(1, $id, PDO::PARAM_INT);
             $stm->execute();
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
+    }
+
+    /**
+     * recupere dans un array avec l'annonce par id
+     *
+     * @return array
+     */
+    public function readById(int $id): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM annonces WHERE idAnnoce=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $annonce = new Annonces();
+            $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
+                ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
+                ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
+            $tab[] = $annonce;
+        }
+        return $tab;
     }
 }
