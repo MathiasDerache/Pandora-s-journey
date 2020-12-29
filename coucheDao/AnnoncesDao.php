@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/InterfDao.php';
 include_once __DIR__ . '/../classe_metier/Annonce.php';
-include_once __DIR__ . '/conectionBaseDonnees.php';
+include_once __DIR__ . '/ConnectionBaseDonnees.php';
 
 class AnnoncesDao implements InterfDao
 {
@@ -104,9 +104,9 @@ class AnnoncesDao implements InterfDao
         $tab = [];
         foreach ($array as $value) {
             $annonce = new Annonces();
-            $annonce->setIdAnn($value['idannonce'])->setTypeAnn($value['titre'])->setTitreAnn($value['description'])
-                ->setNumContAnn($value['numcontact'])->setNumAdressAnn($value['numAdresse'])
-                ->setRueAnn($value['rue'])->setCodePost($value['codepostal'])->setIdUti($value['idUti']);
+            $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
+                ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
+                ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
             $tab[] = $annonce;
         }
         return $tab;

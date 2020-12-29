@@ -22,7 +22,7 @@ class Annonces
             "[Type d'annonce] : " . $this->typeAnn .
             "[Titre d'annonce] : " . $this->titreAnn .
             "[Description d'annonce] : " . $this->descAnn .
-            "[Numéro de contact] : " . $this->numContactAnn .
+            "[Numéro de contact] : " . $this->numContAnn .
             "[Numéro d'adresse] : " . $this->numAdressAnn .
             "[Rue] : " . $this->rueAnn .
             "[Code postal] : " . $this->codePost .
