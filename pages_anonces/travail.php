@@ -9,222 +9,72 @@
     <title>Travail</title>
 </head>
 
+<?php function body(){ ?>
 <body class="position-relative">
     <!-- ----------------------------------  navbar ---------------------------------> 
         <?php
-            include("../Pandora_nav_footer/nav.php");
+            include("../Pandora_nav_footer/nav.php")
         ?>
     <!-- ----------------------------------  navbar ---------------------------------> 
-
         <div class="container-fluid annonces">
-            <div class="row lignesN">
-               <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top btn btn-info" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">titre annonce</h5>
-                        <p class="card-text">contenu annonces</p>
-                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                        </div>
-                    </div>
-               </div>
+            
+                <?php } ?>
+            <?php function card($annonces, $i){ ?>
+                <div class="row lignesN">
                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top btn btn-info" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">titre annonce</h5>
-                        <p class="card-text">contenu annonces</p>
-                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top btn btn-info" alt="">
+                            <div class="card-body">
+                            <h5 class="card-title"><?php echo $annonces[$i]->getTitreAnn() ?></h5>
+                            <p class="card-text"><?php echo $annonces[$i]->getDescAnn() ?></p>
+                            <a href="" class="btn btn-primary stretched-link">Consulter</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top btn btn-info" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">titre annonce</h5>
-                        <p class="card-text">contenu annonces</p>
-                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top btn btn-info" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">titre annonce</h5>
-                        <p class="card-text">contenu annonces</p>
-                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                        </div>
-                    </div>
                 </div>
             </div>
-            </div>
-            <div class="row lignesN">
-                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             </div>
-             <div class="row lignesN">
-                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="#" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             </div>
-             <div class="row lignesN">
-                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
-                     <div class="card" style="width: 18rem;">
-                         <img src="..." class="card-img-top btn btn-info" alt="...">
-                         <div class="card-body">
-                         <h5 class="card-title">titre annonce</h5>
-                         <p class="card-text">contenu annonces</p>
-                         <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             </div>
         </div>
+        <?php } 
+
+        function pagination(){ ?>
     <!-- ----------------------------------  pagination ---------------------------------> 
 
         <div class="container-fluid lignes">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                       <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 mx-auto">
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 mx-auto">
                         <ul class="pagination">
                             <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Previous">
+                            <a class="page-link" href="#" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
-                              </a>
+                            </a>
                             </li>
                             <li class="page-item"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
+                            <a class="page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
-                              </a>
+                            </a>
                             </li>
                         </ul>
-                       </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
+        <?php } ?>
     <!-- ----------------------------------  pagination ---------------------------------> 
 
 
         <!-- ----------------------------------  FOOTER ---------------------------------> 
+        <?php function footer(){ ?>
         <footer>
     <?php
         include("../Pandora_nav_footer/footer.php");
     ?>
-</footer>
-     <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
+</footer> 
+<?php } ?>
+    <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
+</body>
 </html>
