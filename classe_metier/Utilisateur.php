@@ -50,7 +50,7 @@ class Utilisateur
      *
      * @return  self
      */
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 
@@ -160,7 +160,7 @@ class Utilisateur
     /**
      * Get the value of profil
      */
-    public function getProfil(): Profil
+    public function getProfil(): string
     {
         return $this->profil;
     }
@@ -170,9 +170,21 @@ class Utilisateur
      *
      * @return  self
      */
-    public function setProfil(Profil $profil): self
+    public function setProfil(string $profil): self
     {
         $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of idUti
+     *
+     * @return  self
+     */
+    public function setIdUti($idUti)
+    {
+        $this->idUti = $idUti;
 
         return $this;
     }

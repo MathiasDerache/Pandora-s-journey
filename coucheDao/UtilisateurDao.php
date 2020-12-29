@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/InterfDao.php';
 include_once __DIR__ . '/../classe_metier/Utilisateur.php';
-include_once __DIR__ . '/conectionBaseDonnees.php';
+include_once __DIR__ . '/connectionBaseDonnees.php';
 
 class UtilisateurDao implements InterfDao
 {
@@ -93,5 +93,26 @@ class UtilisateurDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
+    }
+
+    public function trouveUtilisateur(int $idutil)
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM utilisateur WHERE idUti=?");
+            $stm->bindValue(1, $idutil, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $utilisateur = new Utilisateur();
+            $utilisateur->setNom($value['nom'])->setPrenom($value['prenom'])
+                ->setPseudo($value['pseudo'])->setEmail($value['email'])
+                ->setNumTel($value['numeroTel'])->setPassword($value['passWord'])->setProfil($value['profil']);
+        }
+        return $utilisateur;
     }
 }

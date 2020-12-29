@@ -1,0 +1,166 @@
+                                                /*   ↓↓ GENERAL ↓↓ */
+
+html{ 
+    overflow-x :hidden ; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(4, 21, 62);
+}
+
+.footer{
+    background-color: #040753;
+    font-family: 'Playfair Display', serif;
+
+}
+
+footer h2{
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+footer a{
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+footer p{
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+                                                /*   ↓↓ COORDONNEES ↓↓ */
+
+.coordonnees_footer a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    display:block;
+    text-align:center;
+    padding: 8px;
+}
+
+                                                /*   ↓↓ LOGO ↓↓ */
+
+.logo_footer img{
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+                                                /*   ↓↓ NAV ↓↓ */
+
+.nav_footer li{
+    text-align: center;
+    list-style: none;
+    padding: 3px;
+} 
+
+.nav_footer h2{
+    margin-top: 5px;
+}
+
+.nav_footer ul li a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+
+.copyright{
+    margin-bottom: 10px;
+}
+
+    /* css navbar */
+nav{
+    position: absolute;
+    position: fixed;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    background-color: #040753;
+    
+}
+
+.h2{
+    margin-top: 10px;
+}
+
+a{
+    text-decoration: none;
+    margin-top: 10px;
+   
+}
+
+.listnav li a::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: goldenrod;
+    transform: scale(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.listnav li a:hover::after{
+    transform: scale(1);
+}
+
+nav .h2{
+    box-shadow: 1px 1px 1px black;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 1px black;
+}
+
+.listnav{
+    padding-left: 35%;
+}
+    /* css navbar */
+
+    /*forum*/
+
+.title-forum{
+    padding-top: 5%;
+    font-family: 'Playfair Display', serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 50px;
+
+}
+
+.table-forum{
+    margin-top: 3%;
+    font-family: 'Playfair Display', serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    text-align: center;
+}
+
+th{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.forum{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.ajout-sujet{
+    font-family: 'Playfair Display', serif;
+    font-size: 20px
+}
+

@@ -3,45 +3,71 @@
 class SujetTheme
 {
 
-    private $idSuje;
-    private $intSujet;
-    private $idtheme;
+    private $idSujetTh;
+    private $typeSujetTh;
+    private $titreSujet;
     private $idUti;
 
     //constructeur par défaut
 
-    public function __toString(): string
-    {
-        return "[Id sujet] : " . $this->idSuje .
-            "[Intitulé du sujet] : " . $this->intSujet .
-            "[Id Utilisateur] : " . $this->idUti;
-    }
 
 
     /**
-     * Get the value of idSuje
+     * Get the value of idSujetTh
      */
-    public function getIdSujetForum(): int
+    public function getIdSujetTh()
     {
-        return $this->idSuje;
+        return $this->idSujetTh;
     }
 
     /**
-     * Get the value of intSujet
-     */
-    public function getIntSujet(): string
-    {
-        return $this->intSujet;
-    }
-
-    /**
-     * Set the value of intSujet
+     * Set the value of idSujetTh
      *
      * @return  self
      */
-    public function setIntSujet(string $intSujet): self
+    public function setIdSujetTh($idSujetTh)
     {
-        $this->intSujet = $intSujet;
+        $this->idSujetTh = $idSujetTh;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of typeSujetTh
+     */
+    public function getTypeSujetTh()
+    {
+        return $this->typeSujetTh;
+    }
+
+    /**
+     * Set the value of typeSujetTh
+     *
+     * @return  self
+     */
+    public function setTypeSujetTh($typeSujetTh)
+    {
+        $this->typeSujetTh = $typeSujetTh;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of titreSujet
+     */
+    public function getTitreSujet()
+    {
+        return $this->titreSujet;
+    }
+
+    /**
+     * Set the value of titreSujet
+     *
+     * @return  self
+     */
+    public function setTitreSujet($titreSujet)
+    {
+        $this->titreSujet = $titreSujet;
 
         return $this;
     }
@@ -49,7 +75,7 @@ class SujetTheme
     /**
      * Get the value of idUti
      */
-    public function getIdUti(): int
+    public function getIdUti()
     {
         return $this->idUti;
     }
@@ -59,41 +85,9 @@ class SujetTheme
      *
      * @return  self
      */
-    public function setIdUti(int $idUti): self
+    public function setIdUti($idUti)
     {
         $this->idUti = $idUti;
-
-        return $this;
-    }
-
-    /**
-     * Set the value of idSuje
-     *
-     * @return  self
-     */
-    public function setIdSuje($idSuje)
-    {
-        $this->idSuje = $idSuje;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idtheme
-     */
-    public function getIdtheme()
-    {
-        return $this->idtheme;
-    }
-
-    /**
-     * Set the value of idtheme
-     *
-     * @return  self
-     */
-    public function setIdtheme($idtheme)
-    {
-        $this->idtheme = $idtheme;
 
         return $this;
     }

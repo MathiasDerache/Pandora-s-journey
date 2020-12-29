@@ -2,7 +2,7 @@
 
 include_once("interfDao.php");
 include_once("connectionBaseDonnees.php");
-include_once("../classe_metier/SujetTheme.php");
+include_once __DIR__ . "/../classe_metier/SujetTheme.php";
 
 class SujetForumDAO implements InterfDao
 {
@@ -45,8 +45,8 @@ class SujetForumDAO implements InterfDao
         $tab = [];
         foreach ($array as $value) {
             $sujetTheme = new SujetTheme();
-            $sujetTheme->setIdSuje($value['idSujetTh'])->setIntSujet($value['typeSujetTh'])
-                ->setIdTheme($value['idTheme'])
+            $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])
+                ->setTitreSujet($value['titreSujet'])
                 ->setIdUti($value['idUti']);
 
             $tab[] = $sujetTheme;

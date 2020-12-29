@@ -29,4 +29,9 @@ class UtilisateurService implements interfService
     {
         return $this->service->delete($id);
     }
+
+    public function trouveUtil(int $util)
+    {
+        return $this->service->trouveUtilisateur($util);
+    }
 }
