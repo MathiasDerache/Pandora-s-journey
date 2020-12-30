@@ -12,9 +12,6 @@
 <?php function body(){ ?>
 <body class="position-relative">
     <!-- ----------------------------------  navbar ---------------------------------> 
-        <?php
-            include("../Pandora_nav_footer/nav.php")
-        ?>
     <!-- ----------------------------------  navbar ---------------------------------> 
         <div class="container-fluid annonces">
             
@@ -68,13 +65,6 @@
 
 
         <!-- ----------------------------------  FOOTER ---------------------------------> 
-        <?php function footer(){ ?>
-        <footer>
-    <?php
-        include("../Pandora_nav_footer/footer.php");
-    ?>
-</footer> 
-<?php } ?>
     <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
 </body>
 </html>
