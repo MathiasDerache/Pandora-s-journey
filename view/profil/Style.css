@@ -1,0 +1,398 @@
+/*   ↓↓ GENERAL ↓↓ */
+
+html{ 
+overflow-x :hidden ; 
+}
+
+body{
+background-color: #04153E;
+font-family: 'Playfair Display', serif;
+font-weight: bold;
+}
+
+*{
+margin: 0;
+padding: 0;
+}
+
+.footer{
+background-color: #040753;
+font-family: 'Playfair Display', serif;
+
+}
+
+footer h2{
+color: rgba(255, 255, 255, 0.7);
+text-align: center;
+}
+
+footer a{
+color: rgba(255, 255, 255, 0.7);
+text-decoration: none;
+font-size: 1.2em;
+}
+
+footer p{
+color: rgba(255, 255, 255, 0.7);
+font-size: 1.2em;
+text-align: center;
+margin-bottom: 0px;
+}
+
+                                    /*   ↓↓ COORDONNEES ↓↓ */
+
+.coordonnees_footer a{
+text-decoration: none;
+color: rgba(255, 255, 255, 0.7);
+display:block;
+text-align:center;
+padding: 8px;
+}
+
+                                    /*   ↓↓ LOGO ↓↓ */
+
+.logo_footer img{
+width: 60%;
+display: block;
+margin-left: auto;
+margin-right: auto
+}
+
+
+                                    /*   ↓↓ NAV ↓↓ */
+
+.nav_footer li{
+text-align: center;
+list-style: none;
+padding: 3px;
+} 
+
+.nav_footer h2{
+margin-top: 5px;
+}
+
+.nav_footer ul li a{
+text-decoration: none;
+color: rgba(255, 255, 255, 0.7);
+
+}
+
+.copyright{
+margin-bottom: 10px;
+}
+
+/* css navbar */
+nav{
+position: absolute;
+position: fixed;
+text-align: center;
+font-family: 'Playfair Display', serif;
+font-weight: bold;
+background-color: #040753;
+
+}
+
+.h2{
+margin-top: 10px;
+}
+
+a{
+text-decoration: none;
+margin-top: 10px;
+
+}
+
+
+.listnav li a::after{
+content: "";
+display: block;
+width: 100%;
+height: 2px;
+background:goldenrod;
+transform: scale(0);
+transition: transform 0.2s ease-in-out;
+}
+
+.listnav li a:hover::after{
+transform: scale(1);
+}
+
+nav .h2{
+box-shadow: 1px 1px 1px black;
+}
+nav ul{
+display: flex;
+list-style: none;
+justify-content: space-around;
+font-size: 1.5em;
+text-shadow: 1px 1px 1px black;
+}
+
+.listnav{
+padding-left: 35%;
+}
+/* css navbar */
+
+
+
+/* Corps Page  */
+
+.section1{
+display: grid;
+grid-template-columns: 700px 700px;
+grid-template-rows: repeat(3, 260px);
+justify-content: center;
+margin: 100px;
+padding-top: 200px;
+grid-column-gap: 100px;
+transition: ease all 0.5s;
+}
+
+.imagePresentation{
+
+background-image: url(images/voyagez.jpg);
+grid-row: 1 / 4;
+background-size: cover;
+border: solid 2px black;
+}
+
+.titrePresentation h1{
+
+font-size: 8em;
+color: white;
+}
+
+.textPresentation p{
+
+color: white;
+font-size: 1.2em;
+}
+
+.section2{
+display: grid;
+grid-template-columns: 640px 700px;
+grid-template-rows: repeat(3, 260px);
+justify-content: center;
+margin: 100px;
+grid-column-gap: 200px;
+padding-top: 100px;
+transition: ease all 0.5s;
+}
+.imagePresentation2{
+
+display: grid;
+order: 3;
+background-image: url(images/explorez.jpg);
+grid-row: 1 / 4;
+grid-column: 2 / 3;
+background-size: cover;
+border: solid 2px black;
+}
+
+.titrePresentation2 h1{
+
+font-size: 8em;
+color: white;
+}
+
+.textPresentation2 p{
+
+color: white;
+font-size: 1.2em;
+}
+
+.imagePresentation3{
+
+background-image: url(images/decouvrez.jpg);
+grid-row: 1 / 4;
+background-size: cover;
+border: solid 2px black;
+}
+
+.img_profil{
+    width: 200px;
+    height: 200px;
+}
+
+/* POPUP */
+
+/* Fixez le bouton sur le côté gauche de la page the button on the left side of the page */
+.open-btn {
+    display: flex;
+    justify-content: center;
+}
+/* Stylez et fixez le bouton sur la page */
+.open-button {
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Positionnez la forme Popup */
+.login-popup {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+/* Masquez la forme Popup */
+.form-popup {
+    display: none;
+    margin-top: 10%;
+    position: fixed;
+    border: 2px solid #666;
+    z-index: 1;
+}
+/* Styles pour le conteneur de la forme */
+.form-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #04153E;
+}
+
+/* ------------------------------------------ MEDIA QUERY ---------------------------------- */
+@media screen and (max-width : 1600px){
+
+.section1{
+display: grid;
+grid-template-columns: 600px 400px;
+grid-template-rows: repeat(3, 130px);
+justify-content: center;
+margin: 30px;
+padding-top: 200px;
+grid-column-gap: 70px;
+}
+
+.titrePresentation h1{
+
+font-size: 5em;
+color: white;
+}
+
+.textPresentation p{
+
+color: white;
+font-size: 1.1em;
+}
+
+.section2{
+display: grid;
+grid-template-columns: 530px 500px;
+grid-template-rows: repeat(3, 180px);
+justify-content: center;
+margin: 30px;
+grid-column-gap: 70px;
+padding-top: 200px;
+}
+.imagePresentation2{
+
+display: grid;
+order: 3;
+background-image: url(images/explorez.jpg);
+grid-row: 1 / 4;
+grid-column: 2 / 3;
+background-size: cover;
+border: solid 2px black;
+}
+
+.titrePresentation2 h1{
+
+font-size: 5em;
+color: white;
+}
+
+.textPresentation2 p{
+
+color: white;
+font-size: 1.1em;
+}
+
+.imagePresentation3{
+
+background-image: url(images/decouvrez.jpg);
+grid-row: 1 / 4;
+background-size: cover;
+background-position: 0px, -100px;
+border: solid 2px black;
+}
+}
+
+@media screen and (max-width : 1150px){
+
+.section1{
+display: flex;
+flex-direction: column;
+}
+
+.imagePresentation{
+display: grid;
+order: 1;
+height: 600px;
+}
+
+.section2{
+display: flex;
+flex-direction: column;
+}
+
+.imagePresentation2{
+height: 600px;
+background-position: 0px, 0px;
+order: 1;
+display: grid;
+order: 3;
+}
+
+.imagePresentation3{
+
+display: grid;
+order: 1;
+height: 600px;
+}
+
+.video{
+display: none;
+}
+}
+
+/* profil */
+.sideNotifs{
+    margin-top: 35%;
+    list-style: none;
+}
+
+.sideNotifs li{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 10%;
+}
+
+.sideNotifs img{
+    margin: 10%;
+}
+
+.sideNotifs svg{
+   color: white;
+}
+
+.boutonSideInfo svg{
+    color: white;
+ }
+
+ .profilTitre{
+     color: white;
+ }
+
+ .profilDetails hr{
+     size: 2px;
+     background-color: goldenrod;
+ }
+
+ .card-body{
+    background-color: #370EC2;
+ }
+
+ 
