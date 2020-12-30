@@ -4,7 +4,7 @@ include_once("InterfService.php");
 
 class BilletService implements interfService
 {
-    // factorisation de l'instansiation d'objet AnnoncesDao
+    // factorisation de l'instansiation d'objet BilletDao
     public function __construct()
     {
         $this->service = new BilletDAO();
