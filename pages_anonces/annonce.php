@@ -13,11 +13,9 @@
 
 <?php function body(){ ?>
     <body class="position-relative">
-        <!-- ----------------------------------  navbar ---------------------------------> 
             
-<?php } ?>
-    <!-- ----------------------------------  navbar ---------------------------------> 
-    <?php function annonce($annonces, $i){ ?>
+<?php } 
+function annonce($annonces, $i){ ?>
 <div class="container-fluid annonces">
     <div class="row content">
         <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2"> 
@@ -257,7 +255,5 @@
 <?php } ?>    
     <!-- ----------------------------------  card infos ---------------------------------> 
 
-        <!-- ----------------------------------  FOOTER ---------------------------------> 
-    <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
 </body>
 </html>

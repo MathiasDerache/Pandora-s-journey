@@ -11,13 +11,9 @@
 
 <?php function body(){ ?>
 <body class="position-relative">
-    <!-- ----------------------------------  navbar ---------------------------------> 
-     
-    <!-- ----------------------------------  navbar ---------------------------------> 
-        <div class="container-fluid annonces">
-            
-                <?php } ?>
-            <?php function card($annonces, $i){ ?>
+        <div class="container-fluid annonces">            
+                <?php }
+                function card($annonces, $i){ ?>
                 <div class="row lignesN">
                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
                         <div class="card" style="width: 18rem;">
@@ -64,9 +60,5 @@
         <?php } ?>
     <!-- ----------------------------------  pagination ---------------------------------> 
 
-
-        <!-- ----------------------------------  FOOTER ---------------------------------> 
-
-    <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
 </body>
 </html>
