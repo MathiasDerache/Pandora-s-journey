@@ -5,8 +5,6 @@ require_once("../../view/profil/profilUtilisateur.php");
 require_once("../../classe_metier/Image.php");
 require_once("../../coucheService/ImageService.php");
 
-$db = new PDO("mysql:host=localhost;dbname=pandora", "florent", "Pommefraise59.", [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
 $image = new Image();
 $imageService = new ImageService();
 
