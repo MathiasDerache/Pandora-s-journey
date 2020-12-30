@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/InterfDao.php';
 include_once __DIR__ . '/../classe_metier/Image.php';
-include_once __DIR__ . '/conectionBaseDonnees.php';
+include_once __DIR__ . '/connectionBaseDonnees.php';
 
 class ImageDao implements InterfDao
 {
@@ -23,16 +23,16 @@ class ImageDao implements InterfDao
             $stm = $db->prepare("INSERT INTO image VALUES(null,?,?,?,?,?)");
             //recuperation des infos de $object instance de la class Annonce
             $NomFichier = $object->getNomFichier();
-            $NomFichier = $object->getTailleFichier();
-            $TypeImage = $object->getTypeImage();
+            $tailleFichier = $object->getTailleFichier();
             $PathFile = $object->getPathFile();
+            $TypeImage = $object->getTypeImage();
             $IdUti = $object->getIdUti();
 
             //je lie chaque variable à la requete preparée
             $stm->bindValue(1, $NomFichier);
-            $stm->bindValue(2, $NomFichier, PDO::PARAM_INT);
-            $stm->bindValue(3, $TypeImage);
-            $stm->bindValue(4, $PathFile);
+            $stm->bindValue(2, $tailleFichier, PDO::PARAM_INT);
+            $stm->bindValue(3, $PathFile);
+            $stm->bindValue(4, $TypeImage);
             $stm->bindValue(5, $IdUti, PDO::PARAM_INT);
             //execution de la requete preparée
             $stm->execute();
@@ -94,7 +94,7 @@ class ImageDao implements InterfDao
         foreach ($array as $value) {
             $image = new Image();
             $image->setId($value['Id'])->setNomFichier($value['NomFichier'])->setTypeImage($value['TypeImage'])
-                ->setPathFile($value['PathFile'])->setIdUti($value['IdUti'])
+                ->setPathFile($value['PathFile'])->setIdUti($value['idUti'])
                 ->setTailleFichier($value['TailleFichier']);
             $tab[] = $image;
         }
@@ -117,5 +117,20 @@ class ImageDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
+    }
+
+
+    public function searchImageProfil(string $NomFichier): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM image WHERE NomFichier=?");
+            $stm->bindValue(1, $NomFichier);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        return $array;
     }
 }
