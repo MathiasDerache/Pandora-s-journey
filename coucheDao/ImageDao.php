@@ -133,4 +133,31 @@ class ImageDao implements InterfDao
         }
         return $array;
     }
+        
+    /**
+     * recupere dans un array avec l'image par id
+     *
+     * @return array
+     */
+    public function readById(int $id): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM image WHERE Id=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $image = new Image();
+            $image->setId($value['Id'])->setNomFichier($value['NomFichier'])->setTypeImage($value['TypeImage'])
+                ->setPathFile($value['PathFile'])->setIdUti($value['idUti'])
+                ->setTailleFichier($value['TailleFichier']);
+            $tab[] = $image;
+        }
+        return $tab;
+    }
 }

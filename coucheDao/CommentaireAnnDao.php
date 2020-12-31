@@ -85,7 +85,6 @@ class CommentaireAnnDao implements InterfDao
             $comm->setIdComm($value['idCom'])->setContComm($value['commentaire'])
                 ->setDateMessAnn(new DateTime($value['description']))
                 ->setIdAnn($value['idannoce'])->setIdUti($value['idUti']);
-
             $tab[] = $comm;
         }
         return $tab;
@@ -107,5 +106,32 @@ class CommentaireAnnDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
+    }
+
+    /**
+     * recupere dans un array avec le commentaire de l'annonce par id
+     *
+     * @return array
+     */
+    public function readById(int $id): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM commentaire WHERE idCom=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $comm = new CommentaireAnnonce();
+            $comm->setIdComm($value['idCom'])->setContComm($value['commentaire'])
+                ->setDateMessAnn(new DateTime($value['description']))
+                ->setIdAnn($value['idannoce'])->setIdUti($value['idUti']);
+            $tab[] = $comm;
+        }
+        return $tab;
     }
 }

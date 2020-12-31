@@ -78,4 +78,29 @@ class BilletDAO implements InterfDao
             throw new DaoException($f->getCode(), $f->getMessage());
         }
     }
+
+    /**
+     * recupere dans un array avec le billet par id
+     *
+     * @return array
+     */
+    public function readById(int $id): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM billet WHERE numeroDeBillet=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $billet = new Billet();
+            $billet->setNumBillet($value["numeroDeBillet"])->setDateEmb($value["dateEmb"])->setIdUti($value["idUti"]);
+            $tab[] = $billet;
+        }
+        return $tab;
+    }
 }

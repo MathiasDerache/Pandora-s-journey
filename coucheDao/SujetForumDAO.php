@@ -48,7 +48,6 @@ class SujetForumDAO implements InterfDao
             $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])
                 ->setTitreSujet($value['titreSujet'])
                 ->setIdUti($value['idUti']);
-
             $tab[] = $sujetTheme;
         }
         return $tab;
@@ -86,5 +85,33 @@ class SujetForumDAO implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         };
+    }
+
+                
+    /**
+     * recupere dans un array avec le sujet par id
+     *
+     * @return array
+     */
+    public function readById(int $id): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM sujetfurum WHERE idSujetTh=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $sujetTheme = new SujetTheme();
+            $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])
+                ->setTitreSujet($value['titreSujet'])
+                ->setIdUti($value['idUti']);
+            $tab[] = $sujetTheme;
+        }
+        return $tab;
     }
 }

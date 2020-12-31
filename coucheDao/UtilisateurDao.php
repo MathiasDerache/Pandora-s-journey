@@ -115,4 +115,31 @@ class UtilisateurDao implements InterfDao
         }
         return $utilisateur;
     }
+
+    /**
+     * recupere dans un array avec l'utilisateur par id
+     *
+     * @return array
+     */
+    public function readById(int $id): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM utilisateur WHERE idUti=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $utilisateur = new Utilisateur();
+            $utilisateur->setNom($value['nom'])->setPrenom($value['prenom'])
+                ->setPseudo($value['pseudo'])->setEmail($value['numAdresse'])
+                ->setNumTel($value['numTel'])->setPassword($value['password'])->setProfil($value['profil']);
+            $tab[] = $utilisateur;
+        }
+        return $tab;
+    }
 }
