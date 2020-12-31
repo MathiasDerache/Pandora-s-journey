@@ -27,7 +27,7 @@
 
         <div class="row" style="text-align: center;">
             <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-6 forum">
-                <a href="/../pandora/furumcontroleur.php?sujet=annonces">
+                <a href="/../pandora/forumcontroleur.php?sujet=annonces">
                     <h2>Annonces</h2>
                 </a>
                 <p>Les annonces officielles de Pandora's Journey</p>

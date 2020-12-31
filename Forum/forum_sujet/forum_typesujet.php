@@ -39,12 +39,12 @@ function sujetTypeForum(array $array)
 
             <div class="row">
                 <table class="table table-hover table-forum">
-                    <thead>
+                    <thead class="bg-dark text-white">
                         <tr>
-                            <th scope="col">Titre</th>
+                            <th scope="col">Questions sur le thème des <?php echo $array[0]->getTypeSujetTh(); ?></th>
                             <th scope="col">Réponses</th>
                             <th scope="col">Auteur</th>
-                            <th scope="col">accéder à la discussion</th>
+                            <th scope="col">Accéder à la discussion</th>
                         </tr>
                     </thead>
                     <?php
@@ -87,20 +87,28 @@ function sujetTypeForum(array $array)
             <!-- Modal -->
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                    <div class="modal-content modalForum p-4">
+                        <h2 class="modal-title text-white mb-3">Ajoutez un Sujet de discussion</h2>
+                        <form action="forumcontroleur.php?action=ajout_Sujet_forum" method="POST">
+                            <div class="form-group">
+                                <label class="text-white" for="typeSujetTh">Selectionnez un thème:</label>
+                                <select class="form-control" name="typeSujetTh" id="typeSujetTh">
+                                    <option value="Annonces" selected>Annonces</option>
+                                    <option value="Travail">Travail</option>
+                                    <option value="Loisirs">Loisirs</option>
+                                    <option value="Immobilier">Immobilier</option>
+                                    <option value="Discusion_generales">Discusion générales</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="titeSujet" class="text-white">Posez votre question:</label>
+                                <textarea class="form-control" name="titeSujet" id="titeSujet" cols="5" rows="5"></textarea>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-warning rounded-pill text-white">Soumettre</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

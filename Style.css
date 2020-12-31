@@ -163,3 +163,10 @@ th{
     font-family: 'Playfair Display', serif;
     font-size: 20px
 }
+
+/* modal forum */
+
+.modalForum{
+    font-family: 'Playfair Display', serif;
+    background-color:  #040753;
+}
