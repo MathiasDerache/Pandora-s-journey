@@ -1,6 +1,7 @@
 <?php
 include_once __DIR__ . "/../coucheDao/CommentaireForumDao.php";
 include_once __DIR__ . "/InterfService.php";
+include_once __DIR__ . "/../classe_metier/CommentaireSujet.php";
 
 
 class CommentaireForumService implements interfService
@@ -39,5 +40,10 @@ class CommentaireForumService implements interfService
     public function deleteService(?int $id): ?int
     {
         return $this->service->delete($id);         // Function Delete Commentaire
+    }
+
+    public function foundComById(?int $id): ?array
+    {
+        return $this->service->foundCommentaireById($id);
     }
 }

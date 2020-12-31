@@ -2,7 +2,7 @@
 
 include_once("interfDao.php");
 include_once("connectionBaseDonnees.php");
-include_once("../classe_metier/CommentaireSujet.php");
+include_once __DIR__ . "/../classe_metier/CommentaireSujet.php";
 
 class CommentaireForumDAO implements InterfDao
 {
@@ -96,7 +96,7 @@ class CommentaireForumDAO implements InterfDao
             throw new DaoException($f->getCode(), $f->getMessage());
         }
     }
-    
+
     /**
      * recupere dans un array avec le commentaire du forum par id
      *
@@ -117,6 +117,29 @@ class CommentaireForumDAO implements InterfDao
         foreach ($array as $value) {
             $commSujet = new CommentaireSujet();
             $commSujet->setIdCommSuj($value['idcommSujet'])->setPseudoUt($value['psodoUt'])
+                ->setDateCommSuj(new DateTime($value['dateComSuj']))
+                ->setContCommSuj($value['contComSuj'])->setIdSuje($value['idSujetTh'])
+                ->setIdUti($value['idUti']);
+            $tab[] = $commSujet;
+        }
+        return $tab;
+    }
+
+    public function foundCommentaireById(int $id): array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM commentairefurum WHERE idSujetTh=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());            // Function Read Commentaires
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $commSujet = new CommentaireSujet();
+            $commSujet->setIdCommSuj($value['idcommSujet'])
                 ->setDateCommSuj(new DateTime($value['dateComSuj']))
                 ->setContCommSuj($value['contComSuj'])->setIdSuje($value['idSujetTh'])
                 ->setIdUti($value['idUti']);

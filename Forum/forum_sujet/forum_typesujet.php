@@ -3,6 +3,7 @@ include_once __DIR__ . "/../../coucheService/SujetForumService.php";
 include_once __DIR__ . "/../../Pandora_nav_footer/nav.php";
 include_once __DIR__ . "/../../Pandora_nav_footer/footer.php";
 include_once __DIR__ . '/../../coucheService/UtilisateurService.php';
+include_once __DIR__ . '/../../coucheService/CommentaireForumService.php';
 
 function sujetTypeForum(array $array)
 {
@@ -51,7 +52,16 @@ function sujetTypeForum(array $array)
                     ?><tbody>
                             <tr>
                                 <td scope="row"><?php echo $value->getTitreSujet(); ?></td>
-                                <td>4</td>
+                                <td>
+                                    <?php
+                                    $newCom = (new CommentaireForumService())->foundComById($value->getIdSujetTh());
+                                    $compt = 0;
+                                    foreach ($newCom as $value) {
+                                        $compt++;
+                                    }
+                                    echo $compt;
+                                    ?>
+                                </td>
                                 <td><?php
                                     $utilisateur = new UtilisateurService();
                                     $pseudo = $utilisateur->trouveUtil($value->getIdUti());
