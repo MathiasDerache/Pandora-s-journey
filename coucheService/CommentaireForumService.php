@@ -20,6 +20,16 @@ include_once __DIR__ . "/InterfService.php";
             return $this->service->read();              // Function Read Commentaires
         }
 
+    /**
+     * recupère un tableau de doinnée de la couche dao et la transmet au controlleur associé
+     *
+     * @return array
+     */
+    public function readByIdService(int $id): array
+    {
+        return $this->service->readByIdService($id);
+    }
+
         public function updateService(object $object): object
         {
             return $this->service->update($object);             // Function update Commentaire

@@ -29,6 +29,16 @@ class ImageService implements InterfService
         return $this->service->read();
     }
 
+    /**
+     * recupère un tableau de doinnée de la couche dao et la transmet au controlleur associé
+     *
+     * @return array
+     */
+    public function readByIdService(int $id): array
+    {
+        return $this->service->readByIdService($id);
+    }
+
     // transmet l'id reçu depuis la couche controleur à la couche DAO
     public function deleteService(int $id): void
     {

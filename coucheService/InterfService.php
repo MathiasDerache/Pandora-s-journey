@@ -7,4 +7,5 @@ interface InterfService
     public function updateService(object $object): void;
     public function readService(): array;
     public function deleteService(int $id): void;
+    public function readByIdService(int $id): array;
 }

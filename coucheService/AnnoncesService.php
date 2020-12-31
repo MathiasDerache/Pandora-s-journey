@@ -52,7 +52,7 @@ class annoncesService implements interfService
      */
     public function readByIdService(int $id): array
     {
-        return $this->service->readById($id);
+        return $this->service->readByIdService($id);
     }
 
     /**
