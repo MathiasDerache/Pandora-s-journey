@@ -81,11 +81,11 @@ function sujetTypeForum(array $array)
 
             <div class="row justify-content-end ajout-sujet">
                 <div>
-                    <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#exampleModalLong">Ajouter un sujet</div>
+                    <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalForumAnnonces">Ajouter un sujet</div>
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="modalForumAnnonces" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content modalForum p-4">
                         <h2 class="modal-title text-white mb-3">Ajoutez un Sujet de discussion</h2>
@@ -102,7 +102,7 @@ function sujetTypeForum(array $array)
                             </div>
                             <div class="form-group">
                                 <label for="titeSujet" class="text-white">Posez votre question:</label>
-                                <textarea class="form-control" name="titeSujet" id="titeSujet" cols="5" rows="5"></textarea>
+                                <textarea class="form-control" name="titeSujet" id="titeSujet" cols="1" rows="1"></textarea>
                             </div>
                             <div>
                                 <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
