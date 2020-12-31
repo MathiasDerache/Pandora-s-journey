@@ -12,19 +12,19 @@ class ImageService implements InterfService
     }
 
     // transmet l'objet reçu depuis la couche controleur à la couche DAO
-    public function creatService(Object $object): void
+    public function creatService(?Object $object): ?object
     {
-        $this->service->creat($object);
+        return $this->service->creat($object);
     }
 
     // transmet l'objet reçu depuis la couche controleur à la couche DAO
-    public function updateService(Object $object): void
+    public function updateService(?Object $object): ?object
     {
-        $this->service->update($object);
+        return $this->service->update($object);
     }
 
     // Récupère le tableau reçu depuis la couche DAO et transmet à la couche controleur
-    public function readService(): array
+    public function readService(): ?array
     {
         return $this->service->read();
     }
@@ -34,19 +34,19 @@ class ImageService implements InterfService
      *
      * @return array
      */
-    public function readByIdService(int $id): array
+    public function readByIdService(?int $id): ?array
     {
         return $this->service->readByIdService($id);
     }
 
     // transmet l'id reçu depuis la couche controleur à la couche DAO
-    public function deleteService(int $id): void
+    public function deleteService(?int $id): ?int
     {
-        $this->service->delete($id);
+        return $this->service->delete($id);
     }
 
     // transmet le nom du fichier reçu depuis la couche controleur à la couche DAO
-    public function searchImageProfilService(string $NomFichier): array
+    public function searchImageProfilService(?string $NomFichier): ?array
     {
         return $this->service->searchImageProfil($NomFichier);
     }

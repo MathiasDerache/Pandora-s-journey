@@ -19,7 +19,7 @@ class annoncesService implements interfService
      * @param object $object
      * @return object
      */
-    public function creatService(object $object): object
+    public function creatService(?object $object): ?object
     {
         return $this->service->creat($object);
     }
@@ -30,7 +30,7 @@ class annoncesService implements interfService
      * @param object $object
      * @return object
      */
-    public function updateService(object $object): object
+    public function updateService(?object $object): ?object
     {
         return $this->service->update($object);
     }
@@ -40,7 +40,7 @@ class annoncesService implements interfService
      *
      * @return array
      */
-    public function readService(): array
+    public function readService(): ?array
     {
         return $this->service->read();
     }
@@ -50,7 +50,7 @@ class annoncesService implements interfService
      *
      * @return array
      */
-    public function readByIdService(int $id): array
+    public function readByIdService(?int $id): ?array
     {
         return $this->service->readByIdService($id);
     }
@@ -61,7 +61,7 @@ class annoncesService implements interfService
      * @param integer $id
      * @return integer
      */
-    public function deleteService(int $id): int
+    public function deleteService(?int $id): ?int
     {
         return $this->service->delete($id);
     }

@@ -3,9 +3,8 @@
 
 interface InterfService
 {
-    public function creatService(object $object): void;
-    public function updateService(object $object): void;
-    public function readService(): array;
-    public function deleteService(int $id): void;
-    public function readByIdService(int $id): array;
+    public function creatService(?object $object): ?object;
+    public function updateService(?object $object): ?object;
+    public function readService(): ?array;
+    public function deleteService(?int $id): ?int;
 }

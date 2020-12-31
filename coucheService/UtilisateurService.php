@@ -10,17 +10,17 @@ class UtilisateurService implements interfService
         $this->service = new UtilisateurDao();
     }
 
-    public function creatService(object $object): object
+    public function creatService(?object $object): ?object
     {
         return $this->service->creat($object);
     }
 
-    public function updateService(object $object): object
+    public function updateService(?object $object): ?object
     {
         return $this->service->update($object);
     }
 
-    public function readService(): array
+    public function readService(): ?array
     {
         return $this->service->read();
     }
@@ -30,17 +30,17 @@ class UtilisateurService implements interfService
      *
      * @return array
      */
-    public function readByIdService(int $id): array
+    public function readByIdService(?int $id): ?array
     {
         return $this->service->readByIdService($id);
     }
 
-    public function deleteService(int $id): int
+    public function deleteService(?int $id): ?int
     {
         return $this->service->delete($id);
     }
 
-    public function trouveUtil(int $util)
+    public function trouveUtil(?int $util)
     {
         return $this->service->trouveUtilisateur($util);
     }
