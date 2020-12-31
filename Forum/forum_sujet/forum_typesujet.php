@@ -43,7 +43,7 @@ function sujetTypeForum(array $array)
                             <th scope="col">Titre</th>
                             <th scope="col">Réponses</th>
                             <th scope="col">Auteur</th>
-                            <th scope="col">Dernier post</th>
+                            <th scope="col">accéder à la discussion</th>
                         </tr>
                     </thead>
                     <?php
@@ -57,7 +57,11 @@ function sujetTypeForum(array $array)
                                     $pseudo = $utilisateur->trouveUtil($value->getIdUti());
                                     echo $pseudo->getPseudo();
                                     ?></td>
-                                <td>xx/xx/xxxx</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger rounded-pill ">
+                                        <a href="#" style="text-decoration: none;" class=" text-white">discussion</a>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     <?php
@@ -67,10 +71,29 @@ function sujetTypeForum(array $array)
 
             <div class="row justify-content-end ajout-sujet">
                 <div>
-                    <div class="bg-warning rounded-pill "><a href="#" class="nav-link text-white">Ajouter un sujet</a></div>
+                    <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#exampleModalLong">Ajouter un sujet</div>
                 </div>
             </div>
-
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- ----------------------------------  pagination --------------------------------->
         <div class="container-fluid">
@@ -110,6 +133,9 @@ function sujetTypeForum(array $array)
         </footer>
         <!-- ----------------------------------  FIN_FOOTER --------------------------------->
     </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     </html>
 <?php

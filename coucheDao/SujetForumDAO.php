@@ -36,7 +36,7 @@ class SujetForumDAO implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("SELECT * FROM sujetfurum");
+            $stm = $db->prepare("SELECT * FROM sujetfurum ORDER BY idSujetTh DESC");
             $stm->execute();
             $array = $stm->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $f) {
@@ -87,7 +87,7 @@ class SujetForumDAO implements InterfDao
         };
     }
 
-                
+
     /**
      * recupere dans un array avec le sujet par id
      *
