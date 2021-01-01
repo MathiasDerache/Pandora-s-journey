@@ -44,6 +44,7 @@ function sujetTypeForum(array $array = [])
                     <thead class="bg-dark text-white">
                         <tr>
                             <th scope="col">Questions sur le thème des thématique</th>
+                            <th scope="col">Thématique</th>
                             <th scope="col">Réponses</th>
                             <th scope="col">Auteur</th>
                             <th scope="col">Date d'ajout</th>
@@ -51,37 +52,39 @@ function sujetTypeForum(array $array = [])
                         </tr>
                     </thead>
                     <?php
-                    foreach ($array as $value) {
-                    ?>if(!empty($array)){
-                    <tbody>
-                        <tr>
-                            <td scope="row"><?php echo $value->getQuestionSujet(); ?></td>
-                            <td>
-                                <?php
-                                $newCom = (new CommentaireForumService())->foundComById($value->getIdSujetTh());
-                                $compt = 0;
-                                foreach ($newCom as $value) {
-                                    $compt++;
-                                }
-                                echo $compt;
-                                ?>
-                            </td>
-                            <td><?php
-                                $utilisateur = new UtilisateurService();
-                                $pseudo = $utilisateur->trouveUtil($value->getIdUti());
-                                echo $pseudo->getPseudo();
-                                ?>
-                            </td>
-                            <td scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
-                            <td>
-                                <button type="button" class="btn btn-danger rounded-pill ">
-                                    <a href="#" style="text-decoration: none;" class=" text-white">discussion</a>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    }
-                <?php
+                    if (!empty($array)) {
+                        foreach ($array as $value) {
+                    ?>
+                            <tbody>
+                                <tr>
+                                    <td scope="row"><?php echo $value->getQuestionSujet(); ?></td>
+                                    <td scope="row"><?php echo $value->getTypeSujetTh(); ?></td>
+                                    <td>
+                                        <?php
+                                        $newCom = (new CommentaireForumService())->foundComById($value->getIdSujetTh());
+                                        $compt = 0;
+                                        foreach ($newCom as $value) {
+                                            $compt++;
+                                        }
+                                        echo $compt;
+                                        ?>
+                                    </td>
+                                    <td><?php
+                                        $utilisateur = new UtilisateurService();
+                                        $pseudo = $utilisateur->trouveUtil($value->getIdUti());
+                                        echo $pseudo->getPseudo();
+                                        ?>
+                                    </td>
+                                    <td scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger rounded-pill ">
+                                            <a href="#" style="text-decoration: none;" class=" text-white">Discussion</a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    <?php
+                        }
                     } ?>
                 </table>
             </div>
