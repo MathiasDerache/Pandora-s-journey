@@ -12,9 +12,9 @@
 <?php function body(){ ?>
 <body class="position-relative">
         <div class="container-fluid annonces">            
+            <div class="row lignesN">
 <?php }
-            function card($annonces, $i){ ?>
-                <div class="row lignesN">
+            function card($annonces, $i){ ?>                
                 <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
                         <div class="card" style="width: 18rem;">
                             <img src="..." class="card-img-top btn btn-info" alt="">
@@ -25,11 +25,12 @@
                             </div>
                         </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
-        <?php } 
 
-        function pagination(){ ?>
+
+        <?php function pagination(){ ?>
     <!-- ----------------------------------  pagination ---------------------------------> 
 
         <div class="container-fluid lignes">
