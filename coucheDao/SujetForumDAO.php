@@ -17,15 +17,13 @@ class SujetForumDAO implements InterfDao
 
         try {
             $db = $this->db->connectiondb();
-            $idSuje = $sujetTheme->getIdSujetForum();
-            $intSujet = $sujetTheme->getIntSujet();
-            $idTheme = $sujetTheme->getIdTheme();           // Function create Commentaire
+            $typeSujet = $sujetTheme->getTypeSujetTh();
+            $questionSujet = $sujetTheme->getQuestionSujet();
             $idUti = $sujetTheme->getIdUti();
-            $stm = $db->prepare("INSERT INTO sujetfurum VALUES(?,?,?,?)");
-            $stm->bindValue(1, $idSuje,  PDO::PARAM_INT);
-            $stm->bindValue(2, $intSujet);
-            $stm->bindValue(3, $idTheme,  PDO::PARAM_INT);
-            $stm->bindValue(4, $idUti,  PDO::PARAM_INT);
+            $stm = $db->prepare("INSERT INTO sujetfurum VALUES(NULL,?,?,NOW(),?)");
+            $stm->bindValue(1, $typeSujet);
+            $stm->bindValue(2, $questionSujet);
+            $stm->bindValue(3, $idUti,  PDO::PARAM_INT);
             $stm->execute();
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
@@ -46,7 +44,7 @@ class SujetForumDAO implements InterfDao
         foreach ($array as $value) {
             $sujetTheme = new SujetTheme();
             $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])
-                ->setTitreSujet($value['titreSujet'])
+                ->setQuestionSujet($value['questionSujet'])->setDateAjout(new DateTime($value['dateAjoutSujet']))
                 ->setIdUti($value['idUti']);
             $tab[] = $sujetTheme;
         }
@@ -108,7 +106,7 @@ class SujetForumDAO implements InterfDao
         foreach ($array as $value) {
             $sujetTheme = new SujetTheme();
             $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])
-                ->setTitreSujet($value['titreSujet'])
+                ->setQuestionSujet($value['titreSujet'])
                 ->setIdUti($value['idUti']);
             $tab[] = $sujetTheme;
         }

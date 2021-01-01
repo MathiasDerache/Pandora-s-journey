@@ -5,7 +5,7 @@ include_once __DIR__ . "/../../Pandora_nav_footer/footer.php";
 include_once __DIR__ . '/../../coucheService/UtilisateurService.php';
 include_once __DIR__ . '/../../coucheService/CommentaireForumService.php';
 
-function sujetTypeForum(array $array)
+function sujetTypeForum(array $array = [])
 {
 ?>
     <!DOCTYPE html>
@@ -33,7 +33,9 @@ function sujetTypeForum(array $array)
 
             <div class="row justify-content-center">
                 <div class="title-forum">
-                    <p><?php echo $array[0]->getTypeSujetTh(); ?></p>
+                    <p>
+                        Forum Pandora
+                    </p>
                 </div>
             </div>
 
@@ -41,40 +43,45 @@ function sujetTypeForum(array $array)
                 <table class="table table-hover table-forum">
                     <thead class="bg-dark text-white">
                         <tr>
-                            <th scope="col">Questions sur le thème des <?php echo $array[0]->getTypeSujetTh(); ?></th>
+                            <th scope="col">Questions sur le thème des thématique</th>
                             <th scope="col">Réponses</th>
                             <th scope="col">Auteur</th>
+                            <th scope="col">Date d'ajout</th>
                             <th scope="col">Accéder à la discussion</th>
                         </tr>
                     </thead>
                     <?php
                     foreach ($array as $value) {
-                    ?><tbody>
-                            <tr>
-                                <td scope="row"><?php echo $value->getTitreSujet(); ?></td>
-                                <td>
-                                    <?php
-                                    $newCom = (new CommentaireForumService())->foundComById($value->getIdSujetTh());
-                                    $compt = 0;
-                                    foreach ($newCom as $value) {
-                                        $compt++;
-                                    }
-                                    echo $compt;
-                                    ?>
-                                </td>
-                                <td><?php
-                                    $utilisateur = new UtilisateurService();
-                                    $pseudo = $utilisateur->trouveUtil($value->getIdUti());
-                                    echo $pseudo->getPseudo();
-                                    ?></td>
-                                <td>
-                                    <button type="button" class="btn btn-danger rounded-pill ">
-                                        <a href="#" style="text-decoration: none;" class=" text-white">discussion</a>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    <?php
+                    ?>if(!empty($array)){
+                    <tbody>
+                        <tr>
+                            <td scope="row"><?php echo $value->getQuestionSujet(); ?></td>
+                            <td>
+                                <?php
+                                $newCom = (new CommentaireForumService())->foundComById($value->getIdSujetTh());
+                                $compt = 0;
+                                foreach ($newCom as $value) {
+                                    $compt++;
+                                }
+                                echo $compt;
+                                ?>
+                            </td>
+                            <td><?php
+                                $utilisateur = new UtilisateurService();
+                                $pseudo = $utilisateur->trouveUtil($value->getIdUti());
+                                echo $pseudo->getPseudo();
+                                ?>
+                            </td>
+                            <td scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
+                            <td>
+                                <button type="button" class="btn btn-danger rounded-pill ">
+                                    <a href="#" style="text-decoration: none;" class=" text-white">discussion</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    }
+                <?php
                     } ?>
                 </table>
             </div>
@@ -93,16 +100,16 @@ function sujetTypeForum(array $array)
                             <div class="form-group">
                                 <label class="text-white" for="typeSujetTh">Selectionnez un thème:</label>
                                 <select class="form-control" name="typeSujetTh" id="typeSujetTh">
-                                    <option value="Annonces" selected>Annonces</option>
-                                    <option value="Travail">Travail</option>
-                                    <option value="Loisirs">Loisirs</option>
-                                    <option value="Immobilier">Immobilier</option>
-                                    <option value="Discusion_generales">Discusion générales</option>
+                                    <option class="font-weight-bold" value="Annonces" selected>Annonces</option>
+                                    <option class="font-weight-bold" value="Travail">Travail</option>
+                                    <option class="font-weight-bold" value="Loisirs">Loisirs</option>
+                                    <option class="font-weight-bold" value="Immobilier">Immobilier</option>
+                                    <option class="font-weight-bold" value="Discusion_generales">Discusion générales</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="titeSujet" class="text-white">Posez votre question:</label>
-                                <textarea class="form-control" name="titeSujet" id="titeSujet" cols="1" rows="1"></textarea>
+                                <textarea class="form-control" name="questionSujet" id="questionSujet" cols="1" rows="1"></textarea>
                             </div>
                             <div>
                                 <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>

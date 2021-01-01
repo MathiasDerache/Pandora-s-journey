@@ -5,7 +5,8 @@ class SujetTheme
 
     private $idSujetTh;
     private $typeSujetTh;
-    private $titreSujet;
+    private $questionSujet;
+    private $dateAjout;
     private $idUti;
 
     //constructeur par défaut
@@ -15,7 +16,7 @@ class SujetTheme
     /**
      * Get the value of idSujetTh
      */
-    public function getIdSujetTh()
+    public function getIdSujetTh(): ?string
     {
         return $this->idSujetTh;
     }
@@ -25,7 +26,7 @@ class SujetTheme
      *
      * @return  self
      */
-    public function setIdSujetTh($idSujetTh)
+    public function setIdSujetTh(?string $idSujetTh)
     {
         $this->idSujetTh = $idSujetTh;
 
@@ -35,7 +36,7 @@ class SujetTheme
     /**
      * Get the value of typeSujetTh
      */
-    public function getTypeSujetTh()
+    public function getTypeSujetTh(): ?string
     {
         return $this->typeSujetTh;
     }
@@ -45,7 +46,7 @@ class SujetTheme
      *
      * @return  self
      */
-    public function setTypeSujetTh($typeSujetTh)
+    public function setTypeSujetTh(?string $typeSujetTh): ?self
     {
         $this->typeSujetTh = $typeSujetTh;
 
@@ -55,19 +56,19 @@ class SujetTheme
     /**
      * Get the value of titreSujet
      */
-    public function getTitreSujet()
+    public function getQuestionSujet(): ?string
     {
-        return $this->titreSujet;
+        return $this->questionSujet;
     }
 
     /**
-     * Set the value of titreSujet
+     * Set the value of questionSujet
      *
      * @return  self
      */
-    public function setTitreSujet($titreSujet)
+    public function setQuestionSujet(?string $questionSujet): self
     {
-        $this->titreSujet = $titreSujet;
+        $this->questionSujet = $questionSujet;
 
         return $this;
     }
@@ -75,7 +76,7 @@ class SujetTheme
     /**
      * Get the value of idUti
      */
-    public function getIdUti()
+    public function getIdUti(): int
     {
         return $this->idUti;
     }
@@ -85,9 +86,30 @@ class SujetTheme
      *
      * @return  self
      */
-    public function setIdUti($idUti)
+    public function setIdUti(?int $idUti): ?self
     {
         $this->idUti = $idUti;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of dateAjout
+     */
+    public function getDateAjout(): ?DateTime
+
+    {
+        return $this->dateAjout;
+    }
+
+    /**
+     * Set the value of dateAjout
+     *
+     * @return  self
+     */
+    public function setDateAjout(DateTime $dateAjout): ?self
+    {
+        $this->dateAjout = $dateAjout;
 
         return $this;
     }
