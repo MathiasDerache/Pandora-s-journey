@@ -38,7 +38,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                     </div>
                     <div class="row mx-auto d-block">
                         <div class="media ml-5 pt-5">
-                            <img class="align-self-center mr-5 border-dark mt-0 rounded-circle shadow-lg ml-5" width="13%" src="images/profil_Id1.gif" alt="Generic placeholder image">
+                            <img class="align-self-center mr-5 border-primary mt-0 rounded-circle shadow-lg ml-5" width="13%" src="images/profil_Id1.gif" alt="Generic placeholder image">
                             <div class="media-body mt-5">
                                 <h5 class="mt-0 ">Auteur : <?php
                                                             if ($sujetTheme) {
@@ -62,7 +62,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-4 col-lg-2 col-xl-2 mt-5 ">
+                <div class="col-sm-8 col-md-8 col-lg-2 col-xl-2 mt-5 ">
 
                     <div class="position-fixed">
                         <button type="button" class="mx-auto d-block btn btn-warning rounded-pill boutonSideInfo">
