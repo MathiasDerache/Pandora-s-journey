@@ -2,6 +2,7 @@
 include_once __DIR__ . '/InterfDao.php';
 include_once __DIR__ . '/../classe_metier/Image.php';
 include_once __DIR__ . '/connectionBaseDonnees.php';
+include_once __DIR__ . '/DaoException.php';
 
 class ImageDao implements InterfDao
 {
@@ -51,24 +52,18 @@ class ImageDao implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("UPDATE image SET DatePubAnn=?,typeannoce=?, titre=?, description=?
-                                ,numcontact=? WHERE idannonce=?");
-            //recuperation des infos de $object instance de la class Annonce
+            $stm = $db->prepare("UPDATE image SET NomFichier=?,TailleFichier=?, TypeImage=?, PathFile=? WHERE Id=?");
+            $idImage = $object->getId();
             $NomFichier = $object->getNomFichier();
-            $NomFichier = $object->getTailleFichier();
+            $TailleFichier = $object->getTailleFichier();
             $TypeImage = $object->getTypeImage();
             $PathFile = $object->getPathFile();
-            $IdUti = $object->getIdUti();
-            $idImage = $object->getId();
 
-            //je lie chaque variable à la requete preparée
             $stm->bindValue(1, $NomFichier);
-            $stm->bindValue(2, $NomFichier, PDO::PARAM_INT);
+            $stm->bindValue(2, $TailleFichier, PDO::PARAM_INT);
             $stm->bindValue(3, $TypeImage);
             $stm->bindValue(4, $PathFile);
-            $stm->bindValue(5, $IdUti, PDO::PARAM_INT);
-            $stm->bindValue(6, $idImage, PDO::PARAM_INT);
-            //execution de la requete preparée
+            $stm->bindValue(5, $idImage, PDO::PARAM_INT);
             $stm->execute();
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
@@ -133,7 +128,7 @@ class ImageDao implements InterfDao
         }
         return $array;
     }
-        
+
     /**
      * recupere dans un array avec l'image par id
      *
