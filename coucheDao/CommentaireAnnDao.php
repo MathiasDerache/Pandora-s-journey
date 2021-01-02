@@ -113,7 +113,7 @@ class CommentaireAnnDao implements InterfDao
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -124,14 +124,13 @@ class CommentaireAnnDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
+
         foreach ($array as $value) {
             $comm = new CommentaireAnnonce();
             $comm->setIdComm($value['idCom'])->setContComm($value['commentaire'])
                 ->setDateMessAnn(new DateTime($value['description']))
                 ->setIdAnn($value['idannoce'])->setIdUti($value['idUti']);
-            $tab[] = $comm;
         }
-        return $tab;
+        return $comm;
     }
 }

@@ -171,3 +171,49 @@ th{
     background-color:  #040753;
     font-weight: bold;
 }
+
+/* sujetForum */
+.sujetThForum{
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}
+
+/* profil */
+.sideNotifs{
+    margin-top: 10%;
+    list-style: none;
+}
+
+.sideNotifs li{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 10%;
+}
+
+.sideNotifs img{
+    margin: 10%;
+}
+
+.sideNotifs svg{
+   color: white;
+}
+
+.boutonSideInfo svg{
+    color: white;
+ }
+
+ .profilTitre{
+     color: white;
+ }
+
+ .profilDetails hr{
+     size: 2px;
+     background-color: goldenrod;
+ }
+
+ .card-body{
+    background-color: #370EC2;
+ }
+
+ 

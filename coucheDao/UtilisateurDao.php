@@ -121,7 +121,7 @@ class UtilisateurDao implements InterfDao
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -132,14 +132,13 @@ class UtilisateurDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
+
         foreach ($array as $value) {
             $utilisateur = new Utilisateur();
             $utilisateur->setNom($value['nom'])->setPrenom($value['prenom'])
                 ->setPseudo($value['pseudo'])->setEmail($value['numAdresse'])
                 ->setNumTel($value['numTel'])->setPassword($value['password'])->setProfil($value['profil']);
-            $tab[] = $utilisateur;
         }
-        return $tab;
+        return $utilisateur;
     }
 }

@@ -134,7 +134,7 @@ class ImageDao implements InterfDao
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -145,14 +145,13 @@ class ImageDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
+
         foreach ($array as $value) {
             $image = new Image();
             $image->setId($value['Id'])->setNomFichier($value['NomFichier'])->setTypeImage($value['TypeImage'])
                 ->setPathFile($value['PathFile'])->setIdUti($value['idUti'])
                 ->setTailleFichier($value['TailleFichier']);
-            $tab[] = $image;
         }
-        return $tab;
+        return $image;
     }
 }

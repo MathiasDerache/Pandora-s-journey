@@ -33,7 +33,7 @@ class BilletService implements interfService
      *
      * @return array
      */
-    public function readByIdService(?int $id): ?array
+    public function readByIdService(?int $id): ?object
     {
         return $this->service->readByIdService($id);
     }

@@ -135,7 +135,7 @@ class AnnoncesDao implements InterfDao
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -146,14 +146,13 @@ class AnnoncesDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
+
         foreach ($array as $value) {
             $annonce = new Annonces();
             $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
                 ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
                 ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
-            $tab[] = $annonce;
         }
-        return $tab;
+        return $annonce;
     }
 }

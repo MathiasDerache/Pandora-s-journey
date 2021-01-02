@@ -102,7 +102,7 @@ class CommentaireForumDAO implements InterfDao
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -113,19 +113,18 @@ class CommentaireForumDAO implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
+
         foreach ($array as $value) {
             $commSujet = new CommentaireSujet();
             $commSujet->setIdCommSuj($value['idcommSujet'])->setPseudoUt($value['psodoUt'])
                 ->setDateCommSuj(new DateTime($value['dateComSuj']))
                 ->setContCommSuj($value['contComSuj'])->setIdSuje($value['idSujetTh'])
                 ->setIdUti($value['idUti']);
-            $tab[] = $commSujet;
         }
-        return $tab;
+        return $commSujet;
     }
 
-    public function foundCommentaireById(int $id): array
+    public function foundCommentaireById(?int $id): ?array
     {
         try {
             $db = $this->db->connectiondb();

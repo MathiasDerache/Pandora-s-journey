@@ -75,13 +75,13 @@ class RepondreDAO implements InterfDao
             throw new DaoException($f->getCode(), $f->getMessage());
         }
     }
-            
+
     /**
      * recupere dans un array avec la réponse par id
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -92,12 +92,10 @@ class RepondreDAO implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
         foreach ($array as $value) {
             $repondre = new Repondre();
             $repondre->setIdComm($value["idCom"])->setIdComm_commentaire($value["idCom_commentaire"]);
-            $tab[] = $repondre;
         }
-        return $tab;
+        return $repondre;
     }
 }

@@ -43,7 +43,7 @@ function sujetTypeForum(array $array = [])
                 <table class="table table-hover table-forum">
                     <thead class="bg-dark text-white">
                         <tr>
-                            <th scope="col">Questions sur le thème des thématique</th>
+                            <th scope="col">Questions sur la thématique</th>
                             <th scope="col">Thématique</th>
                             <th scope="col">Réponses</th>
                             <th scope="col">Auteur</th>
@@ -78,7 +78,7 @@ function sujetTypeForum(array $array = [])
                                     <td scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
                                     <td>
                                         <button type="button" class="btn btn-danger rounded-pill ">
-                                            <a href="#" style="text-decoration: none;" class=" text-white">Discussion</a>
+                                            <a href="forumcontroleur.php?sujetforum=<?php echo $value->getIdSujetTh(); ?>" style="text-decoration: none;" class=" text-white">Discussion</a>
                                         </button>
                                     </td>
                                 </tr>
@@ -89,7 +89,7 @@ function sujetTypeForum(array $array = [])
                 </table>
             </div>
 
-            <div class="row justify-content-end ajout-sujet">
+            <div class=" row justify-content-end ajout-sujet">
                 <div>
                     <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalForumAnnonces">Ajouter un sujet</div>
                 </div>
@@ -107,7 +107,7 @@ function sujetTypeForum(array $array = [])
                                     <option class="font-weight-bold" value="Travail">Travail</option>
                                     <option class="font-weight-bold" value="Loisirs">Loisirs</option>
                                     <option class="font-weight-bold" value="Immobilier">Immobilier</option>
-                                    <option class="font-weight-bold" value="Discusion_generales">Discusion générales</option>
+                                    <option class="font-weight-bold" value="Discusions générales">Discusion générales</option>
                                 </select>
                             </div>
                             <div class="form-group">

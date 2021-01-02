@@ -91,7 +91,7 @@ class SujetForumDAO implements InterfDao
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -102,14 +102,12 @@ class SujetForumDAO implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
         foreach ($array as $value) {
             $sujetTheme = new SujetTheme();
-            $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])
-                ->setQuestionSujet($value['titreSujet'])
+            $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])->setDateAjout(new DateTime($value['dateAjoutSujet']))
+                ->setQuestionSujet($value['questionSujet'])
                 ->setIdUti($value['idUti']);
-            $tab[] = $sujetTheme;
         }
-        return $tab;
+        return $sujetTheme;
     }
 }

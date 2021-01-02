@@ -26,9 +26,9 @@ class SujetForumService implements interfService
      *
      * @return array
      */
-    public function readByIdService(?int $id): ?array
+    public function readByIdService(?int $id): ?object
     {
-        return $this->service->readByIdService($id);
+        return $this->service->readById($id);
     }
 
     public function updateService(?object $object): ?object

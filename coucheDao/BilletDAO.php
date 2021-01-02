@@ -84,7 +84,7 @@ class BilletDAO implements InterfDao
      *
      * @return array
      */
-    public function readById(int $id): array
+    public function readById(?int $id): ?object
     {
         try {
             $db = $this->db->connectiondb();
@@ -95,12 +95,11 @@ class BilletDAO implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        $tab = [];
+
         foreach ($array as $value) {
             $billet = new Billet();
             $billet->setNumBillet($value["numeroDeBillet"])->setDateEmb($value["dateEmb"])->setIdUti($value["idUti"]);
-            $tab[] = $billet;
         }
-        return $tab;
+        return $billet;
     }
 }
