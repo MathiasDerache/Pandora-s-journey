@@ -139,6 +139,46 @@ html{
     
     /* Corps Page  */
 
+.navbarVideo ul{
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-start;
+ position: relative;
+ background-color: transparent;
+ position: absolute;
+ top: 30px;
+ left: 40%;
+ z-index: 100;
+}
+
+.navbarVideo ul li{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.navbarVideo ul li a{
+  text-decoration: none;
+  margin-left: 120px;
+  font-size: 2em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.navbarVideo ul li a::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background:goldenrod;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+  }
+  
+  .navbarVideo ul li a:hover::after{
+  transform: scale(1);
+  }
+
 video{
     position: absolute;
     top: 0;
@@ -381,7 +421,7 @@ border: solid 2px black;
     border: 2px solid white;
     position: absolute;
     left: 50%;
-    top: 20px;
+    top: 100px;
     border-radius: 50px;
     cursor: pointer;
   }

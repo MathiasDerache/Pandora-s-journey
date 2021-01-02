@@ -1,3 +1,7 @@
+<?php
+    include("../Pandora_nav_footer/nav.php");
+    include("../Pandora_nav_footer/footer.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,6 +15,16 @@
 
 <body>
     <!-- ----------------------------------  navbar ---------------------------------> 
+
+    <div class="navbarVideo">
+            <ul>
+                <li class="item"><a href="../pages_anonces/immobilier.php">Immobilier</a></li>
+                <li class="item"><a href="../pages_anonces/travail.php">Travail</a></li>
+                <li class="item"><a href="../pages_anonces/loisirs.php">Loisir</a></li>
+                <li class="item"><a href="../page_contact/contact.php">Contacts</a></li>
+                <li class="item"><a href="#">Billet</a></li>
+            </ul>
+    </div>
     <div class="video">
         <video autoplay loop muted class="embed-responsive embed-responsive-16by9">
             <source src="video/Project 2.mkv">
@@ -21,6 +35,7 @@
 
     <!-- ----------------------------------- Video principal ---------------------------  -->
     <div class="body displayNone">
+        <?php navBar() ?>
         <div class="scroll-up">
         </div>
         <div class="container-menu">
@@ -80,6 +95,7 @@
                         minus molestias eius autem.</p>
                 </div>
             </div>
+            <?php footer() ?>
         </div>
 
 
@@ -87,4 +103,5 @@
      <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
 </body>
 <script src="app.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </html>
