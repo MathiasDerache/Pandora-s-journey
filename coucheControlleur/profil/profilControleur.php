@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["id"] = 2;
+$_SESSION["id"] = 1;
 require_once("../../view/profil/profilUtilisateur.php");
 require_once("../../classe_metier/Image.php");
 require_once("../../coucheService/ImageService.php");

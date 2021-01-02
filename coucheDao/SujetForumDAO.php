@@ -102,12 +102,16 @@ class SujetForumDAO implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-        foreach ($array as $value) {
-            $sujetTheme = new SujetTheme();
-            $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])->setDateAjout(new DateTime($value['dateAjoutSujet']))
-                ->setQuestionSujet($value['questionSujet'])
-                ->setIdUti($value['idUti']);
+        if (!empty($array)) {
+            foreach ($array as $value) {
+                $sujetTheme = new SujetTheme();
+                $sujetTheme->setIdSujetTh($value['idSujetTh'])->setTypeSujetTh($value['typeSujetTh'])->setDateAjout(new DateTime($value['dateAjoutSujet']))
+                    ->setQuestionSujet($value['questionSujet'])
+                    ->setIdUti($value['idUti']);
+            }
+            return $sujetTheme;
+        } else {
+            return null;
         }
-        return $sujetTheme;
     }
 }
