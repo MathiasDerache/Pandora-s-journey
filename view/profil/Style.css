@@ -214,6 +214,11 @@ border: solid 2px black;
     height: 200px;
 }
 
+.banniere_profil{
+    width: 1920px;
+    height: 250px;
+}
+
 /* POPUP */
 
 /* Fixez le bouton sur le côté gauche de la page the button on the left side of the page */

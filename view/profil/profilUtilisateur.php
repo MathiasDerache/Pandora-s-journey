@@ -2,10 +2,10 @@
 require_once("../../Pandora_nav_footer/nav.php");
 require_once("../../Pandora_nav_footer/footer.php");
 
-function html($imageProfil)
+function html($imageProfil, $dataUtilisateur, $bannierProfil)
 {
     htmlHeader();
-    htmlbody($imageProfil);
+    htmlbody($imageProfil, $dataUtilisateur, $bannierProfil);
 }
 
 function htmlHeader()
@@ -18,7 +18,7 @@ function htmlHeader()
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../../view//profil/Style.css">
+        <link rel="stylesheet" href="../../view/profil/Style.css">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="jquery-fab-button/css/jquery-fab-button.css">
@@ -26,13 +26,14 @@ function htmlHeader()
     </head>
 <?php }
 
-function htmlbody($imageProfil)
+function htmlbody($imageProfil, $dataUtilisateur, $bannierProfil)
 { ?>
 
     <body>
-        <!-- ---------------------------------- Popup modifier image ---------------------------------- -->
-        <?php popupFormImageProfil(); ?>
-        <!-- ---------------------------------- Fin popup modifier image ---------------------------------- -->
+        <!-- ---------------------------------- Popup image ---------------------------------- -->
+        <?php popupFormImageProfil();
+        popupFormBanniereProfil(); ?>
+        <!-- ---------------------------------- Fin popup image ---------------------------------- -->
         <!-- ----------------------------------  navbar --------------------------------->
         <?php
         navBar();
@@ -46,7 +47,7 @@ function htmlbody($imageProfil)
                             <h1 class="text-center mt-5 profilTitre">PAGE PROFIL</h1>
                             <hr>
                             <div class="row">
-                                <?php banniere(); ?>
+                                <?php banniere($bannierProfil); ?>
 
                                 <div class="row">
                                     <?php compteARebours();
@@ -57,11 +58,11 @@ function htmlbody($imageProfil)
                                 <?php annoncePourVous(); ?>
                             </div>
                         </div>
-                        <?php infoProfil($imageProfil); ?>
+                        <?php infoProfil($imageProfil, $dataUtilisateur); ?>
                     </div>
+                    <!-- bouton flottant -->
+                    <?php boutonFlottant(); ?>
                 </div>
-                <!-- bouton flottant -->
-                <?php boutonFlottant(); ?>
             </div>
         </div>
         </div>
@@ -107,7 +108,7 @@ function boutonFlottant()
     </div>
 <?php }
 
-function infoProfil($imageProfil)
+function infoProfil($imageProfil, $dataUtilisateur)
 { ?>
     <div class="col-sm-12 col-md-4 col-lg-4 pt-5 ">
         <div class="card-dark col-12  mt-5 mb-3">
@@ -120,15 +121,17 @@ function infoProfil($imageProfil)
                         echo '<img src="../../view/profil/imageProfil/' . $imageProfil[0]["NomFichier"] . '" class="rounded-circle mx-auto d-block m-2 shadow-lg img_profil">';
                     }
                     ?>
-                    <div class="open-btn">
-                        <button class="open-button btn-primary" onclick="openForm()"><strong>Modifier image profil</strong></button>
+                    <div class="container">
+                        <div class="text-center pt-2">
+                            <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalProfil">Modifier l'image du profil</div>
+                        </div>
                     </div>
                 </div>
-                <h2 class="text-center text-white mb-4">NOM</h2>
-                <h4 class="text-center text-white mb-4">PRENOM</h4>
-                <h4 class="text-center text-white mb-4">ÂGE</h4>
-                <h4 class="text-center text-white mb-4">NATIONNALITE</h4>
-                <h4 class="text-center text-white m-4">METIER</h4>
+                <h2 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getNom()); ?></h2>
+                <h4 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getPrenom()); ?></h4>
+                <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getPseudo(); ?></h4>
+                <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getEmail(); ?></h4>
+                <h4 class="text-center text-white m-4"><?php echo strtoupper($dataUtilisateur->getProfil()); ?></h4>
             </div>
         </div>
     </div>
@@ -211,43 +214,95 @@ function compteARebours()
 { ?>
     <div class="col-sm-6 col-md-6 col-lg-6 mt-5">
         <div class="row">
-            <div class="col-12 ">
-                <h2 class="text-center text-white ">COMPTE A REBOURS:</h2>
-                <img src="../../view/profil/images/countdown-twitter.jpg" alt="" class="img-fluid shadow-lg">
+            <div class="col-12 text-center text-white">
+                <h2>COMPTE A REBOURS:</h2>
+                <h1 id="countdown"></h1>
+                <script>
+                    // Date de départ
+                    var countDownDate = new Date("2021-01-22").getTime();
+
+                    // Actualise le compte à rebours toutes les secondes
+                    var x = setInterval(function() {
+
+                        // Date d'aujourd'hui en millisecondes
+                        var now = new Date().getTime();
+
+                        // Différence entre la date de départ et la date d'aujourd'hui
+                        var distance = countDownDate - now;
+
+                        // Calcul du temps pour les jours, les heures, les minutes et les secondes
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Affiche le résultat dans un élément avec l'id="countdown"
+                        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " +
+                            minutes + "m " + seconds + "s ";
+                    }, 1000);
+                </script>
+                <!-- <img src="../../view/profil/images/countdown-twitter.jpg" alt="" class="img-fluid shadow-lg"> -->
             </div>
         </div>
     </div>
 <?php }
 
-function banniere()
+function banniere($banniereProfil)
 { ?>
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <img src="../../view/profil/images/voyagez.jpg" alt="" class="img-fluid shadow-lg">
+        <?php
+        if (empty($banniereProfil)) {
+            echo '<img src="../../view/profil/banniereProfil/voyagez.jpg" class="img-fluid shadow-lg banniere_profil">';
+        } else {
+            echo '<img src="../../view/profil/banniereProfil/' . $banniereProfil[0]["NomFichier"] . '" class="img-fluid shadow-lg banniere_profil">';
+        }
+        ?>
+        <div class="container">
+            <div class="text-center pt-2">
+                <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalBanniere">Modifier la banniere</div>
+            </div>
+        </div>
     </div>
 <?php }
 
 function popupFormImageProfil()
 { ?>
-    <!-- Form du popup pour télécharger l'image -->
-    <div class="login-popup">
-        <div class="form-popup" id="popupForm">
-            <form action="profilControleur.php?action=modifImageProfil" method="post" enctype="multipart/form-data" class="form-container">
-                <h2>Changer image profil</h2>
-                <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
-                <input type="file" name="file" required><br>
-                <button type="submit" name="submit" class="btn-form">Valide</button>
-                <button type="button" class="btn-form cancel" onclick="closeForm()">Fermer</button>
-            </form>
+    <!-- Modal -->
+    <div class="modal fade text-center" id="modalProfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content form-container p-4">
+                <h2 class="modal-title text-white mb-3">Changer l'image du profil</h2>
+                <form action="profilControleur.php?action=modifImageProfil" method="post" enctype="multipart/form-data" class="form-container">
+                    <div class="form-group">
+                        <input type="file" name="file" required class="text-white"><br>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-warning rounded-pill text-white">Soumettre</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <!-- JS pour afficher ou désafficher le popup -->
-    <script>
-        function openForm() {
-            document.getElementById("popupForm").style.display = "block";
-        }
+<?php }
 
-        function closeForm() {
-            document.getElementById("popupForm").style.display = "none";
-        }
-    </script>
+function popupFormBanniereProfil()
+{ ?>
+    <!-- Modal -->
+    <div class="modal fade text-center" id="modalBanniere" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content form-container p-4">
+                <h2 class="modal-title text-white mb-3">Changer la banniere</h2>
+                <form action="profilControleur.php?action=modifBanniereProfil" method="post" enctype="multipart/form-data" class="form-container">
+                    <div class="form-group">
+                        <input type="file" name="file" required class="text-white"><br>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-warning rounded-pill text-white">Soumettre</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <?php }
