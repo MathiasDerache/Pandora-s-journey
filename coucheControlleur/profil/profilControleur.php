@@ -6,12 +6,15 @@ require_once("../../classe_metier/Image.php");
 require_once("../../coucheService/ImageService.php");
 require_once("../../classe_metier/Utilisateur.php");
 require_once("../../coucheService/UtilisateurService.php");
+require_once("../../coucheService/AnnoncesService.php");
 
 
 $image = new Image();
 $imageService = new ImageService();
 $utilisateur = new Utilisateur();
 $utilisateurService = new UtilisateurService();
+$annonce = new annoncesService();
+$erreur = null;
 
 // Modification image profil
 if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "modifImageProfil") {
@@ -22,13 +25,7 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "mo
         if ($_FILES["file"]["error"] === 0) {
             $fileNewName = "profil_Id" . $_SESSION["id"] . "." . $fileExtension;  // Change le nom du fichier
             $fileDestination = "../../view/profil/imageProfil/" . $fileNewName;  // Change le nom de la destination du fichier
-        } else {
-            echo "il y a eu une erreur durant le téléchargement de l'image";
-            die;
         }
-    } else {
-        echo "Type d'image non autorisé";
-        die;
     }
 
     try {  //Supprime l'ancienne image profil dans dossier imageProfil
@@ -37,22 +34,23 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "mo
             $nomFichier = explode(".", $value->getNomFichier());
             if ($nomFichier[0] === "profil_Id" . $_SESSION["id"]) {
                 $imageProfil = $value;
-                unlink($value->getPathFile());
                 break;
             } else {
                 $imageProfil = null;
             }
         }
 
-        $image->setId($value->getId())->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
         if (!empty($imageProfil)) {
+            $image->setId($value->getId())->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
             $imageService->updateService($image);
+            unlink($value->getPathFile());
         } else {
+            $image->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
             $imageService->creatService($image);
         }
         move_uploaded_file($_FILES["file"]["tmp_name"], $fileDestination);  // Déplace le nouveaux fichier dans dossier imageProfil
-    } catch (PDOException $e) {
-        echo $e->getMessage();
+    } catch (ServiceException $e) {
+        $erreur = $e->getCode();
     }
 }
 
@@ -63,7 +61,7 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "mo
     $fileExtension = strtolower($fileExplode[1]); // Passe le type d'extension en minuscule
     if (in_array($fileExtension, extension)) {  // Cherche si l'extension du fichier correspond au tableau des extension autorisé
         if ($_FILES["file"]["error"] === 0) {
-            $fileNewName = "banniere_profil_Id" . $_SESSION["id"] . "." . $fileExtension;  // Change le nom du fichier
+            $fileNewName = "banniere_Id" . $_SESSION["id"] . "." . $fileExtension;  // Change le nom du fichier
             $fileDestination = "../../view/profil/banniereProfil/" . $fileNewName;  // Change le nom de la destination du fichier
         } else {
             echo "il y a eu une erreur durant le téléchargement de l'image";
@@ -78,52 +76,70 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "mo
         $arrayImage = $imageService->readService();
         foreach ($arrayImage as $value) {
             $nomFichier = explode(".", $value->getNomFichier());
-            if ($nomFichier[0] === "banniere_profil_Id" . $_SESSION["id"]) {
-                $imageProfil = $value;
+            if ($nomFichier[0] === "banniere_Id" . $_SESSION["id"]) {
+                $banniere = $value;
                 unlink($value->getPathFile());
                 break;
             } else {
-                $imageProfil = null;
+                $banniere = null;
             }
         }
 
-        $image->setId($value->getId())->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
-        if (!empty($imageProfil)) {
+        if (!empty($banniere)) {
+            $image->setId($value->getId())->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
             $imageService->updateService($image);
         } else {
+            $image->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
             $imageService->creatService($image);
         }
         move_uploaded_file($_FILES["file"]["tmp_name"], $fileDestination);  // Déplace le nouveaux fichier dans dossier banniereProfil
-    } catch (PDOException $e) {
-        echo $e->getMessage();
+    } catch (ServiceException $e) {
+        $erreur = $e->getCode();
     }
 }
 
 
-// Recherche données et image de l'utilisateur
 try {
     // Recherche image profil de l'utilisateur
     $arrayImage = $imageService->readService();
     if (!empty($arrayImage)) {
         foreach ($arrayImage as $value) {
-            $nomFichier = strstr($value->getNomFichier(), '.', true);
-            if ($nomFichier === "profil_Id" . $_SESSION["id"]) {
-                $nomFichier = $value->getNomFichier();
-                $imageProfil = $imageService->searchImageProfilService($nomFichier);
-            } elseif ($nomFichier === "banniere_profil_Id" . $_SESSION["id"]) {
-                $nomFichier = $value->getNomFichier();
-                $banniereProfil = $imageService->searchImageProfilService($nomFichier);
+            $nomFichierProfil = strstr($value->getNomFichier(), '.', true);
+            if ($nomFichierProfil === "profil_Id" . $_SESSION["id"]) {
+                $nomFichierProfil = $value->getNomFichier();
+                $imageProfil = $imageService->searchImageProfilService($nomFichierProfil);
+                break;
             } else {
                 $imageProfil = null;
-                $banniereProfil = null;
             }
         }
     } else {
         $imageProfil = null;
     }
+
+    // Recherche banniere de l'utilisateur
+    if (!empty($arrayImage)) {
+        foreach ($arrayImage as $value) {
+            $nomFichier = strstr($value->getNomFichier(), '.', true);
+            if ($nomFichier === "banniere_Id" . $_SESSION["id"]) {
+                $nomFichierBanniere = $value->getNomFichier();
+                $banniereProfil = $imageService->searchImageProfilService($nomFichierBanniere);
+                break;
+            } else {
+                $banniereProfil = null;
+            }
+        }
+    } else {
+        $banniereProfil = null;
+    }
+
     // Recherche données utilisateur
     $dataUtilisateur = $utilisateurService->trouveUtil($_SESSION["id"]);
-    html($imageProfil, $dataUtilisateur, $banniereProfil);
-} catch (PDOException $e) {
-    echo $e->getMessage();
+
+    // Recherche annonces
+    $arrayAnnonce = $annonce->readService();
+} catch (ServiceException $e) {
+    $erreur = $e->getCode();
+    // header("refresh:5;url=../../pandora_accueil/Index.php");
 }
+html($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur);
