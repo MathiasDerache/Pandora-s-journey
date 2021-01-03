@@ -1,9 +1,11 @@
 <?php
 include_once __DIR__ . "/InterfService.php";
 include_once __DIR__ . '/../coucheDao/ImageDao.php';
+include_once __DIR__ . '/ServiceException.php';
 
 
-class ImageService implements InterfService
+class ImageService implements
+    InterfService
 {
     // factorisation de l'instansiation d'objet ImageDao
     public function __construct()
@@ -14,19 +16,34 @@ class ImageService implements InterfService
     // transmet l'objet reçu depuis la couche controleur à la couche DAO
     public function creatService(?Object $object): ?object
     {
-        return $this->service->creat($object);
+        try {
+            $object = $this->service->creat($object);
+        } catch (DaoException $e) {
+            throw new ServiceException($e->getMessage(), $e->getCode());
+        }
+        return $object;
     }
 
     // transmet l'objet reçu depuis la couche controleur à la couche DAO
     public function updateService(?Object $object): ?object
     {
-        return $this->service->update($object);
+        try {
+            $object = $this->service->update($object);
+        } catch (DaoException $e) {
+            throw new ServiceException($e->getMessage(), $e->getCode());
+        }
+        return $object;
     }
 
     // Récupère le tableau reçu depuis la couche DAO et transmet à la couche controleur
     public function readService(): ?array
     {
-        return $this->service->read();
+        try {
+            $object = $this->service->read();
+        } catch (DaoException $e) {
+            throw new ServiceException($e->getMessage(), $e->getCode());
+        }
+        return $object;
     }
 
     /**
@@ -36,18 +53,33 @@ class ImageService implements InterfService
      */
     public function readByIdService(?int $id): ?object
     {
-        return $this->service->readByIdService($id);
+        try {
+            $object = $this->service->readByIdService($id);
+        } catch (DaoException $e) {
+            throw new ServiceException($e->getMessage(), $e->getCode());
+        }
+        return $object;
     }
 
     // transmet l'id reçu depuis la couche controleur à la couche DAO
     public function deleteService(?int $id): ?int
     {
-        return $this->service->delete($id);
+        try {
+            $int = $this->service->delete($id);
+        } catch (DaoException $e) {
+            throw new ServiceException($e->getMessage(), $e->getCode());
+        }
+        return $int;
     }
 
     // transmet le nom du fichier reçu depuis la couche controleur à la couche DAO
     public function searchImageProfilService(?string $NomFichier): ?array
     {
-        return $this->service->searchImageProfil($NomFichier);
+        try {
+            $array = $this->service->searchImageProfil($NomFichier);
+        } catch (DaoException $e) {
+            throw new ServiceException($e->getMessage(), $e->getCode());
+        }
+        return $array;
     }
 }
