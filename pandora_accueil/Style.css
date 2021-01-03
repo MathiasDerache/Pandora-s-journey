@@ -151,6 +151,7 @@ html{
  z-index: 100;
 }
 
+/* Partie Nav de la video */
 .navbarVideo ul li{
   list-style-type: none;
   display: flex;
@@ -179,6 +180,7 @@ html{
   transform: scale(1);
   }
 
+  /* Partie Video */
 video{
     position: absolute;
     top: 0;
@@ -190,6 +192,8 @@ video{
     object-fit: cover;
 }
 
+
+/* Partie du bouton utilisateur */
 .container-menu {
     width: 200px;
     height: 200px;
@@ -283,7 +287,7 @@ video{
     transition: all 0.2s 0.2s ease-in-out;
     cursor: pointer;
 }
-/* Animation */
+/* Animation du bouton utilisateur */
 
 .container-menu.active .blob-1 {
 left: 0;
@@ -293,6 +297,8 @@ top: 50%;
     left: 15%;
     top: 85%;
 }
+
+/* Partie des sections */
     
 .section1{
 display: grid;
@@ -366,6 +372,7 @@ background-size: cover;
 border: solid 2px black;
 }
 
+/* Partie Button de scroll down */
 .scroll-down {
     height: 50px;
     width: 30px;
@@ -393,12 +400,10 @@ border: solid 2px black;
   .scroll-down::before {
     top: 30%;
     animation-delay: 0.3s;
-    /* animation: scroll-down 1s ease-in-out infinite; */
   }
-  
+  /*  Animation button scroll down */
   @keyframes scroll-down {
     0% {
-      /* top:20%; */
       opacity: 0;
     }
     30% {
@@ -443,7 +448,7 @@ border: solid 2px black;
     top: 30%;
     animation-delay: 0.3s;
   }
-  
+  /* Animation Scroll up */
   @keyframes scroll-up {
     100% {
       opacity: 0;
@@ -460,6 +465,7 @@ border: solid 2px black;
     }
   }
 
+  /* Partie animation au scroll pour les section */
 .displayNone{
     display: none;
 }
@@ -488,7 +494,7 @@ border: solid 2px black;
     z-index: 10;
 }
 
-/* ------------------------------------------ MEDIA QUERY ---------------------------------- */
+/* ------------------------------------------ MEDIA QUERY 1600px ---------------------------------- */
 @media screen and (max-width : 1600px){
 
 .section1{
@@ -554,7 +560,7 @@ background-position: 0px, -100px;
 border: solid 2px black;
 }
 }
-
+/* ------------------------------------------ MEDIA QUERY 1150px ---------------------------------- */
 @media screen and (max-width : 1150px){
     
     .section1{

@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <!-- ----------------------------------  navbar ---------------------------------> 
-
+    <!-- ----------------------------------  VIDEO et NAV ---------------------------------> 
     <div class="navbarVideo">
+<<<<<<< HEAD
             <ul>
                 <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_immobilier">Immobilier</a></li>
                 <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_travail.php">Travail</a></li>
@@ -24,20 +24,35 @@
                 <li class="item"><a href="../page_contact/contact.php">Contacts</a></li>
                 <li class="item"><a href="#">Billet</a></li>
             </ul>
+=======
+        <ul>
+            <li class="item"><a href="../pages_anonces/immobilier.php">Immobilier</a></li>
+            <li class="item"><a href="../pages_anonces/travail.php">Travail</a></li>
+            <li class="item"><a href="../pages_anonces/loisirs.php">Loisir</a></li>
+            <li class="item"><a href="../page_contact/contact.php">Contacts</a></li>
+            <li class="item"><a href="#">Billet</a></li>
+        </ul>
+>>>>>>> 885a931... redirection liens
     </div>
+
     <div class="video">
         <video autoplay loop muted class="embed-responsive embed-responsive-16by9">
             <source src="video/Project 2.mkv">
         </video>
-            <div class="scroll-down">
-            </div>
+        <!-- Scroll Down -->
+        <div class="scroll-down">
+        </div>
     </div>
 
-    <!-- ----------------------------------- Video principal ---------------------------  -->
+    <!-- ----------------------------------- BODY ---------------------------  -->
     <div class="body displayNone">
         <?php navBar() ?>
+
+        <!-- Scroll Up -->
         <div class="scroll-up">
         </div>
+
+        <!-- Button Utilisateur -->
         <div class="container-menu">
             <div class="btn-menu">
                 <div class="ligne"></div>
@@ -47,9 +62,11 @@
                 <a href="../connexion/connexion.php" title="Connexion"><img src="images/user.svg" alt="icone" class="icone"></a>
             </div>
             <div class="blob blob-2">
-                <a href="../page_inscription/formulaire" title="Inscription"><img src="images/inscription.svg" alt="icone" class="icone"></a>
+                <a href="../page_inscription/formulaire.php" title="Inscription"><img src="images/inscription.svg" alt="icone" class="icone"></a>
             </div>
         </div>
+
+        <!-- Section 1 -->
         <div id="section1">
             <div class="section1">
                 <div class="imagePresentation reveal-1">
@@ -65,7 +82,7 @@
                 </div>
             </div>
         </div>
-
+            <!-- Section 2 -->
             <div class="section2">
                 <div class="imagePresentation2 reveal-1">
                 </div>
@@ -82,6 +99,7 @@
                 </div>
             </div>
 
+            <!-- Section 3 -->
             <div class="section1">
                 <div class="imagePresentation3 reveal-1">
                 </div>
@@ -95,12 +113,10 @@
                         minus molestias eius autem.</p>
                 </div>
             </div>
+            <!-- ----------------------------------  FOOTER ---------------------------------> 
             <?php footer() ?>
         </div>
 
-
-    <!-- ----------------------------------  FOOTER ---------------------------------> 
-     <!-- ----------------------------------  FIN_FOOTER ---------------------------------> 
 </body>
 <script src="app.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
