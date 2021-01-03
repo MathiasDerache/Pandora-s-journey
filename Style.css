@@ -230,8 +230,12 @@ hr{
     color: white;
 }
 
+.modifElem a{
+    text-decoration: none;
+}
 .modifElem svg:hover{
     color: red;
 }
+
 
  
