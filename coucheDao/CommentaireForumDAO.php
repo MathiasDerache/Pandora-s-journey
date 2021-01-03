@@ -3,6 +3,8 @@
 include_once("interfDao.php");
 include_once("connectionBaseDonnees.php");
 include_once __DIR__ . "/../classe_metier/CommentaireSujet.php";
+include_once __DIR__ . "/DaoException.php";
+
 
 class CommentaireForumDAO implements InterfDao
 {
@@ -17,22 +19,20 @@ class CommentaireForumDAO implements InterfDao
 
         try {
             $db = $this->db->connectiondb();
-            $idCommSuj = $commSujet->getIdCommSuj();
-            $pseudoUt = $commSujet->getPseudoUt();              // Function create Commentaire
-            $dateCommSuj = $commSujet->getDateCommSuj()->format('Y-m-d');
+            $pseudo = $commSujet->getPseudoUt();
             $contCommSuj = $commSujet->getContCommSuj();
             $idSuje = $commSujet->getIdSuje();
+            echo $idSuje;
+
             $idUti = $commSujet->getIdUti();
-            $stm = $db->prepare("INSERT INTO commentairefurum VALUES(?,?,?,?,?,?)");
-            $stm->bindValue(1, $idCommSuj, PDO::PARAM_INT);
-            $stm->bindValue(2, $pseudoUt);
-            $stm->bindValue(3, $dateCommSuj);
-            $stm->bindValue(4, $contCommSuj);
-            $stm->bindValue(5, $idSuje, PDO::PARAM_INT);
-            $stm->bindValue(6, $idUti,  PDO::PARAM_INT);
+            $stm = $db->prepare("INSERT INTO commentairefurum VALUES(NULL,?,NOW(),?,?,?)");
+            $stm->bindValue(1, $pseudo);
+            $stm->bindValue(2, $contCommSuj);
+            $stm->bindValue(3, $idSuje, PDO::PARAM_INT);
+            $stm->bindValue(4, $idUti,  PDO::PARAM_INT);
             $stm->execute();
         } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+            throw new DaoException($f->getMessage());
         }
     }
 

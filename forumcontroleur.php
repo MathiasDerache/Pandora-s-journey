@@ -17,8 +17,13 @@ if (!empty($_GET)) {
         if (!empty($_POST['contCommSuj'])) {
             $idUt = $_SESSION['id'];
             $pseudo = $_SESSION['pseudo'];
+            $idSujetForum = htmlspecialchars($_GET['idsuj']);
             $contCommSuj = htmlspecialchars($_POST['contCommSuj']);
-            $commSuj = (new CommentaireSujet())->setPseudoUt($pseudo)->setIdUti($idUt)->setContCommSuj($commSuj);
+            $commSuj = (new CommentaireSujet())->setPseudoUt($pseudo)->setIdUti($idUt)->setContCommSuj($contCommSuj)->setIdSuje($idSujetForum);
+            (new CommentaireForumService())->creatService($commSuj);
+
+            $sujets = (new SujetForumService())->readByIdService($idSujetForum);
+            SujetThemeForum($sujets);
         }
     } elseif (isset($_GET['action']) && $_GET['action'] == "ajout_Sujet_forum") {
         if (
