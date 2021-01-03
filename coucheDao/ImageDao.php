@@ -4,7 +4,8 @@ include_once __DIR__ . '/../classe_metier/Image.php';
 include_once __DIR__ . '/connectionBaseDonnees.php';
 include_once __DIR__ . '/DaoException.php';
 
-class ImageDao implements InterfDao
+class ImageDao implements
+    InterfDao
 {
     public function __construct()
     {
@@ -37,8 +38,8 @@ class ImageDao implements InterfDao
             $stm->bindValue(5, $IdUti, PDO::PARAM_INT);
             //execution de la requete preparée
             $stm->execute();
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+        } catch (PDOException $e) {
+            throw new DaoException($e->getMessage(), (int)$e->getCode());
         }
     }
 
@@ -65,8 +66,8 @@ class ImageDao implements InterfDao
             $stm->bindValue(4, $PathFile);
             $stm->bindValue(5, $idImage, PDO::PARAM_INT);
             $stm->execute();
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+        } catch (PDOException $e) {
+            throw new DaoException($e->getMessage(), (int)$e->getCode());
         }
     }
 
@@ -82,8 +83,8 @@ class ImageDao implements InterfDao
             $stm = $db->prepare("SELECT * FROM image");
             $stm->execute();
             $array = $stm->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+        } catch (PDOException $e) {
+            throw new DaoException($e->getMessage(), (int)$e->getCode());
         }
         $tab = [];
         foreach ($array as $value) {
@@ -109,8 +110,8 @@ class ImageDao implements InterfDao
             $stm = $db->prepare("DELETE FROM image WHERE id=?");
             $stm->bindValue(1, $id, PDO::PARAM_INT);
             $stm->execute();
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+        } catch (PDOException $e) {
+            throw new DaoException($e->getMessage(), (int)$e->getCode());
         }
     }
 
@@ -123,8 +124,8 @@ class ImageDao implements InterfDao
             $stm->bindValue(1, $NomFichier);
             $stm->execute();
             $array = $stm->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+        } catch (PDOException $e) {
+            throw new DaoException($e->getMessage(), (int)$e->getCode());
         }
         return $array;
     }
@@ -142,8 +143,8 @@ class ImageDao implements InterfDao
             $stm->bindValue(1, $id, PDO::PARAM_INT);
             $stm->execute();
             $array = $stm->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+        } catch (PDOException $e) {
+            throw new DaoException($e->getMessage(), (int)$e->getCode());
         }
 
         foreach ($array as $value) {
