@@ -16,7 +16,6 @@
 <body>
     <!-- ----------------------------------  VIDEO et NAV ---------------------------------> 
     <div class="navbarVideo">
-<<<<<<< HEAD
             <ul>
                 <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_immobilier">Immobilier</a></li>
                 <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_travail.php">Travail</a></li>
@@ -24,15 +23,6 @@
                 <li class="item"><a href="../page_contact/contact.php">Contacts</a></li>
                 <li class="item"><a href="#">Billet</a></li>
             </ul>
-=======
-        <ul>
-            <li class="item"><a href="../pages_anonces/immobilier.php">Immobilier</a></li>
-            <li class="item"><a href="../pages_anonces/travail.php">Travail</a></li>
-            <li class="item"><a href="../pages_anonces/loisirs.php">Loisir</a></li>
-            <li class="item"><a href="../page_contact/contact.php">Contacts</a></li>
-            <li class="item"><a href="#">Billet</a></li>
-        </ul>
->>>>>>> 885a931... redirection liens
     </div>
 
     <div class="video">
@@ -52,7 +42,7 @@
         <div class="scroll-up">
         </div>
 
-        <!-- Button Utilisateur -->
+        <!-- Button pour Utilisateur -->
         <div class="container-menu">
             <div class="btn-menu">
                 <div class="ligne"></div>
