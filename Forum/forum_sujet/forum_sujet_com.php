@@ -61,9 +61,13 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-8 col-md-8 col-lg-10 col-xl-10 bg-primary mt-4">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-8 col-md-8 col-lg-2 col-xl-2 mt-5 ">
-
                     <div class="position-fixed">
                         <button type="button" class="mx-auto d-block btn btn-warning rounded-pill boutonSideInfo">
                             <a href="#">
@@ -76,6 +80,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- ----------------------------------  pagination --------------------------------->
 

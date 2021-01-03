@@ -35,10 +35,13 @@ if (!empty($_GET)) {
 if (empty($_GET)) {
     $array = (new SujetForumService())->readService();
     sujetTypeForum($array);
-    echo is_numeric($_GET['sujetforum']);
 } else {
     echo "la page que vous demandez n'existe pas!";
 }
+
+
+
+
 function boutonFlottant()
 { ?>
 

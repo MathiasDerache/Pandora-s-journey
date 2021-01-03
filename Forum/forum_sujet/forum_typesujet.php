@@ -63,7 +63,7 @@ function sujetTypeForum(array $array = [])
                                         <?php
                                         $newCom = (new CommentaireForumService())->foundComById($value->getIdSujetTh());
                                         $compt = 0;
-                                        foreach ($newCom as $value) {
+                                        foreach ($newCom as $val) {
                                             $compt++;
                                         }
                                         echo $compt;
