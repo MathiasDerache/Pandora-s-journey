@@ -22,8 +22,6 @@ class CommentaireForumDAO implements InterfDao
             $pseudo = $commSujet->getPseudoUt();
             $contCommSuj = $commSujet->getContCommSuj();
             $idSuje = $commSujet->getIdSuje();
-            echo $idSuje;
-
             $idUti = $commSujet->getIdUti();
             $stm = $db->prepare("INSERT INTO commentairefurum VALUES(NULL,?,NOW(),?,?,?)");
             $stm->bindValue(1, $pseudo);

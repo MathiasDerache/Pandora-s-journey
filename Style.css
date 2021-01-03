@@ -225,4 +225,13 @@ th{
 hr{
     background-color: goldenrod;
 }
+
+.modifElem svg{
+    color: white;
+}
+
+.modifElem svg:hover{
+    color: red;
+}
+
  
