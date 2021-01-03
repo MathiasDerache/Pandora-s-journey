@@ -73,7 +73,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                                 $commForum = (new CommentaireForumService())->foundComById($sujetTheme->getIdSujetTh());
                                 foreach ($commForum as $value) {
                             ?>
-                                    <div class="mx-auto d-block col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                                    <div class="mx-auto d-block col-sm-10 col-md-10 col-lg-10 col-xl-10">
 
                                         <div class="media mt-5 mb-5 rounded-pill bgComm shadow col-sm-12 col-md-12 col-lg-12 col-xl-12 p-2">
                                             <img class="align-self-center mr-5 border-primary mt-0 rounded-circle shadow-lg ml-5" width="13%" src="images/profil_Id1.gif" alt="Generic placeholder image">
@@ -84,7 +84,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                                                 <p>
                                                     <?php echo $value->getContCommSuj(); ?>
                                                 </p>
-                                                <p class="mb-0">
+                                                <p class="mb-0">Posté le
                                                     <?php echo $value->getDateCommSuj()->format('d-m-Y'); ?>
                                                 </p>
                                             </div>

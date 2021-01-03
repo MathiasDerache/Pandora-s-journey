@@ -10,7 +10,17 @@ include_once __DIR__ . "/Forum/forum_sujet/forum_sujet_com.php";
 
 
 if (!empty($_GET)) {
-    if (isset($_GET['action']) && $_GET['action'] == "ajout_Sujet_forum") {
+    if (
+        isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "ajout_comm_forum" &&
+        isset($_GET['idsuj']) && !empty($_GET['idsuj']) && is_numeric($_GET['idsuj']) && !empty($_POST)
+    ) {
+        if (!empty($_POST['contCommSuj'])) {
+            $idUt = $_SESSION['id'];
+            $pseudo = $_SESSION['pseudo'];
+            $contCommSuj = htmlspecialchars($_POST['contCommSuj']);
+            $commSuj = (new CommentaireSujet())->setPseudoUt($pseudo)->setIdUti($idUt)->setContCommSuj($commSuj);
+        }
+    } elseif (isset($_GET['action']) && $_GET['action'] == "ajout_Sujet_forum") {
         if (
             isset($_POST['typeSujetTh']) && !empty($_POST['typeSujetTh'])
             && isset($_POST['questionSujet']) && !empty($_POST['questionSujet'])
@@ -36,8 +46,6 @@ if (!empty($_GET)) {
 if (empty($_GET)) {
     $array = (new SujetForumService())->readService();
     sujetTypeForum($array);
-} else {
-    echo "la page que vous demandez n'existe pas!";
 }
 
 
