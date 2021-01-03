@@ -128,7 +128,7 @@ class CommentaireForumDAO implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("SELECT * FROM commentairefurum WHERE idSujetTh=?");
+            $stm = $db->prepare("SELECT * FROM commentairefurum WHERE idSujetTh=? ORDER BY idcommsujet DESC");
             $stm->bindValue(1, $id, PDO::PARAM_INT);
             $stm->execute();
             $array = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -138,7 +138,7 @@ class CommentaireForumDAO implements InterfDao
         $tab = [];
         foreach ($array as $value) {
             $commSujet = new CommentaireSujet();
-            $commSujet->setIdCommSuj($value['idcommSujet'])
+            $commSujet->setIdCommSuj($value['idcommSujet'])->setPseudoUt($value['pseudoUt'])
                 ->setDateCommSuj(new DateTime($value['dateComSuj']))
                 ->setContCommSuj($value['contComSuj'])->setIdSuje($value['idSujetTh'])
                 ->setIdUti($value['idUti']);

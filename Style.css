@@ -216,4 +216,13 @@ th{
     background-color: #370EC2;
  }
 
+ /* commSujet */
+
+.bgComm{
+    background-color: #370EC2;
+}
+
+hr{
+    background-color: goldenrod;
+}
  

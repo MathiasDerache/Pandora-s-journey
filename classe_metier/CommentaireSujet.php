@@ -4,6 +4,7 @@ class CommentaireSujet
 {
 
     private $idCommSuj;
+    private $pseudoUt;
     private $dateCommSuj;
     private $contCommSuj;
     private $idUti;
@@ -33,7 +34,7 @@ class CommentaireSujet
     /**
      * Get the value of pseudoUt
      */
-    public function getPseudoUt(): string
+    public function getPseudoUt(): ?string
     {
         return $this->pseudoUt;
     }
