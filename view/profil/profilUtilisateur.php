@@ -2,10 +2,10 @@
 require_once("../../Pandora_nav_footer/nav.php");
 require_once("../../Pandora_nav_footer/footer.php");
 
-function html($imageProfil, $dataUtilisateur, $bannierProfil)
+function html($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur)
 {
     htmlHeader();
-    htmlbody($imageProfil, $dataUtilisateur, $bannierProfil);
+    htmlbody($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur);
 }
 
 function htmlHeader()
@@ -26,17 +26,18 @@ function htmlHeader()
     </head>
 <?php }
 
-function htmlbody($imageProfil, $dataUtilisateur, $bannierProfil)
+function htmlbody($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur)
 { ?>
 
     <body>
         <!-- ---------------------------------- Popup image ---------------------------------- -->
         <?php popupFormImageProfil();
-        popupFormBanniereProfil(); ?>
+        popupFormBanniereProfil();
+        popupErreur($erreur); ?>
         <!-- ---------------------------------- Fin popup image ---------------------------------- -->
         <!-- ----------------------------------  navbar --------------------------------->
         <?php
-        navBar();
+        // navBar();
         ?>
         <!-- ----------------------------------  navbar --------------------------------->
         <div class="container-fluid">
@@ -47,7 +48,7 @@ function htmlbody($imageProfil, $dataUtilisateur, $bannierProfil)
                             <h1 class="text-center mt-5 profilTitre">PAGE PROFIL</h1>
                             <hr>
                             <div class="row">
-                                <?php banniere($bannierProfil); ?>
+                                <?php banniere($banniereProfil); ?>
 
                                 <div class="row">
                                     <?php compteARebours();
@@ -55,7 +56,7 @@ function htmlbody($imageProfil, $dataUtilisateur, $bannierProfil)
                                 </div>
                             </div>
                             <div class="row">
-                                <?php annoncePourVous(); ?>
+                                <?php annoncePourVous($arrayAnnonce); ?>
                             </div>
                         </div>
                         <?php infoProfil($imageProfil, $dataUtilisateur); ?>
@@ -132,52 +133,47 @@ function infoProfil($imageProfil, $dataUtilisateur)
                         </div>
                     </div>
                 </div>
-                <h2 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getNom()); ?></h2>
-                <h4 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getPrenom()); ?></h4>
-                <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getPseudo(); ?></h4>
-                <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getEmail(); ?></h4>
-                <h4 class="text-center text-white m-4"><?php echo strtoupper($dataUtilisateur->getProfil()); ?></h4>
+                <?php if (!empty($dataUtilisateur)) { ?>
+                    <h2 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getNom()); ?></h2>
+                    <h4 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getPrenom()); ?></h4>
+                    <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getPseudo(); ?></h4>
+                    <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getEmail(); ?></h4>
+                    <h4 class="text-center text-white m-4"><?php echo strtoupper($dataUtilisateur->getProfil()); ?></h4>
+                <?php } else { ?>
+                    <h2 class="text-center text-white mb-4">NOM</h2>
+                    <h4 class="text-center text-white mb-4">PRENOM</h4>
+                    <h4 class="text-center text-white mb-4">PSEUDO</h4>
+                    <h4 class="text-center text-white mb-4">EMAIL</h4>
+                    <h4 class="text-center text-white m-4">PROFIL</h4>
+                <?php } ?>
             </div>
         </div>
     </div>
     </div>
 <?php }
 
-function annoncePourVous()
+function annoncePourVous($arrayAnnonce)
 { ?>
-    <div class="col-sm-12 col-md-10 col-lg-10 mb-5 text-center text-white">
-        <h2 class=" mt-5">ANNONCES POUVANT VOUS CORRESPONDRE :</h2>
-        <div class="row lignesN justify-content-between ">
-            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 lignes mt-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../view/profil/images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">titre annonce</h5>
-                        <p class="card-text">contenu annonces</p>
-                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
+    <div class="col-sm-12 col-md-12 col-lg-12 mb-5 text-center text-white">
+        <h2 class=" mt-5">ANNONCES RECENTE</h2>
+        <div class="row justify-content-center">
+            <?php if (!empty($arrayAnnonce)) {
+                krsort($arrayAnnonce);
+                foreach (array_slice($arrayAnnonce, 0, 3) as $value) { ?>
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 lignes mt-2">
+                        <div class="card">
+                            <img src="../../view/profil/images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $value->getTitreAnn(); ?></h5>
+                                <p class="card-text"><?php echo $value->getDescAnn(); ?></p>
+                                <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 lignes mt-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../view/profil/images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">titre annonce</h5>
-                        <p class="card-text">contenu annonces</p>
-                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 lignes mt-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../view/profil/images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">titre annonce</h5>
-                        <p class="card-text">contenu annonces</p>
-                        <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                    </div>
-                </div>
-            </div>
+                <?php }
+            } else { ?>
+                <h3>Aucune annonce disponible</h3>
+            <?php } ?>
         </div>
     </div>
 <?php }
@@ -311,3 +307,27 @@ function popupFormBanniereProfil()
         </div>
     </div>
 <?php }
+
+function popupErreur($erreur)
+{ ?>
+    <!-- Modal -->
+    <div class="modal fade text-center" id="modalErreur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content form-container p-4 text-white">
+                <h2 class="modal-title mb-3">Erreur</h2>
+                <p>Il y a eu un problème technique.<br>Code erreur : <?php echo $erreur; ?><br> Veuillez réessayer ultérieurement.</p>
+                <div>
+                    <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if (!empty($erreur)) { ?>
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('.xdebug-error').hide();
+                $('#modalErreur').modal('show');
+            });
+        </script>
+<?php }
+}

@@ -221,35 +221,6 @@ border: solid 2px black;
 
 /* POPUP */
 
-/* Fixez le bouton sur le côté gauche de la page the button on the left side of the page */
-.open-btn {
-    display: flex;
-    justify-content: center;
-}
-/* Stylez et fixez le bouton sur la page */
-.open-button {
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Positionnez la forme Popup */
-.login-popup {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    color: white;
-}
-/* Masquez la forme Popup */
-.form-popup {
-    display: none;
-    margin-top: 10%;
-    position: fixed;
-    border: 2px solid #666;
-    z-index: 1;
-}
 /* Styles pour le conteneur de la forme */
 .form-container {
     width: 100%;
