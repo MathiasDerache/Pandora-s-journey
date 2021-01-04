@@ -15,7 +15,7 @@ class UtilisateurDao implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("INSERT INTO utilisateur VALUES(null,NOW(),?,?,?,?,?,?,?)");
+            $stm = $db->prepare("INSERT INTO utilisateur VALUES(null,?,?,?,?,?,?,?,?,?)");
             $nom = $object->getNom();
             $prenom = $object->getPrenom();
             $pseudo = $object->getPseudo();
@@ -23,6 +23,8 @@ class UtilisateurDao implements InterfDao
             $numTel = $object->getNumTel();
             $password = $object->getPassword();
             $profil = $object->getProfil();
+            $dateNaissance = $object->getDateNaissance();
+            $civilite = $object->getCivilite();
             $stm->bindValue(1, $nom);
             $stm->bindValue(2, $prenom);
             $stm->bindValue(3, $pseudo);
@@ -30,6 +32,8 @@ class UtilisateurDao implements InterfDao
             $stm->bindValue(5, $numTel);
             $stm->bindValue(6, $password);
             $stm->bindValue(7, $profil);
+            $stm->bindValue(8, $dateNaissance);
+            $stm->bindValue(9, $civilite);
             $stm->execute();
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
@@ -40,22 +44,25 @@ class UtilisateurDao implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("UPDATE utilisateur SET nom=?, prenom=?, pseudo=?
-                                , email=?,numeroTel=?, passWord=?,idProfil=? WHERE idannonce=?");
+            $stm = $db->prepare("UPDATE utilisateur SET nom=?, prenom=?, pseudo=?, email=?, numeroTel=?, passWord=?, dateNaissance=?, sex=? WHERE idUti=?");
+            $idUti = $object->getIdUti();
             $nom = $object->getNom();
             $prenom = $object->getPrenom();
             $pseudo = $object->getPseudo();
             $email = $object->getEmail();
             $numTel = $object->getNumTel();
             $password = $object->getPassword();
-            $profil = $object->getProfil();
+            $dateNaissance = $object->getDateNaissance()->format("Y-m-d");
+            $civilite = $object->getCivilite();
             $stm->bindValue(1, $nom);
             $stm->bindValue(2, $prenom);
             $stm->bindValue(3, $pseudo);
             $stm->bindValue(4, $email);
             $stm->bindValue(5, $numTel);
             $stm->bindValue(6, $password);
-            $stm->bindValue(7, $profil);
+            $stm->bindValue(7, $dateNaissance);
+            $stm->bindValue(8, $civilite);
+            $stm->bindValue(9, $idUti);
             $stm->execute();
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
@@ -75,9 +82,10 @@ class UtilisateurDao implements InterfDao
         $tab = [];
         foreach ($array as $value) {
             $utilisateur = new Utilisateur();
-            $utilisateur->setNom($value['nom'])->setPrenom($value['prenom'])
-                ->setPseudo($value['pseudo'])->setEmail($value['numAdresse'])
-                ->setNumTel($value['numTel'])->setPassword($value['password'])->setProfil($value['profil']);
+            $utilisateur->setIdUti($value['idUti'])->setNom($value['nom'])->setPrenom($value['prenom'])
+                ->setPseudo($value['pseudo'])->setEmail($value['email'])
+                ->setNumTel($value['numeroTel'])->setPassword($value['passWord'])->setProfil($value['profil'])
+                ->setDateNaissance(new DateTime($value['dateNaissance']))->setCivilite($value['sex']);
             $tab[] = $utilisateur;
         }
         return $tab;
@@ -93,27 +101,6 @@ class UtilisateurDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-    }
-
-    public function trouveUtilisateur(int $idutil)
-    {
-        try {
-            $db = $this->db->connectiondb();
-            $stm = $db->prepare("SELECT * FROM utilisateur WHERE idUti=?");
-            $stm->bindValue(1, $idutil, PDO::PARAM_INT);
-            $stm->execute();
-            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
-        }
-        $tab = [];
-        foreach ($array as $value) {
-            $utilisateur = new Utilisateur();
-            $utilisateur->setNom($value['nom'])->setPrenom($value['prenom'])
-                ->setPseudo($value['pseudo'])->setEmail($value['email'])
-                ->setNumTel($value['numeroTel'])->setPassword($value['passWord'])->setProfil($value['profil']);
-        }
-        return $utilisateur;
     }
 
     /**
@@ -135,9 +122,10 @@ class UtilisateurDao implements InterfDao
 
         foreach ($array as $value) {
             $utilisateur = new Utilisateur();
-            $utilisateur->setNom($value['nom'])->setPrenom($value['prenom'])
+            $utilisateur->setIdUti($value['idUti'])->setNom($value['nom'])->setPrenom($value['prenom'])
                 ->setPseudo($value['pseudo'])->setEmail($value['email'])
-                ->setNumTel($value['numeroTel'])->setPassword($value['passWord'])->setProfil($value['profil']);
+                ->setNumTel($value['numeroTel'])->setPassword($value['passWord'])->setProfil($value['profil'])
+                ->setDateNaissance(new DateTime($value['dateNaissance']))->setCivilite($value['sex']);
         }
         return $utilisateur;
     }
