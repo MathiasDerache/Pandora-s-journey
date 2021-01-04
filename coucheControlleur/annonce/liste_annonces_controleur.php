@@ -12,6 +12,7 @@ require_once("../../classe_metier/Annonce.php");
 require_once("../../Pandora_nav_footer/nav.php");
 require_once("../../Pandora_nav_footer/footer.php");
 
+
 if (!empty($_GET)){
     if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "ajout_annonce"){
             $annonce = (new Annonce())->setTypeAnn($_POST['themeAnnonce'])->setTitreAnn($_POST['titreAnnonce'])->setDescAnn($_POST['descriptionAnnonce'])
