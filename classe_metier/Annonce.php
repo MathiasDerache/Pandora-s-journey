@@ -1,6 +1,6 @@
 <?php
 
-class Annonces
+class Annonce
 {
 
     private $idAnn;

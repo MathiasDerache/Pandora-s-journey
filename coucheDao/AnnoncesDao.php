@@ -18,9 +18,8 @@ class AnnoncesDao implements InterfDao
      */
     public function creat(object $object): void
     {
-        try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("INSERT INTO annonces VALUES(null,NOW(),?,?,?,?,?,?,?,?)");
+            $stm = $db->prepare("INSERT INTO annonces VALUES(null,?,?,?,?,?,?,?,?)");
             //recuperation des infos de $object instance de la class Annonce
             $typeAnnonce = $object->getTypeAnn();
             $titre = $object->getTitreAnn();
@@ -41,9 +40,6 @@ class AnnoncesDao implements InterfDao
             $stm->bindValue(8, $idUti);
             //execution de la requete preparée
             $stm->execute();
-        } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
-        }
     }
 
     /**
@@ -103,7 +99,7 @@ class AnnoncesDao implements InterfDao
         }
         $tab = [];
         foreach ($array as $value) {
-            $annonce = new Annonces();
+            $annonce = new Annonce();
             $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
                 ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
                 ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
@@ -148,7 +144,7 @@ class AnnoncesDao implements InterfDao
         }
 
         foreach ($array as $value) {
-            $annonce = new Annonces();
+            $annonce = new Annonce();
             $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
                 ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
                 ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);

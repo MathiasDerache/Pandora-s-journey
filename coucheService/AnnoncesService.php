@@ -3,7 +3,7 @@ include_once __DIR__ . "/../coucheDao/AnnoncesDao.php";
 include_once __DIR__ . "/InterfService.php";
 
 
-class annoncesService implements interfService
+class AnnoncesService implements interfService
 {
     /**
      * factorisation de l'instansiation d'objet AnnoncesDao
