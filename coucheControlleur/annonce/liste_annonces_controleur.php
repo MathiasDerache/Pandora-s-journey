@@ -1,9 +1,9 @@
 <?php
 
-require_once("../../pages_anonces/head_annonce.php");
-require_once("../../pages_anonces/body_annonce.php");
-require_once("../../pages_anonces/card_annonce.php");
-require_once("../../pages_anonces/pagination_annonce.php");
+require_once("../../view/pages_anonces/head_annonce.php");
+require_once("../../view/pages_anonces/body_annonce.php");
+require_once("../../view/pages_anonces/card_annonce.php");
+require_once("../../view/pages_anonces/pagination_annonce.php");
 require_once("../../coucheService/AnnoncesService.php");
 require_once("../../Pandora_nav_footer/nav.php");
 require_once("../../Pandora_nav_footer/footer.php");
