@@ -6,15 +6,44 @@ require_once("../../classe_metier/Image.php");
 require_once("../../coucheService/ImageService.php");
 require_once("../../classe_metier/Utilisateur.php");
 require_once("../../coucheService/UtilisateurService.php");
-require_once("../../coucheService/AnnoncesService.php");
+require_once("../../coucheService/SujetForumService.php");
+require_once("../../coucheService/CommentaireForumService.php");
 
 
 $image = new Image();
 $imageService = new ImageService();
 $utilisateur = new Utilisateur();
 $utilisateurService = new UtilisateurService();
-$annonce = new annoncesService();
+$sujet = new SujetForumService();
 $erreur = null;
+$commForumSujet = new CommentaireForumService();
+
+// Modification information profil
+if (
+    isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "modifInfoProfil"
+    && isset($_POST["email"]) && !empty($_POST["email"])
+    && isset($_POST["password"]) && !empty($_POST["password"])
+    && isset($_POST["pseudo"]) && !empty($_POST["pseudo"])
+    && isset($_POST["civilité"]) && !empty($_POST["civilité"])
+    && isset($_POST["nom"]) && !empty($_POST["nom"])
+    && isset($_POST["prénom"]) && !empty($_POST["prénom"])
+    && isset($_POST["date"]) && !empty($_POST["date"])
+    && isset($_POST["téléphone"]) && !empty($_POST["téléphone"])
+) {
+    $idUti = $_SESSION["id"];
+    $email = htmlentities($_POST["email"]);
+    $password = htmlentities($_POST["password"]);
+    $pseudo = htmlentities($_POST["pseudo"]);
+    $civilite = htmlentities($_POST["civilité"]);
+    $nom = htmlentities($_POST["nom"]);
+    $prenom = htmlentities($_POST["prénom"]);
+    $date = htmlentities($_POST["date"]);
+    $telephone = htmlentities($_POST["téléphone"]);
+
+    $utilisateur->setIdUti($idUti)->setEmail($email)->setPassword($password)->setPseudo($pseudo)->setCivilite($civilite)->setNom($nom)->setPrenom($prenom)->setDateNaissance(new DateTime($date))->setNumTel($telephone);
+    $utilisateurService->updateService($utilisateur);
+}
+
 
 // Modification image profil
 if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "modifImageProfil") {
@@ -134,12 +163,18 @@ try {
     }
 
     // Recherche données utilisateur
-    $dataUtilisateur = $utilisateurService->trouveUtil($_SESSION["id"]);
+    $dataUtilisateur = $utilisateurService->readByIdService($_SESSION["id"]);
 
-    // Recherche annonces
-    $arrayAnnonce = $annonce->readService();
+    // Recherche Sujet
+    $tab = $sujet->readService();
+    foreach ($tab as $value) {
+        if ($value->getIdUti() === $_SESSION["id"]) {
+            $arraySujet[] = $value;
+            $arrayReponse[] = $commForumSujet->foundComById($value->getIdSujetTh());
+        }
+    }
 } catch (ServiceException $e) {
     $erreur = $e->getCode();
     // header("refresh:5;url=../../pandora_accueil/Index.php");
 }
-html($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur);
+html($imageProfil, $dataUtilisateur, $banniereProfil, $arraySujet, $erreur, $arrayReponse);
