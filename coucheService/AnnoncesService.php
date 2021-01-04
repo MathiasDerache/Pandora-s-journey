@@ -46,13 +46,23 @@ class AnnoncesService implements interfService
     }
 
     /**
-     * recupère un tableau de doinnée de la couche dao et la transmet au controlleur associé
+     * recupère un objet de de la couche dao et la transmet au controlleur associé
      *
-     * @return array
+     * @return object
      */
     public function readByIdService(?int $id): ?object
     {
-        return $this->service->readByIdService($id);
+        return $this->service->readById($id);
+    }
+
+        /**
+     * recupère un objet de de la couche dao et la transmet au controlleur associé
+     *
+     * @return object
+     */
+    public function readByTypeService(?string $type): ?array
+    {
+        return $this->service->readByType($type);
     }
 
     /**

@@ -136,8 +136,8 @@ class UtilisateurDao implements InterfDao
         foreach ($array as $value) {
             $utilisateur = new Utilisateur();
             $utilisateur->setNom($value['nom'])->setPrenom($value['prenom'])
-                ->setPseudo($value['pseudo'])->setEmail($value['numAdresse'])
-                ->setNumTel($value['numTel'])->setPassword($value['password'])->setProfil($value['profil']);
+                ->setPseudo($value['pseudo'])->setEmail($value['email'])
+                ->setNumTel($value['numeroTel'])->setPassword($value['passWord'])->setProfil($value['profil']);
         }
         return $utilisateur;
     }

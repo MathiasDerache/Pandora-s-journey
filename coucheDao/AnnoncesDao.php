@@ -18,6 +18,7 @@ class AnnoncesDao implements InterfDao
      */
     public function creat(object $object): void
     {
+        try{
             $db = $this->db->connectiondb();
             $stm = $db->prepare("INSERT INTO annonces VALUES(null,?,?,?,?,?,?,?,?)");
             //recuperation des infos de $object instance de la class Annonce
@@ -40,6 +41,9 @@ class AnnoncesDao implements InterfDao
             $stm->bindValue(8, $idUti);
             //execution de la requete preparée
             $stm->execute();
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
     }
 
     /**
@@ -127,7 +131,7 @@ class AnnoncesDao implements InterfDao
     }
 
     /**
-     * recupere dans un array avec l'annonce par id
+     * recupere l'annonce par id
      *
      * @return array
      */
@@ -150,5 +154,32 @@ class AnnoncesDao implements InterfDao
                 ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
         }
         return $annonce;
+    }
+
+    /**
+     * recupere l'annonce par id
+     *
+     * @return array
+     */
+    public function readByType(?string $type): ?array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM annonces WHERE typeAnnonce=?");
+            $stm->bindValue(1, $type);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+
+        foreach ($array as $value) {
+            $annonce = new Annonce();
+            $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
+                ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
+                ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
+                $tab[]=$annonce;
+        }
+        return $tab;
     }
 }

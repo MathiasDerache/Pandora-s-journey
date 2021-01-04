@@ -4,7 +4,7 @@ session_start();
 $_SESSION['id'] = 1;
 
 require_once("../../view/pages_anonces/head_annonce.php");
-require_once("../../view/pages_anonces/body_annonce.php");
+require_once("../../view/pages_anonces/body_liste_annonce.php");
 require_once("../../view/pages_anonces/card_annonce.php");
 require_once("../../view/pages_anonces/pagination_annonce.php");
 require_once("../../coucheService/AnnoncesService.php");
@@ -33,7 +33,7 @@ if (!empty($_GET)){
             }
             
             navBar();
-            bodyAnnonces($annonce->getTypeAnn());
+            bodyListeAnnonces($annonce->getTypeAnn());
 
             if (!empty($_GET)){
                 if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier"){
@@ -86,7 +86,7 @@ if (!empty($_GET)){
             }
 
             navBar();
-            bodyAnnonces($typeAnnonce);
+            bodyListeAnnonces($typeAnnonce);
             
             if (!empty($_GET)){
                 if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier"){
