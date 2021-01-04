@@ -12,6 +12,8 @@ class Utilisateur
     private $numTel;
     private $password;
     private $profil;
+    private $dateNaissance;
+    private $civilite;
 
     // constructeur par défaut
 
@@ -35,6 +37,18 @@ class Utilisateur
     public function getIdUti(): int
     {
         return $this->idUti;
+    }
+
+    /**
+     * Set the value of idUti
+     *
+     * @return  self
+     */
+    public function setIdUti(int $idUti): self
+    {
+        $this->idUti = $idUti;
+
+        return $this;
     }
 
     /**
@@ -178,13 +192,41 @@ class Utilisateur
     }
 
     /**
-     * Set the value of idUti
+     * Get the value of dateNaissance
+     */
+    public function getDateNaissance(): DateTime
+    {
+        return $this->dateNaissance;
+    }
+
+    /**
+     * Set the value of dateNaissance
      *
      * @return  self
      */
-    public function setIdUti($idUti)
+    public function setDateNaissance(DateTime $dateNaissance): self
     {
-        $this->idUti = $idUti;
+        $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of civilite
+     */
+    public function getCivilite(): string
+    {
+        return $this->civilite;
+    }
+
+    /**
+     * Set the value of civilite
+     *
+     * @return  self
+     */
+    public function setCivilite(string $civilite): self
+    {
+        $this->civilite = $civilite;
 
         return $this;
     }
