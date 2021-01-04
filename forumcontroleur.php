@@ -11,12 +11,12 @@ include_once __DIR__ . "/coucheService/CommentaireForumService.php";
 
 
 
-if (!empty($_GET)) {
+if (!empty($_GET)) { // ici je verifie que le get n'est pas empty
     if (
-        isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "ajout_comm_forum" &&
-        isset($_GET['idsuj']) && !empty($_GET['idsuj']) && is_numeric($_GET['idsuj']) && !empty($_POST)
-    ) {
-        if (!empty($_POST['contCommSuj'])) {
+        isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "ajout_comm_forum" && // ici je verifie 
+        isset($_GET['idsuj']) && !empty($_GET['idsuj']) && is_numeric($_GET['idsuj']) && !empty($_POST) // les infos de mon get
+    ) { // et qu'il s'ajit bien d'un ajout de Comm lié à un sujet dans le forum
+        if (!empty($_POST['contCommSuj'])) { // ici je verifie que mon post n'est pas empty
             $idUt = $_SESSION['id'];
             $pseudo = $_SESSION['pseudo'];
             $idSujetForum = htmlspecialchars($_GET['idsuj']);
