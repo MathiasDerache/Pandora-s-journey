@@ -8,6 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="jquery-fab-button/css/jquery-fab-button.css">
     <link rel="stylesheet" href="Style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">  
     <title>Accueil</title>
@@ -49,10 +52,10 @@
             </div>
 
             <div class="blob blob-1">
-                <a href="../connexion/connexion.php" title="Connexion"><img src="images/user.svg" alt="icone" class="icone"></a>
+                <button data-toggle="modal" data-target="#modalConnexion"><img src="images/user.svg" alt="icone" class="icone"></button>
             </div>
             <div class="blob blob-2">
-                <a href="../page_inscription/formulaire.php" title="Inscription"><img src="images/inscription.svg" alt="icone" class="icone"></a>
+                <button data-toggle="modal" data-target="#modalInscription"><img src="images/inscription.svg" alt="icone" class="icone"></button>
             </div>
         </div>
 
@@ -108,6 +111,79 @@
         </div>
 
 </body>
+
+<!-- Modal Connexion -->
+<div class="modal fade text-center" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content form-container p-4">
+            <h2 class="modal-title text-white mb-3">Connexion</h2>
+            <form action="#" method="post">
+                <div class="connexion">
+
+                    <h4 class="titre">CONNEXION</h4>
+
+                    <label for="email">Adresse E-mail / Nom utilisateur</label></br>
+                    <input type="text" name="login" id="login" pattern="^[a-zA-Z0-9_.-]{2,}@[a-zA-Z0-9_.-]{2,}\.[a-zA-Z]{2,}$|^(?=.*[a-z])[A-Za-z\d_.-]{2,15}$" required></br>
+
+                    <label for="password">Mot de passe</label></br>
+                    <input type="password" name="password" id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[\w\W]{8,20}$" required></br>
+
+                    <button type="submit">Connexion</button>
+                    <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Inscription -->
+<div class="modal fade text-center" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content form-container p-4">
+            <h2 class="modal-title text-white mb-3">Inscription</h2>
+                <form action="#" method="post">
+                    <div class="inscription">
+
+                        <h4 class="titre">INSCRIPTION</h4>
+
+                        <label for="email">Adresse E-mail</label></br>
+                        <input type="email" name="email" id="mail" pattern="^[a-zA-Z0-9_.-]{2,}@[a-zA-Z0-9_.-]{2,}\.[a-zA-Z]{2,}$" required></br>
+
+                        <label for="password">Mot de passe</label></br>
+                        <input type="password" name="password" id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[\w\W]{8,20}$" required></br>
+
+                        <label for="text">Nom utilisateur</label></br>
+                        <input type="text" name="user_name" id="user"  pattern="^(?=.*[a-z])[A-Za-z\d_.-]{2,15}$"required></br>
+
+                        <label for="civilité">Civilité</label></br>
+
+                        <input type="radio" name="civilité" id="monsieur" value="Monsieur" required>
+                        <label class="civilité" for="monsieur">Monsieur</label>
+
+                        
+                        <input type="radio" name="civilité" id="madame" value="Madame" required>
+                        <label class="civilité" for="madame">Madame</label></br>
+                        
+
+                        <label for="nom">Nom</label></br>
+                        <input type="text" name="nom" id="nom" pattern="^[A-Za-z]{2,20}$" required></br>
+
+                        <label for="prénom">Prénom</label></br>
+                        <input type="text" name="prénom" id="prénom" pattern="^[A-Za-z]{2,20}$" required></br>
+
+                        <label for="date_de_naissance">Date de naissance</label></br>
+                        <input type="date" name="date" id="date" required></br>
+
+                        <label for="tel">Téléphone</label></br>
+                        <input type="tel" name="téléphone" id="tel" pattern="^[\d+]{10,12}$" required></br>
+                    
+                        <button type="submit">Valider</button>
+                        <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <script src="app.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </html>

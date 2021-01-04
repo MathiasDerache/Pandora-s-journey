@@ -494,6 +494,120 @@ border: solid 2px black;
     z-index: 10;
 }
 
+
+/* ↓↓ Formulaire inscription Modal ↓↓ */
+
+.connexion {
+  background-color: #040753;
+  color: white;
+  text-align: center;
+  /* margin-top: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 5%;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 100px white; */
+}
+
+.titre{
+  color: #ffc107;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: x-large;
+}
+
+input {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 50px;
+  width: 70%;
+  height: 40px;
+  border: 0;
+  outline: none;
+}
+
+label {
+  font-size: large;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: #ffc107;
+  border-radius: 50px;
+  width: 50%;
+  height: 50px;
+  font-size: x-large;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+button:active {
+  outline: none;
+  border: none;
+}
+
+
+/* ↓↓ Formulaire inscription ↓↓ */
+
+.inscription {
+  background-color: #040753;
+  color: white;
+  text-align: center;
+  /* margin-top: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 5%;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 100px white; */
+}
+
+.titre{
+  color: #ffc107;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+input {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 50px;
+  width: 70%;
+  height: 40px;
+  border: 0;
+  outline: none;
+}
+
+#date{
+  padding-left: 50px;
+}
+
+label {
+  font-size: large;
+}
+
+.civilité {
+  font-size: 20px;
+}
+
+#monsieur {
+  width: 20px;
+  height: 15px;
+}
+
+#madame {
+  width: 20px;
+  height: 15px;
+  margin-left: 20px;
+}
+
 /* ------------------------------------------ MEDIA QUERY 1600px ---------------------------------- */
 @media screen and (max-width : 1600px){
 
