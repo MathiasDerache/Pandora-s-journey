@@ -142,12 +142,11 @@ html{
 .navbarVideo ul{
  display: flex;
  flex-direction: row;
- justify-content: flex-start;
- position: relative;
+ justify-content: space-around;
  background-color: transparent;
+ width: 100%;
  position: absolute;
- top: 30px;
- left: 40%;
+ top: 20px;
  z-index: 100;
 }
 
@@ -161,7 +160,6 @@ html{
 
 .navbarVideo ul li a{
   text-decoration: none;
-  margin-left: 120px;
   font-size: 2em;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -467,7 +465,7 @@ border: solid 2px black;
 
   /* Partie animation au scroll pour les section */
 .displayNone{
-    display: none;
+    display: none!important;
 }
 
 
@@ -706,5 +704,12 @@ border: solid 2px black;
     display: grid;
     order: 1;
     height: 600px;
+    }
+
+    .navbarVideo ul{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 }

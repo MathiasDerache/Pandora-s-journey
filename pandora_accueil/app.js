@@ -10,7 +10,7 @@ btnMenu.addEventListener('click', () => {
 
 
 //Animation du body, avec affichage ou non des éléments
-const video = document.querySelector('.video');
+const main = document.querySelector('.main');
 const body = document.querySelector('.body');
 const scrollDown = document.querySelector('.scroll-down');
 const scrollUp = document.querySelector('.scroll-up');
@@ -18,7 +18,7 @@ const scrollUp = document.querySelector('.scroll-up');
 // Partie Scroll Down
 scrollDown.addEventListener('click', () =>{
     // Ajout de la classe DisplayNone au click
-    video.classList.add('displayNone');
+    main.classList.add('displayNone');
 })
 
 scrollDown.addEventListener('click', () =>{
@@ -29,7 +29,7 @@ scrollDown.addEventListener('click', () =>{
 // Partie Scroll Up 
 scrollUp.addEventListener('click', () =>{
     // Suppression de la classe DisplayNone au click
-    video.classList.remove('displayNone');
+    main.classList.remove('displayNone');
 })
 
 scrollUp.addEventListener('click', () =>{
