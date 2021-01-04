@@ -199,7 +199,7 @@ video{
     height: 200px;
     position: fixed;
     top: 30%;
-    left: 100%;
+    left: 95%;
     transform: translate(-50%,-50%);
     z-index: 100;
 }
@@ -290,12 +290,12 @@ video{
 /* Animation du bouton utilisateur */
 
 .container-menu.active .blob-1 {
-left: 0;
-top: 50%;
+left: 50;
+top: 100%;
 }
 .container-menu.active .blob-2 {
-    left: 15%;
-    top: 85%;
+    left: 50%;
+    top: 150%;
 }
 
 /* Partie des sections */
