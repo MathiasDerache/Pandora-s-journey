@@ -244,3 +244,11 @@ hr{
 }
 
                           /* css corps annonce */
+
+/* modal annonce */
+
+.modal-dialog{
+    font-family: 'Playfair Display', serif;
+    background-color:  #040753;
+    font-weight: bold;
+}

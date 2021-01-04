@@ -21,7 +21,7 @@
     <div class="navbarVideo">
             <ul>
                 <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_immobilier">Immobilier</a></li>
-                <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_travail.php">Travail</a></li>
+                <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_travail">Travail</a></li>
                 <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_loisir">Loisir</a></li>
                 <li class="item"><a href="../page_contact/contact.php">Contacts</a></li>
                 <li class="item"><a href="#">Billet</a></li>
