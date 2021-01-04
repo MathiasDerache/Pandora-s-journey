@@ -1,7 +1,7 @@
 <?php
 
 function cardAnnonce($annonces, $i){ ?>
-    <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 lignes">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 lignes">
                         <div class="card" style="width: 18rem;">
                             <img src="..." class="card-img-top btn btn-info" alt="">
                             <div class="card-body">
