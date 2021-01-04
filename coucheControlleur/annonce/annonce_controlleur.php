@@ -20,17 +20,15 @@ $annoncesTravail=(new AnnoncesService())->readByTypeService('travail');
 $annoncesLoisir=(new AnnoncesService())->readByTypeService('loisir');
 $annoncesImmobilier=(new AnnoncesService())->readByTypeService('immobilier');
 
+headAnnonce($titleAnnonce);
 navBar();
 if ($annonce->getTypeAnn() == 'immobilier'){
-        headAnnonce($titleAnnonce);
         bodyAnnonce($annonce, $auteurAnnonce, $annoncesTravail, $annoncesLoisir);
 }
 elseif ($annonce->getTypeAnn() == 'travail'){
-        headAnnonce($titleAnnonce);
         bodyAnnonce($annonce, $auteurAnnonce, $annoncesImmobilier, $annoncesLoisir);
 }
 elseif ($annonce->getTypeAnn() == 'loisir'){
-        headAnnonce($titleAnnonce);
         bodyAnnonce($annonce, $auteurAnnonce, $annoncesTravail, $annoncesImmobilier);
 }
 footer();
