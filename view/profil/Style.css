@@ -219,6 +219,18 @@ border: solid 2px black;
     height: 250px;
 }
 
+tbody:hover {
+    background-color: #343a40;
+}
+
+tbody:hover td{
+    color: white;
+}
+
+input {
+    text-align: center;
+}
+
 /* POPUP */
 
 /* Styles pour le conteneur de la forme */
@@ -362,13 +374,14 @@ display: none;
      color: white;
  }
 
- .profilDetails hr{
+ hr{
      size: 2px;
      background-color: goldenrod;
  }
 
  .card-body{
     background-color: #370EC2;
+    overflow: auto;
  }
 
  

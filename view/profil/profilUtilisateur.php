@@ -2,10 +2,10 @@
 require_once("../../Pandora_nav_footer/nav.php");
 require_once("../../Pandora_nav_footer/footer.php");
 
-function html($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur)
+function html($imageProfil, $dataUtilisateur, $banniereProfil, $arraySujet, $erreur, $arrayReponse)
 {
     htmlHeader();
-    htmlbody($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur);
+    htmlbody($imageProfil, $dataUtilisateur, $banniereProfil, $arraySujet, $erreur, $arrayReponse);
 }
 
 function htmlHeader()
@@ -26,44 +26,39 @@ function htmlHeader()
     </head>
 <?php }
 
-function htmlbody($imageProfil, $dataUtilisateur, $banniereProfil, $arrayAnnonce, $erreur)
+function htmlbody($imageProfil, $dataUtilisateur, $banniereProfil, $arraySujet, $erreur, $arrayReponse)
 { ?>
 
     <body>
         <!-- ---------------------------------- Popup image ---------------------------------- -->
         <?php popupFormImageProfil();
         popupFormBanniereProfil();
+        popupInfoProfil($dataUtilisateur);
         popupErreur($erreur); ?>
         <!-- ---------------------------------- Fin popup image ---------------------------------- -->
         <!-- ----------------------------------  navbar --------------------------------->
         <?php
-        // navBar();
+        navBar();
         ?>
         <!-- ----------------------------------  navbar --------------------------------->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-10 col-lg-10 pt-5">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-lg-8 profilDetails">
-                            <h1 class="text-center mt-5 profilTitre">PAGE PROFIL</h1>
-                            <hr>
-                            <div class="row">
-                                <?php banniere($banniereProfil); ?>
-
-                                <div class="row">
-                                    <?php compteARebours();
-                                    locationAchat(); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <?php annoncePourVous($arrayAnnonce); ?>
-                            </div>
-                        </div>
-                        <?php infoProfil($imageProfil, $dataUtilisateur); ?>
-                    </div>
-                    <!-- bouton flottant -->
-                    <?php boutonFlottant(); ?>
+                <div class="col-sm-12 col-md-12col-lg-12 pt-5">
+                    <h1 class="text-center mt-5 profilTitre">PAGE PROFIL</h1>
+                    <hr>
+                    <?php banniere($banniereProfil); ?>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-8 profilDetails">
+                    <div class="row">
+                        <?php compteARebours(); ?>
+                    </div>
+                    <div class="row">
+                        <?php vosSujets($arraySujet, $arrayReponse); ?>
+                    </div>
+                </div>
+                <?php infoProfil($imageProfil, $dataUtilisateur); ?>
             </div>
         </div>
         </div>
@@ -116,8 +111,8 @@ function boutonFlottant()
 
 function infoProfil($imageProfil, $dataUtilisateur)
 { ?>
-    <div class="col-sm-12 col-md-4 col-lg-4 pt-5 ">
-        <div class="card-dark col-12  mt-5 mb-3">
+    <div class="col-sm-12 col-md-4 col-lg-4 ">
+        <div class="card-dark col-12  mt-2 mb-3">
             <div class="card-body">
                 <div class="mb-5">
                     <?php
@@ -134,45 +129,87 @@ function infoProfil($imageProfil, $dataUtilisateur)
                     </div>
                 </div>
                 <?php if (!empty($dataUtilisateur)) { ?>
-                    <h2 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getNom()); ?></h2>
-                    <h4 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getPrenom()); ?></h4>
+                    <h4 class="text-center text-white m-4"><?php echo ucfirst(strtolower($dataUtilisateur->getCivilite())); ?></h4>
+                    <h4 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getNom()); ?></h4>
+                    <h4 class="text-center text-white mb-4"><?php echo ucfirst(strtolower($dataUtilisateur->getPrenom())); ?></h4>
                     <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getPseudo(); ?></h4>
                     <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getEmail(); ?></h4>
-                    <h4 class="text-center text-white m-4"><?php echo strtoupper($dataUtilisateur->getProfil()); ?></h4>
+                    <h4 class="text-center text-white m-4"><?php $date = $dataUtilisateur->getDateNaissance();
+                                                            $dateNow = new DateTime();
+                                                            $age = $date->diff($dateNow);
+                                                            echo $age->format('%y ans'); ?></h4>
+                    <h4 class="text-center text-white m-4"><?php echo $dataUtilisateur->getNumTel(); ?></h4>
                 <?php } else { ?>
-                    <h2 class="text-center text-white mb-4">NOM</h2>
+                    <h4 class="text-center text-white mb-4">CIVILITE</h4>
+                    <h4 class="text-center text-white mb-4">NOM</h4>
                     <h4 class="text-center text-white mb-4">PRENOM</h4>
                     <h4 class="text-center text-white mb-4">PSEUDO</h4>
                     <h4 class="text-center text-white mb-4">EMAIL</h4>
-                    <h4 class="text-center text-white m-4">PROFIL</h4>
+                    <h4 class="text-center text-white m-4">DATE DE NAISSANCE</h4>
+                    <h4 class="text-center text-white mb-4">NUMREO DE TELEPHONE</h4>
                 <?php } ?>
+                <div class="container">
+                    <div class="text-center pt-2">
+                        <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalInfoProfil">Modifier vos infromation</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     </div>
 <?php }
 
-function annoncePourVous($arrayAnnonce)
+function vosSujets($arraySujet, $arrayReponse)
 { ?>
-    <div class="col-sm-12 col-md-12 col-lg-12 mb-5 text-center text-white">
-        <h2 class=" mt-5">ANNONCES RECENTE</h2>
+    <div class="col-sm-12 col-md-12 col-lg-12 text-center text-white">
+        <h2 class=" mt-5">Vos sujets</h2>
         <div class="row justify-content-center">
-            <?php if (!empty($arrayAnnonce)) {
-                krsort($arrayAnnonce);
-                foreach (array_slice($arrayAnnonce, 0, 3) as $value) { ?>
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 lignes mt-2">
-                        <div class="card">
-                            <img src="../../view/profil/images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="card-img-top btn btn-info" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $value->getTitreAnn(); ?></h5>
-                                <p class="card-text"><?php echo $value->getDescAnn(); ?></p>
-                                <a href="annonce.php" class="btn btn-primary stretched-link">consulter</a>
-                            </div>
-                        </div>
-                    </div>
-                <?php }
+            <?php if (!empty($arraySujet)) {
+                krsort($arraySujet); ?>
+                <table class="table table-hover ml-3 mt-2">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th scope="col">Questions sur la thématique</th>
+                            <th scope="col">Thématique</th>
+                            <th scope="col">Réponses</th>
+                            <th scope="col">Auteur</th>
+                            <th scope="col">Date d'ajout</th>
+                            <th scope="col">Accéder à la discussion</th>
+                        </tr>
+                    </thead>
+                    <?php foreach (array_slice($arraySujet, 0, 3) as $value) { ?>
+                        <tbody class="text-white">
+                            <tr>
+                                <td scope="row"><?php echo $value->getQuestionSujet(); ?></td>
+                                <td scope="row"><?php echo $value->getTypeSujetTh(); ?></td>
+                                <td>
+                                    <?php
+                                    $compt = 0;
+                                    foreach ($arrayReponse as $val) {
+                                        foreach ($val as $v) {
+                                            if ($value->getIdSujetTh() == $v->getIdSuje()) {
+                                                $compt++;
+                                            }
+                                        }
+                                    }
+                                    echo $compt;
+                                    ?>
+                                </td>
+                                <td><?php echo $_SESSION["pseudo"]; ?>
+                                </td>
+                                <td scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
+                                <td>
+                                    <button type="button" class="btn btn-danger rounded-pill ">
+                                        <a href="../../forumcontroleur.php?sujetforum=<?php echo $value->getIdSujetTh(); ?>" style="text-decoration: none;" class=" text-white">Discussion</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    <?php } ?>
+                </table>
+            <?php
             } else { ?>
-                <h3>Aucune annonce disponible</h3>
+                <h3>Vous n'avez pas posté de sujet</h3>
             <?php } ?>
         </div>
     </div>
@@ -213,10 +250,10 @@ function locationAchat()
 
 function compteARebours()
 { ?>
-    <div class="col-sm-6 col-md-6 col-lg-6 mt-5">
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
         <div class="row">
             <div class="col-12 text-center text-white">
-                <h2>COMPTE A REBOURS:</h2>
+                <h2>COMPTE A REBOURS PROCHAIN DEPART</h2>
                 <h1 id="countdown"></h1>
                 <script>
                     // Date de départ
@@ -250,20 +287,20 @@ function compteARebours()
 
 function banniere($banniereProfil)
 { ?>
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <?php
-        if (empty($banniereProfil)) {
-            echo '<img src="../../view/profil/banniereProfil/voyagez.jpg" class="img-fluid shadow-lg banniere_profil">';
-        } else {
-            echo '<img src="../../view/profil/banniereProfil/' . $banniereProfil[0]["NomFichier"] . '" class="img-fluid shadow-lg banniere_profil">';
-        }
-        ?>
-        <div class="container">
-            <div class="text-center pt-2">
-                <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalBanniere">Modifier la banniere</div>
-            </div>
+    <!-- <div class="col-sm-12 col-md-12 col-lg-12"> -->
+    <?php
+    if (empty($banniereProfil)) {
+        echo '<img src="../../view/profil/banniereProfil/voyagez.jpg" class="img-fluid shadow-lg banniere_profil">';
+    } else {
+        echo '<img src="../../view/profil/banniereProfil/' . $banniereProfil[0]["NomFichier"] . '" class="img-fluid shadow-lg banniere_profil">';
+    }
+    ?>
+    <div class="container">
+        <div class="text-center pt-2">
+            <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalBanniere">Modifier la banniere</div>
         </div>
     </div>
+    <!-- </div> -->
 <?php }
 
 function popupFormImageProfil()
@@ -329,5 +366,44 @@ function popupErreur($erreur)
                 $('#modalErreur').modal('show');
             });
         </script>
-<?php }
+    <?php }
 }
+
+function popupInfoProfil($dataUtilisateur)
+{ ?>
+    <!-- Modal -->
+    <div class="modal fade text-center" id="modalInfoProfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content form-container text-white p-4">
+                <h2 class="modal-title text-white mb-3">Modifier mes informations</h2>
+                <form action="profilControleur.php?action=modifInfoProfil" method="post">
+                    <label for="email">Adresse E-mail</label></br>
+                    <input class="form-control" type="email" name="email" id="mail" pattern="^[a-zA-Z0-9_.-]{2,}@[a-zA-Z0-9_.-]{2,}\.[a-zA-Z]{2,}$" required value="<?php echo $dataUtilisateur->getEmail(); ?>"></br>
+                    <label for="password">Mot de passe</label></br>
+                    <input class="form-control" type="password" name="password" id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[\w\W]{8,20}$" required></br>
+                    <label for="text">Nom utilisateur</label></br>
+                    <input class="form-control" type="text" name="pseudo" id="pseudo" pattern="^(?=.*[a-z])[A-Za-z\d_.-]{2,15}$" required value="<?php echo $dataUtilisateur->getPseudo(); ?>"></br>
+                    <label for="civilité">Civilité</label></br>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input class="custom-control-input" type="radio" name="civilité" id="monsieur" value="Monsieur" required>
+                        <label class="civilité custom-control-label" for="monsieur">Monsieur</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input class="custom-control-input" type="radio" name="civilité" id="madame" value="Madame" required>
+                        <label class="civilité custom-control-label" for="madame">Madame</label></br>
+                    </div></br>
+                    <label for="nom">Nom</label></br>
+                    <input class="form-control" type="text" name="nom" id="nom" pattern="^[A-Za-z]{2,20}$" required value="<?php echo $dataUtilisateur->getNom(); ?>"></br>
+                    <label for="prénom">Prénom</label></br>
+                    <input class="form-control" type="text" name="prénom" id="prénom" pattern="^[A-Za-z]{2,20}$" required value="<?php echo $dataUtilisateur->getPrenom(); ?>"></br>
+                    <label for="date_de_naissance">Date de naissance</label></br>
+                    <input class="form-control" type="date" name="date" id="date" required value="<?php echo $dataUtilisateur->getDateNaissance()->format("Y-m-d"); ?>"></br>
+                    <label for="tel">Téléphone</label></br>
+                    <input class="form-control" type="tel" name="téléphone" id="tel" pattern="^[\d+]{10,12}$" required value="<?php echo $dataUtilisateur->getNumTel(); ?>"></br>
+                    <button type="submit" class="btn btn-warning rounded-pill text-white">Soumettre</button>
+                    <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php }
