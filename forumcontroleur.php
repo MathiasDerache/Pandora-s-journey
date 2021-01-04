@@ -7,6 +7,8 @@ include_once __DIR__ . "/coucheService/SujetForumService.php";
 include_once __DIR__ . "/classe_metier/SujetTheme.php";
 include_once __DIR__ . "/classe_metier/CommentaireSujet.php";
 include_once __DIR__ . "/Forum/forum_sujet/forum_sujet_com.php";
+include_once __DIR__ . "/coucheService/CommentaireForumService.php";
+
 
 
 if (!empty($_GET)) {
@@ -25,6 +27,17 @@ if (!empty($_GET)) {
             $sujets = (new SujetForumService())->readByIdService($idSujetForum);
             SujetThemeForum($sujets);
         }
+    } elseif (
+        isset($_GET['idCommForum']) && !empty($_GET['idCommForum'])
+        && is_numeric($_GET['idCommForum']) && isset($_GET['action']) && isset($_GET['idSujForum']) && !empty($_GET['idSujForum'])
+        && is_numeric($_GET['idSujForum']) &&
+        !empty($_GET['action']) && $_GET['action'] == 'delete'
+    ) {
+        $idSuje = (int) htmlspecialchars($_GET['idSujForum']);
+        $idCom = htmlspecialchars($_GET['idCommForum']);
+        (new CommentaireForumService())->deleteService($idCom);
+        $sujets = (new SujetForumService())->readByIdService($idSuje);
+        SujetThemeForum($sujets);
     } elseif (isset($_GET['action']) && $_GET['action'] == "ajout_Sujet_forum") {
         if (
             isset($_POST['typeSujetTh']) && !empty($_POST['typeSujetTh'])

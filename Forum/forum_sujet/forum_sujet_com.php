@@ -53,7 +53,8 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                                         <span class="bg-danger border border-dark p-2 shadow rounded-pill"><?php if ($sujetTheme) {
                                                                                                                 echo $pseudo->getPseudo();
                                                                                                             } ?></span><?php
-                                                                                                                        ?></h5>
+                                                                                                                        ?>
+                                    </h5>
                                     <h3 class="mt-3">
                                         <?php if ($sujetTheme) {
                                             echo $sujetTheme->getQuestionSujet();
@@ -94,7 +95,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                                                         </a>
                                                     </span>
                                                     <span class="float-right  btn btn-danger rounded-pill shadow mr-2">
-                                                        <a href="#" class="text-white">
+                                                        <a href="forumcontroleur.php?idCommForum=<?php echo $value->getIdCommSuj(); ?>&idSujForum=<?php echo $value->getIdSuje(); ?>&action=delete" class="text-white">
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="2rem" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                                                             </svg>
@@ -112,7 +113,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                     </div>
                 </div>
 
-                <div class="col-sm-8 col-md-8 col-lg-2 col-xl-2 mt-5">
+                <div class=" col-sm-8 col-md-8 col-lg-2 col-xl-2 mt-5">
                     <div class="position-fixed">
                         <button type="button" class="mx-auto d-block btn btn-warning rounded-pill boutonSideInfo" data-toggle="modal" data-target="#modalForumAnnonces">
                             <a href="#">
