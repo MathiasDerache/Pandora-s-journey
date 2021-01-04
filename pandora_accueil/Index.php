@@ -17,32 +17,19 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <!-- ----------------------------------  VIDEO et NAV ---------------------------------> 
-    <div class="navbarVideo">
-            <ul>
-                <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_immobilier">Immobilier</a></li>
-                <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_travail">Travail</a></li>
-                <li class="item"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_loisir">Loisir</a></li>
-                <li class="item"><a href="../page_contact/contact.php">Contacts</a></li>
-                <li class="item"><a href="#">Billet</a></li>
-            </ul>
-    </div>
-=======
     <!-- ----------------------------------  VIDEO et NAV --------------------------------->
     <div class="main">
         <div class="row">
             <div class="navbarVideo">
                     <ul>
-                        <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_immobilier">Immobilier</a></li>
-                        <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_travail.php">Travail</a></li>
-                        <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?action=annonces_loisir">Loisir</a></li>
+                        <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_immobilier">Immobilier</a></li>
+                        <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_travail">Travail</a></li>
+                        <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_loisir">Loisir</a></li>
                         <li class="col-md-1 col-lg-2"><a href="../page_contact/contact.php">Contacts</a></li>
                         <li class="col-md-1 col-lg-2"><a href="#">Billet</a></li>
                     </ul>
             </div>
         </div>
->>>>>>> fd02115... responsive nav video
 
         <div class="video">
             <video autoplay loop muted class="embed-responsive embed-responsive-16by9">
