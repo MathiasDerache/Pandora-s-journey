@@ -4,7 +4,7 @@ include_once __DIR__ . "/../../coucheService/UtilisateurService.php";
 include_once __DIR__ . "/../../coucheService/CommentaireForumService.php";
 
 
-function SujetThemeForum(SujetTheme $sujetTheme = null)
+function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
 {
 ?>
     <!DOCTYPE html>
@@ -22,7 +22,7 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
     <body class="position-relative">
         <!-- ----------------------------------  navbar --------------------------------->
         <?php
-        navBar()
+        navBar();
         ?>
         <!-- ----------------------------------  navbar --------------------------------->
 
@@ -87,8 +87,8 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
                                                 </p>
                                                 <p class="mb-0">Posté le
                                                     <?php echo $value->getDateCommSuj()->format('d-m-Y'); ?>
-                                                    <span class="modifElem float-right  btn btn-warning rounded-pill shadow">
-                                                        <a href="#" class="modifierSpan">
+                                                    <span class="modifElem float-right  btn btn-warning rounded-pill shadow" data-toggle="modal" data-target="#modalForumAnnonces">
+                                                        <a href="forumcontroleur.php?idSujForum=<?php echo $value->getIdSuje(); ?>&idCommForum=<?php echo $value->getIdCommSuj(); ?>&action=recupe_pour_modif&#modalForumAnnonces" class="modifierSpan">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
                                                                 <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
                                                             </svg>
@@ -131,12 +131,23 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
         <!-- ----------------------------------  pagination --------------------------------->
 
         <!-- ---------------------------------- fin forum --------------------------------->
+
         <!-- Modal -->
-        <div class="modal fade" id="modalForumAnnonces" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal fade" id="modalForumAnnonces" tabindex=" -1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modalForum p-4">
-                    <h2 class="modal-title text-white mb-3">Commentaire sur Thematique: <?php echo $sujetTheme->getTypeSujetTh(); ?> </h2>
-                    <form action="forumcontroleur.php?action=ajout_comm_forum&idsuj=<?php echo $sujetTheme->getIdSujetTh(); ?>" method="POST">
+                    <h2 class="modal-title text-white mb-3"><?php if (!$comUpdate) {
+                                                                echo 'modification commentaire sur la thématique';
+                                                            } else {
+                                                                echo "Commentaire sur Thematique";
+                                                            } ?> : <?php echo $sujetTheme->getTypeSujetTh(); ?> </h2>
+
+                    <form action=" forumcontroleur.php?action=<?php if ($comUpdate) {
+                                                                    $com = (new CommentaireForumService())->readByIdService($comUpdate->getIdCommSuj());
+                                                                    echo "modif_comm_forum&idcom=" . $com->getIdCommSuj();
+                                                                } else {
+                                                                    echo "ajout_comm_forum&idsuj=" . $sujetTheme->getIdSujetTh();
+                                                                } ?>" method="POST">
                         <div class="form-group">
                             <label for="titeSujet" class="text-white">Votre réponse:</label>
                             <textarea class="form-control" name="contCommSuj" id="questionSujet" cols="10" rows="10" placeholder="Rediger votre réponse ici..."></textarea>
@@ -163,6 +174,8 @@ function SujetThemeForum(SujetTheme $sujetTheme = null)
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
     </html>
 <?php
+
 }

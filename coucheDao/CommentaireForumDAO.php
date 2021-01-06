@@ -144,4 +144,26 @@ class CommentaireForumDAO implements InterfDao
         }
         return $tab;
     }
+
+    public function readIdService(?int $id): ?object
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM commentairefurum WHERE idcommSujet=?");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());            // Function Read Commentaires
+        }
+
+        foreach ($array as $value) {
+            $commSujet = new CommentaireSujet();
+            $commSujet->setIdCommSuj($value['idcommSujet'])->setPseudoUt($value['pseudoUt'])
+                ->setDateCommSuj(new DateTime($value['dateComSuj']))
+                ->setContCommSuj($value['contComSuj'])->setIdSuje($value['idSujetTh'])
+                ->setIdUti($value['idUti']);
+        }
+        return $commSujet;
+    }
 }

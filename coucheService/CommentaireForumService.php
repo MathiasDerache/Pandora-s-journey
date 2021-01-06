@@ -29,7 +29,7 @@ class CommentaireForumService implements interfService
      */
     public function readByIdService(?int $id): ?object
     {
-        return $this->service->readByIdService($id);
+        return $this->service->readIdService($id);
     }
 
     public function updateService(?object $object): ?object

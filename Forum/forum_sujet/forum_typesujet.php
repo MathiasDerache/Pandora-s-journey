@@ -40,7 +40,7 @@ function sujetTypeForum(array $array = [])
             </div>
 
             <div class="row">
-                <table class="table table-hover table-forum">
+                <table class="table table table-forum">
                     <thead class="bg-dark text-white">
                         <tr>
                             <th scope="col">Questions sur la thématique</th>

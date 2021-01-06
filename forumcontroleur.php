@@ -11,33 +11,47 @@ include_once __DIR__ . "/coucheService/CommentaireForumService.php";
 
 
 
-if (!empty($_GET)) { // ici je verifie que le get n'est pas empty
+if (!empty($_GET)) { // ici je vérifie que le get n'est pas empty
     if (
-        isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "ajout_comm_forum" && // ici je verifie 
+        isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "ajout_comm_forum" && // ici je vérifie 
         isset($_GET['idsuj']) && !empty($_GET['idsuj']) && is_numeric($_GET['idsuj']) && !empty($_POST) // les infos de mon get
-    ) { // et qu'il s'ajit bien d'un ajout de Comm lié à un sujet dans le forum
-        if (!empty($_POST['contCommSuj'])) { // ici je verifie que mon post n'est pas empty
-            $idUt = $_SESSION['id'];
-            $pseudo = $_SESSION['pseudo'];
+    ) { // et qu'il s'agit bien d'un ajout de Comm lié à un sujet dans le forum
+        if (!empty($_POST['contCommSuj'])) { // ici je vérifie que mon post n'est pas empty
+            $idUt = $_SESSION['id']; //je récupère l'id user de la session
+            $pseudo = $_SESSION['pseudo']; //je récupère le pseudo user de la session
+
+            //je protege les requettes des injections sql
             $idSujetForum = htmlspecialchars($_GET['idsuj']);
             $contCommSuj = htmlspecialchars($_POST['contCommSuj']);
-            $commSuj = (new CommentaireSujet())->setPseudoUt($pseudo)->setIdUti($idUt)->setContCommSuj($contCommSuj)->setIdSuje($idSujetForum);
-            (new CommentaireForumService())->creatService($commSuj);
 
-            $sujets = (new SujetForumService())->readByIdService($idSujetForum);
-            SujetThemeForum($sujets);
+            //je crée un new commentaire et donne les valeur de mes variables aux atributs de cette classe
+            $commSuj = (new CommentaireSujet())->setPseudoUt($pseudo)->setIdUti($idUt)->setContCommSuj($contCommSuj)->setIdSuje($idSujetForum);
+            (new CommentaireForumService())->creatService($commSuj); //je donne mon objet commsuj à mon dao en passant par la couche service en passant par la methode creatservice
+
+
+            $sujet = (new SujetForumService())->readByIdService($idSujetForum); //je recupère l'objet sujet lié à mon commentaire
+            SujetThemeForum($sujet, null); // j'affiche la page sujet forum en lien avec mon commentaire après avoir mis en argu à ma fonction mon objet sujet
         }
     } elseif (
         isset($_GET['idCommForum']) && !empty($_GET['idCommForum'])
-        && is_numeric($_GET['idCommForum']) && isset($_GET['action']) && isset($_GET['idSujForum']) && !empty($_GET['idSujForum'])
+        && is_numeric($_GET['idCommForum']) && isset($_GET['action']) && isset($_GET['idSujForum']) && !empty($_GET['idSujForum']) // ici je verifie les infos present dans mon get
         && is_numeric($_GET['idSujForum']) &&
-        !empty($_GET['action']) && $_GET['action'] == 'delete'
+        !empty($_GET['action']) && $_GET['action'] == 'delete' // et que l'action est bien une supression
     ) {
         $idSuje = (int) htmlspecialchars($_GET['idSujForum']);
         $idCom = htmlspecialchars($_GET['idCommForum']);
         (new CommentaireForumService())->deleteService($idCom);
         $sujets = (new SujetForumService())->readByIdService($idSuje);
-        SujetThemeForum($sujets);
+        SujetThemeForum($sujets, null);
+    } elseif (
+        isset($_GET["idCommForum"]) && !empty($_GET["idCommForum"]) && isset($_GET["idSujForum"]) && !empty($_GET["idSujForum"]) && isset($_GET["action"])
+        && !empty($_GET["action"]) && $_GET["action"] == "recupe_pour_modif"
+    ) {
+        $idSujet = htmlspecialchars($_GET["idSujForum"]);
+        $idCom = htmlspecialchars($_GET["idCommForum"]);
+        $comPourModif = (new CommentaireForumService())->readByIdService($idCom);
+        $sujets = (new SujetForumService())->readByIdService($idSujet, $comPourModif);
+        SujetThemeForum($sujets, null);
     } elseif (isset($_GET['action']) && $_GET['action'] == "ajout_Sujet_forum") {
         if (
             isset($_POST['typeSujetTh']) && !empty($_POST['typeSujetTh'])
@@ -54,7 +68,7 @@ if (!empty($_GET)) { // ici je verifie que le get n'est pas empty
     } elseif (isset($_GET['sujetforum']) && !empty($_GET['sujetforum']) && is_numeric($_GET['sujetforum'])) {
         $idSujetForum = htmlspecialchars($_GET['sujetforum']);
         $sujets = (new SujetForumService())->readByIdService($idSujetForum);
-        SujetThemeForum($sujets);
+        SujetThemeForum($sujets, null);
     } elseif (isset($_GET['sujet']) && $_GET['sujet'] == "annonces") {
         $sujets = new SujetForumService();
         $array = $sujets->readService();
