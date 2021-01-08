@@ -103,9 +103,138 @@ html{
     margin-top: 10px;
     
     }
+
+    /* ****************Nav Responsiv******************* */
+.navbar
+{
+	background-color: #040753 !important;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+  border-bottom: 1px solid rgb(24, 31, 90);
+}
+
+.navbar .container
+{
+  padding: 0px;
+}
+
+nav .h2{
+  box-shadow: 1px 1px 1px black;
+  }
+  nav ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 1px black;
+  }
+
+  .navbar-toggler{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    visibility: hidden;
+  }
+
+  .navbar-nav{
+    width: 100vh;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* .navbar-collapse li{ 
+    text-align: center;
+    width: 30%;
+ } */
+
+/* ******************HAMBURGER COLLAPSE*********************** */
+
+.menu-icon{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 54px;
+    height: 54px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: transform 0.5s;
+    visibility: visible!important;
+}
+
+.menu-icon .icon_span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); 
+    width: 22px;
+    height: 2px;
+    background-color: #fff;
+    transition: background 0.5s, transform 0.5s;
+    transition: background 0.5s steps(1, end);
+}
+
+.icon_span::before, .icon_span::after{
+    transform-origin: 100% 50%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 22px;
+    height: 2px;
+    transform: translateY(-8px);
+    background-color: #fff;
+    transition: transform 0.5s;
+}
+
+.icon_span::after{
+    transform: translateY(8px);
+}
+
+.menu-icon:hover .icon_span::before{
+    transform: translateY(-10px);
+}
+
+.menu-icon:hover .icon_span::after{
+    transform: translateY(10px);
+}
+
+svg{
+    opacity: 0;
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 22 230;
+    transition: stroke-dasharray 0.5s, stroke-dashoffset 0.5s, opacity 0.5s steps(1, end);
+}
+
+.menu-icon.is-opened .icon_span{
+    transition: background 0.5s steps(1, start);
+    background-color: transparent;
+}
+
+.menu-icon.is-opened svg{
+    opacity: 1;
+    stroke-dasharray: 160;
+    stroke-dashoffset: -65;
+    transition: stroke-dasharray 0.5s, stroke-dashoffset 0.5s, opacity 0.5s steps(1, start);
+}
+
+.menu-icon.is-opened .icon_span::before{
+    transform: translateX(-3px) translateY(-8px) rotate(-45deg);
+}
+
+.menu-icon.is-opened .icon_span::after{
+    transform: translateX(-3px) translateY(8px) rotate(45deg);
+}
+
+/***************** ANIMATION LIENS NAV **********************/
     
     
-    .listnav li a::after{
+    .navbar-nav li a::after{
     content: "";
     display: block;
     width: 100%;
@@ -115,29 +244,11 @@ html{
     transition: transform 0.2s ease-in-out;
     }
     
-    .listnav li a:hover::after{
+    .navbar-nav li a:hover::after{
     transform: scale(1);
-    }
+    } 
     
-    nav .h2{
-    box-shadow: 1px 1px 1px black;
-    }
-    nav ul{
-    display: flex;
-    list-style: none;
-    justify-content: space-around;
-    font-size: 1.5em;
-    text-shadow: 1px 1px 1px black;
-    }
-    
-    .listnav{
-    padding-left: 35%;
-    }
-    /* css navbar */
-    
-    
-    
-    /* Corps Page  */
+    /****************** Corps Page  ******************/
 
 .navbarVideo ul{
  display: flex;
@@ -178,7 +289,7 @@ html{
   transform: scale(1);
   }
 
-  /* Partie Video */
+  /****************** Partie Video **********************/
 video{
     position: absolute;
     top: 0;
@@ -191,7 +302,7 @@ video{
 }
 
 
-/* Partie du bouton utilisateur */
+/*********************** Partie du bouton utilisateur ********************/
 .container-menu {
     width: 200px;
     height: 200px;
@@ -296,7 +407,7 @@ top: 100%;
     top: 150%;
 }
 
-/* Partie des sections */
+/**************** Partie des sections ******************/
     
 .section1{
 display: grid;
@@ -370,7 +481,7 @@ background-size: cover;
 border: solid 2px black;
 }
 
-/* Partie Button de scroll down */
+/************************ Partie Button de scroll down ***********************/
 .scroll-down {
     height: 50px;
     width: 30px;
@@ -399,7 +510,7 @@ border: solid 2px black;
     top: 30%;
     animation-delay: 0.3s;
   }
-  /*  Animation button scroll down */
+  /***********************  Animation button scroll down **********************/
   @keyframes scroll-down {
     0% {
       opacity: 0;
@@ -416,7 +527,7 @@ border: solid 2px black;
     }
   }
 
-/* Partie scroll up  */
+/**************** Partie scroll up  **********************/
 
 .scroll-up {
     height: 50px;
@@ -463,7 +574,7 @@ border: solid 2px black;
     }
   }
 
-  /* Partie animation au scroll pour les section */
+  /************* Partie animation au scroll pour les section *****************/
 .displayNone{
     display: none!important;
 }
@@ -493,7 +604,7 @@ border: solid 2px black;
 }
 
 
-/* ↓↓ Formulaire inscription Modal ↓↓ */
+/**************** ↓↓ Formulaire inscription Modal ↓↓ ******************/
 
 .connexion {
   background-color: #040753;
@@ -550,7 +661,7 @@ button:active {
 }
 
 
-/* ↓↓ Formulaire inscription ↓↓ */
+/****************** ↓↓ Formulaire inscription ↓↓ ***********************/
 
 .inscription {
   background-color: #040753;
@@ -712,4 +823,26 @@ border: solid 2px black;
       justify-content: center;
       align-items: center;
     }
+
+    .scroll-up{
+      position: absolute;
+      left: 50%;
+      top: 115px;
+    }
+    .navbar-nav{
+
+      display: flex;
+      justify-content: center;
+    }
+}
+
+/* ------------------------------------------ MEDIA QUERY 1000px ---------------------------------- */
+@media screen and (max-width : 1000px){
+
+  .navbar-nav{
+    width: 50vh;
+    display: flex;
+    justify-content: center;
+
+  }
 }

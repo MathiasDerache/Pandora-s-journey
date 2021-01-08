@@ -121,6 +121,7 @@ if (!empty($_GET)){
             
             paginationAnnonce();
             footer();
+            ?><script src="app.js" type="text/javascript"></script><?php
             
         }
     }

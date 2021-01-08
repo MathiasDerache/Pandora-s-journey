@@ -2,23 +2,45 @@
 function navBar()
 {
 ?>
-    <nav class="container-fluid fixed-top">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1">
-                <a href="../pandora_accueil/Index.php"><img src="images/Logo.png" alt="logo pandora" class="img-fluid" width="90%"></a>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 listnav">
-                <ul>
-                    <li><a href="liste_annonces_controleur.php?type=annonces_immobilier" class="nav-link text-white">Immobilier</a></li>
-                    <li><a href="liste_annonces_controleur.php?type=annonces_travail" action="annonces_travail" class="nav-link text-white">Travail</a></li>
-                    <li><a href="liste_annonces_controleur.php?type=annonces_loisir" action="annonces_loisir" class="nav-link text-white">Loisir</a></li>
-                    <li><a href="../page_contact/contact.php" class="nav-link text-white">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                <h2 class="bg-warning rounded-pill"><a href="#" class="nav-link text-white">Billeterie</a></h2>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+			<div class="container">
+
+				<div class="heading">
+
+  					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNav" >
+
+    					<div class="menu-icon">
+        					<div class="icon_span"></div>
+       						<svg x="0" y="0"  width="54px" height="54px" viewBox="0 0 54 54">
+         						<path d="M16.500,27.000 C16.500,27.000 24.939,27.000 38.500,27.000 C52.061,27.000 49.945,15.648 46.510,11.367 C41.928,5.656 34.891,2.000 27.000,2.000 C13.193,2.000 2.000,13.193 2.000,27.000 C2.000,40.807 13.193,52.000 27.000,52.000 C40.807,52.000 52.000,40.807 52.000,27.000 C52.000,13.000 40.837,2.000 27.000,2.000"></path>
+        					</svg> 
+      					</div>
+
+  					</button>
+
+  				</div>
+
+  				<div class="collapse navbar-collapse" id="myNav">
+
+                    <ul class="navbar-nav">
+
+                        <li><a href="../pandora_accueil/Index.php" class="nav-link text-white">Accueil</a></li>
+
+                        <li><a href="liste_annonces_controleur.php?type=annonces_immobilier" class="nav-link text-white">Immobilier</a></li>
+
+                        <li><a href="liste_annonces_controleur.php?type=annonces_travail" action="annonces_travail" class="nav-link text-white">Travail</a></li>
+
+                        <li><a href="liste_annonces_controleur.php?type=annonces_loisir" action="annonces_loisir" class="nav-link text-white">Loisir</a></li>
+
+                        <li><a href="../page_contact/contact.php" class="nav-link text-white">Contacts</a></li>
+
+                        <li><a href="#"class="nav-link text-white">Billet</a></li>
+
+    				</ul>
+                </div>
+  			</div>
+		</nav>
 <?php
 }
+

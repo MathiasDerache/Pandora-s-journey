@@ -32,4 +32,5 @@ elseif ($annonce->getTypeAnn() == 'loisir'){
         bodyAnnonce($annonce, $auteurAnnonce, $annoncesTravail, $annoncesImmobilier);
 }
 footer();
+?><script src="app.js" type="text/javascript"></script><?php
 
