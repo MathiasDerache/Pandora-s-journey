@@ -1,6 +1,6 @@
 <?php
-require_once("../../Pandora_nav_footer/nav.php");
-require_once("../../Pandora_nav_footer/footer.php");
+include_once __DIR__ . "/../../Pandora_nav_footer/footer.php";
+include_once __DIR__ . "/../../Pandora_nav_footer/nav.php";
 
 function html($imageProfil, $dataUtilisateur, $banniereProfil, $arraySujet, $erreur, $arrayReponse)
 {
@@ -18,10 +18,10 @@ function htmlHeader()
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../../view/profil/Style.css">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="jquery-fab-button/css/jquery-fab-button.css">
+        <link rel="stylesheet" href="../../view/profil/Style.css">
         <title>Page Profil</title>
     </head>
 <?php }
@@ -169,20 +169,20 @@ function vosSujets($arraySujet, $arrayReponse)
                 <table class="table table-hover ml-3 mt-2">
                     <thead class="bg-dark text-white">
                         <tr>
-                            <th scope="col">Questions sur la thématique</th>
-                            <th scope="col">Thématique</th>
-                            <th scope="col">Réponses</th>
-                            <th scope="col">Auteur</th>
-                            <th scope="col">Date d'ajout</th>
-                            <th scope="col">Accéder à la discussion</th>
+                            <th class="align-middle">Questions sur la thématique</th>
+                            <th class="align-middle">Thématique</th>
+                            <th class="align-middle">Réponses</th>
+                            <th class="align-middle">Auteur</th>
+                            <th class="align-middle">Date d'ajout</th>
+                            <th class="align-middle">Accéder à la discussion</th>
                         </tr>
                     </thead>
                     <?php foreach (array_slice($arraySujet, 0, 3) as $value) { ?>
                         <tbody class="text-white">
                             <tr>
-                                <td scope="row"><?php echo $value->getQuestionSujet(); ?></td>
-                                <td scope="row"><?php echo $value->getTypeSujetTh(); ?></td>
-                                <td>
+                                <td class="align-middle" scope="row"><?php echo $value->getQuestionSujet(); ?></td>
+                                <td class="align-middle" scope="row"><?php echo $value->getTypeSujetTh(); ?></td>
+                                <td class="align-middle">
                                     <?php
                                     $compt = 0;
                                     foreach ($arrayReponse as $val) {
@@ -195,10 +195,10 @@ function vosSujets($arraySujet, $arrayReponse)
                                     echo $compt;
                                     ?>
                                 </td>
-                                <td><?php echo $_SESSION["pseudo"]; ?>
+                                <td class="align-middle"><?php echo "florent"; ?>
                                 </td>
-                                <td scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
-                                <td>
+                                <td class="align-middle" scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
+                                <td class="align-middle">
                                     <button type="button" class="btn btn-danger rounded-pill ">
                                         <a href="../../forumcontroleur.php?sujetforum=<?php echo $value->getIdSujetTh(); ?>" style="text-decoration: none;" class=" text-white">Discussion</a>
                                     </button>
@@ -253,33 +253,30 @@ function compteARebours()
     <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
         <div class="row">
             <div class="col-12 text-center text-white">
-                <h2>COMPTE A REBOURS PROCHAIN DEPART</h2>
-                <h1 id="countdown"></h1>
-                <script>
-                    // Date de départ
-                    var countDownDate = new Date("2021-01-22").getTime();
-
-                    // Actualise le compte à rebours toutes les secondes
-                    var x = setInterval(function() {
-
-                        // Date d'aujourd'hui en millisecondes
-                        var now = new Date().getTime();
-
-                        // Différence entre la date de départ et la date d'aujourd'hui
-                        var distance = countDownDate - now;
-
-                        // Calcul du temps pour les jours, les heures, les minutes et les secondes
-                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                        // Affiche le résultat dans un élément avec l'id="countdown"
-                        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " +
-                            minutes + "m " + seconds + "s ";
-                    }, 1000);
-                </script>
-                <!-- <img src="../../view/profil/images/countdown-twitter.jpg" alt="" class="img-fluid shadow-lg"> -->
+                <h2>Votre voyage commence dans</h2>
+                <div class="row countDown">
+                    <div>
+                        <div id="countDays">
+                        </div>
+                        <strong>Days</strong>
+                    </div>
+                    <div>
+                        <div id="countHours">
+                        </div>
+                        <strong>Hours</strong>
+                    </div>
+                    <div>
+                        <div id="countMinutes">
+                        </div>
+                        <strong>Minutes</strong>
+                    </div>
+                    <div>
+                        <div id="countSeconds">
+                        </div>
+                        <strong>Seconds</strong>
+                    </div>
+                </div>
+                <script src="../../view/profil/js.js"></script>
             </div>
         </div>
     </div>
