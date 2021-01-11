@@ -75,4 +75,19 @@ class AnnoncesService implements interfService
     {
         return $this->service->delete($id);
     }
+
+    public function selectAllAsTotalService(?string $type): ?int
+    {
+        return $this->service->selectAllAsTotal($type);
+    }
+
+    /**
+     * recupère un tableau de doinnée de la couche dao et la transmet au controlleur associé
+     *
+     * @return array
+     */
+    public function readPaginationService(?string $typeAnnonce, ?int $premiereEntree, ?int $annonceParPage): array
+    {
+        return $this->service->readPagination($typeAnnonce, $premiereEntree, $annonceParPage);
+    }
 }
