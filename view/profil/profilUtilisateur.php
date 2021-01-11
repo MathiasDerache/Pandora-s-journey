@@ -50,7 +50,7 @@ function htmlbody($imageProfil, $dataUtilisateur, $banniereProfil, $arraySujet, 
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 col-md-8 col-lg-8 profilDetails">
+                <div class="col-sm-12 col-md-12 col-lg-8 profilDetails">
                     <div class="row">
                         <?php compteARebours(); ?>
                     </div>
@@ -111,7 +111,7 @@ function boutonFlottant()
 
 function infoProfil($imageProfil, $dataUtilisateur)
 { ?>
-    <div class="col-sm-12 col-md-4 col-lg-4 ">
+    <div class="col-sm-12 col-md-12 col-lg-4 ">
         <div class="card-dark col-12  mt-2 mb-3">
             <div class="card-body">
                 <div class="mb-5">
@@ -133,7 +133,7 @@ function infoProfil($imageProfil, $dataUtilisateur)
                     <h4 class="text-center text-white mb-4"><?php echo strtoupper($dataUtilisateur->getNom()); ?></h4>
                     <h4 class="text-center text-white mb-4"><?php echo ucfirst(strtolower($dataUtilisateur->getPrenom())); ?></h4>
                     <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getPseudo(); ?></h4>
-                    <h4 class="text-center text-white mb-4"><?php echo $dataUtilisateur->getEmail(); ?></h4>
+                    <h4 class="text-center text-white mb-4 email"><?php echo $dataUtilisateur->getEmail(); ?></h4>
                     <h4 class="text-center text-white m-4"><?php $date = $dataUtilisateur->getDateNaissance();
                                                             $dateNow = new DateTime();
                                                             $age = $date->diff($dateNow);
@@ -166,23 +166,23 @@ function vosSujets($arraySujet, $arrayReponse)
         <div class="row justify-content-center">
             <?php if (!empty($arraySujet)) {
                 krsort($arraySujet); ?>
-                <table class="table table-hover ml-3 mt-2">
+                <table class="table table-hover ml-3 mt-2 event-table">
                     <thead class="bg-dark text-white">
                         <tr>
-                            <th class="align-middle">Questions sur la thématique</th>
-                            <th class="align-middle">Thématique</th>
-                            <th class="align-middle">Réponses</th>
-                            <th class="align-middle">Auteur</th>
-                            <th class="align-middle">Date d'ajout</th>
-                            <th class="align-middle">Accéder à la discussion</th>
+                            <th class="align-middle event-question">Questions sur la thématique</th>
+                            <th class="align-middle event-thematique">Thématique</th>
+                            <th class="align-middle event-reponse">Réponses</th>
+                            <th class="align-middle event-auteur">Auteur</th>
+                            <th class="align-middle event-date">Date d'ajout</th>
+                            <th class="align-middle event-acceder">Accéder à la discussion</th>
                         </tr>
                     </thead>
                     <?php foreach (array_slice($arraySujet, 0, 3) as $value) { ?>
                         <tbody class="text-white">
                             <tr>
-                                <td class="align-middle" scope="row"><?php echo $value->getQuestionSujet(); ?></td>
-                                <td class="align-middle" scope="row"><?php echo $value->getTypeSujetTh(); ?></td>
-                                <td class="align-middle">
+                                <td class="align-middle" data-label="Questions sur la thématique" scope="row"><?php echo $value->getQuestionSujet(); ?></td>
+                                <td class="align-middle" data-label="Thématique" scope="row"><?php echo $value->getTypeSujetTh(); ?></td>
+                                <td class="align-middle" data-label="Réponses">
                                     <?php
                                     $compt = 0;
                                     foreach ($arrayReponse as $val) {
@@ -195,10 +195,10 @@ function vosSujets($arraySujet, $arrayReponse)
                                     echo $compt;
                                     ?>
                                 </td>
-                                <td class="align-middle"><?php echo "florent"; ?>
+                                <td class="align-middle" data-label="Auteur"><?php echo "florent"; ?>
                                 </td>
-                                <td class="align-middle" scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
-                                <td class="align-middle">
+                                <td class="align-middle" data-label="Date d'ajout" scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
+                                <td class="align-middle" data-label="Accéder à la discussion">
                                     <button type="button" class="btn btn-danger rounded-pill ">
                                         <a href="../../forumcontroleur.php?sujetforum=<?php echo $value->getIdSujetTh(); ?>" style="text-decoration: none;" class=" text-white">Discussion</a>
                                     </button>

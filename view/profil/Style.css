@@ -394,7 +394,7 @@ svg{
     align-items: center;
 }
 
-.countDown div {
+.countDown div div {
     color: white;
     height: 110px;
     width: 100px;
@@ -418,8 +418,8 @@ svg{
     }
 }
 
-@media screen and (max-width: 1150px) {
-    .card-body h4 {
+@media screen and (max-width: 1270px) {
+    .email {
         overflow: scroll;
     }
 }
@@ -443,6 +443,41 @@ svg{
         width: 50vh;
         display: flex;
         justify-content: center;
-    
-      }
+    }
+
+    .table {
+        margin-right: 15px;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tr{
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .table td {
+        display: block;
+        text-align: right;
+    }
+
+    .table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .navbar-collapse ul {
+        align-items: flex-start;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .form-container{
+        overflow: scroll;
+    }
 }
