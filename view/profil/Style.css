@@ -438,4 +438,11 @@ svg{
         align-items: center;
         margin: auto;
     }
+
+    .navbar-nav{
+        width: 50vh;
+        display: flex;
+        justify-content: center;
+    
+      }
 }
