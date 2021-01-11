@@ -71,7 +71,7 @@ function sujetTypeForum(array $array = [])
                                     </td>
                                     <td><?php
                                         $utilisateur = new UtilisateurService();
-                                        $pseudo = $utilisateur->trouveUtil($value->getIdUti());
+                                        $pseudo = $utilisateur->readByIdService($value->getIdUti());
                                         echo $pseudo->getPseudo();
                                         ?>
                                     </td>

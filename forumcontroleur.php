@@ -113,4 +113,3 @@ function boutonFlottant()
     </button>
 <?php }
 ?>
-<script src="style.js" type="text/javascript"></script>

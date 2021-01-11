@@ -1,4 +1,3 @@
-// $("#disparaitre").hide();
-// $(".modifierSpan").hover(function(){
-//     $("#disparaitre").toggle();
-// });
+$.getJSON("forumcontoler.php", function(a){
+    console.log(a);
+});
