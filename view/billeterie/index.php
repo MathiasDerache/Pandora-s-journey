@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="container Etapes">
-        <div class="row col-6 align-items-center rowEtapes">
+        <div class="row col-lg-6 col-md-12 align-items-center rowEtapes">
 
 
             <div class="firstCol col-3">
