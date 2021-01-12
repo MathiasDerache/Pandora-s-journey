@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="jquery-fab-button/css/jquery-fab-button.css">
     <link rel="stylesheet" href="Style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">  
-    <title>Accueil</title>
+    <title>Accueil - Pandora's</title>
 </head>
 
 <body>
