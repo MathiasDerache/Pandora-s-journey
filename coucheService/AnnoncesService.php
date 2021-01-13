@@ -40,9 +40,9 @@ class AnnoncesService implements interfService
      *
      * @return array
      */
-    public function readService(): ?array
+    public function readService(int $page = null): ?array
     {
-        return $this->service->read();
+        return $this->service->read($page);
     }
 
     /**
@@ -55,7 +55,7 @@ class AnnoncesService implements interfService
         return $this->service->readById($id);
     }
 
-        /**
+    /**
      * recupère un objet de de la couche dao et la transmet au controlleur associé
      *
      * @return object

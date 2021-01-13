@@ -1,4 +1,5 @@
-<?php include_once __DIR__ . "/../../Pandora_nav_footer/nav.php";
+<?php
+include_once __DIR__ . "/../../Pandora_nav_footer/nav.php";
 include_once __DIR__ . "/../../Pandora_nav_footer/footer.php";
 include_once __DIR__ . "/../../coucheService/UtilisateurService.php";
 include_once __DIR__ . "/../../coucheService/CommentaireForumService.php";
@@ -122,7 +123,6 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                                 </svg>
                             </a>
                         </button>
-                        <?php boutonFlottant() ?>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                                                                 echo "Commentaire sur Thematique";
                                                             } ?> : <?php echo $sujetTheme->getTypeSujetTh(); ?> </h2>
 
-                    <form action=" forumcontroleur.php?action=<?php if ($comUpdate) {
+                    <form action=" forumcontrolleur.php?action=<?php if ($comUpdate) {
                                                                     $com = (new CommentaireForumService())->readByIdService($comUpdate->getIdCommSuj());
                                                                     echo "modif_comm_forum&idcom=" . $com->getIdCommSuj();
                                                                 } else {

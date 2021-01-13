@@ -34,7 +34,7 @@ class CommentaireForumDAO implements InterfDao
         }
     }
 
-    public function read(): array
+    public function read(int $page = null): array
     {
         try {
             $db = $this->db->connectiondb();

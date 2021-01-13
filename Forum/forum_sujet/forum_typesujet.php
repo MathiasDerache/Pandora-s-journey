@@ -53,7 +53,7 @@ function sujetTypeForum(array $array = [])
                     </thead>
                     <?php
                     if (!empty($array)) {
-                        foreach ($array as $value) {
+                        foreach ($array[0] as $value) {
                     ?>
                             <tbody>
                                 <tr>
@@ -78,7 +78,7 @@ function sujetTypeForum(array $array = [])
                                     <td scope="row"><?php echo $value->getDateAjout()->format('d-m-Y'); ?></td>
                                     <td>
                                         <button type="button" class="btn btn-danger rounded-pill ">
-                                            <a href="forumcontroleur.php?sujetforum=<?php echo $value->getIdSujetTh(); ?>" style="text-decoration: none;" class=" text-white">Discussion</a>
+                                            <a href="forumcontrolleur.php?sujetforum=<?php echo $value->getIdSujetTh(); ?>" style="text-decoration: none;" class=" text-white">Discussion</a>
                                         </button>
                                     </td>
                                 </tr>
@@ -99,7 +99,7 @@ function sujetTypeForum(array $array = [])
                 <div class="modal-dialog" role="document">
                     <div class="modal-content modalForum p-4">
                         <h2 class="modal-title text-white mb-3">Ajoutez un Sujet de discussion</h2>
-                        <form action="forumcontroleur.php?action=ajout_Sujet_forum" method="POST">
+                        <form action="forumcontrolleur.php?action=ajout_Sujet_forum" method="POST">
                             <div class="form-group">
                                 <label class="text-white" for="typeSujetTh">Selectionnez un thème:</label>
                                 <select class="form-control" name="typeSujetTh" id="typeSujetTh">
@@ -130,16 +130,32 @@ function sujetTypeForum(array $array = [])
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 mx-auto">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
+                                <li class="page-item <?php if ($_GET['page'] == 1) {
+                                                            echo "disabled";
+                                                        } ?>">
+                                    <a class="page-link " href="forumcontrolleur.php?page=<?php if ($_GET['page'] > 1) {
+                                                                                                echo $_GET['page'] - 1;
+                                                                                            }  ?>" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
+                                <?php for ($i = 1; $i <= $array[1]; $i++) {
+                                ?>
+                                    <li class="page-item <?php
+                                                            if ($_GET['page'] == $i) {
+                                                                echo "disabled";
+                                                            }
+                                                            ?> ">
+                                        <a class="page-link" href="forumcontrolleur.php?page=<?php echo $i; ?>"><?php echo $i; ?>
+                                        </a>
+                                    </li><?php
+                                        } ?>
+                                <li class="page-item <?php if ($_GET['page'] >= $array[1]) {
+                                                            echo "disabled";
+                                                        } ?>">
+                                    <a class="page-link" href="forumcontrolleur.php?page=<?php if ($_GET['page'] <= $array[1]) {
+                                                                                                echo $_GET['page'] + 1;
+                                                                                            }  ?>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
@@ -161,6 +177,8 @@ function sujetTypeForum(array $array = [])
         </footer>
         <!-- ----------------------------------  FIN_FOOTER --------------------------------->
     </body>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="style.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

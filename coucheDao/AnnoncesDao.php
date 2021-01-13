@@ -18,7 +18,7 @@ class AnnoncesDao implements InterfDao
      */
     public function creat(object $object): void
     {
-        try{
+        try {
             $db = $this->db->connectiondb();
             $stm = $db->prepare("INSERT INTO annonces VALUES(null,?,?,?,?,?,?,?,?)");
             //recuperation des infos de $object instance de la class Annonce
@@ -91,7 +91,7 @@ class AnnoncesDao implements InterfDao
      *
      * @return array
      */
-    public function read(): array
+    public function read(int $page = null): array
     {
         try {
             $db = $this->db->connectiondb();
@@ -172,14 +172,13 @@ class AnnoncesDao implements InterfDao
         } catch (PDOException $f) {
             throw new DaoException($f->getCode(), $f->getMessage());
         }
-
         $tab = [];
         foreach ($array as $value) {
             $annonce = new Annonce();
             $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
                 ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
                 ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
-                $tab[]=$annonce;
+            $tab[] = $annonce;
         }
         return $tab;
     }
@@ -218,8 +217,8 @@ class AnnoncesDao implements InterfDao
         foreach ($array as $value) {
             $annonce = new Annonce();
             $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
-            ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
-            ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
+                ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
+                ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
             $tab[] = $annonce;
         }
         return $tab;

@@ -40,9 +40,9 @@ class annoncesService implements interfService
      *
      * @return array
      */
-    public function readService(): ?array
+    public function readService(int $page = null): ?array
     {
-        return $this->service->read();
+        return $this->service->read($page);
     }
 
     /**

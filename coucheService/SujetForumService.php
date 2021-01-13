@@ -16,9 +16,9 @@ class SujetForumService implements interfService
         return $this->service->creat($object);              // Function create Commentaire
     }
 
-    public function readService(): ?array
+    public function readService(int $page = null): ?array
     {
-        return $this->service->read();              // Function Read Commentaires
+        return $this->service->read($page);              // Function Read Commentaires
     }
 
     /**

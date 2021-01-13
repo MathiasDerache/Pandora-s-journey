@@ -29,7 +29,7 @@ class RepondreDAO implements InterfDao
     }
 
     // Transmets un tableau avec toutes les données à la couche Service
-    public function read(): array
+    public function read(int $page = null): array
     {
         try {
             $db = $this->db->connection();
