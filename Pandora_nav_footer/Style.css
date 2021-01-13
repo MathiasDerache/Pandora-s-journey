@@ -17,18 +17,18 @@ body{
 
 }
 
-footer h2{
+.footer h2{
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
 }
 
-footer a{
+.footer a{
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 1.2em;
 }
 
-footer p{
+.footer p{
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.2em;
     text-align: center;
