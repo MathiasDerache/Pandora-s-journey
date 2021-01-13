@@ -7,6 +7,7 @@ require_once("../../view/pages_anonces/body_annonce.php");
 require_once("../../view/pages_anonces/card_annonce_interet.php");
 require_once("../../coucheService/AnnoncesService.php");
 require_once("../../coucheService/UtilisateurService.php");
+require_once("../../coucheService/ImageService.php");
 
 $annonce = (new AnnoncesService())->readByIdService($_GET['id']);
 
@@ -16,23 +17,41 @@ if (!empty($_GET)){
         }
 }
 
+                                                        $arrayImage = (new ImageService())->readService();
+                                                        if (!empty($arrayImage)) {
+                                                                foreach ($arrayImage as $value) {
+                                                                        $nomFichierProfil = strstr($value->getNomFichier(), '.', true);
+                                                                        if ($nomFichierProfil === "profil_Id" . $_SESSION["id"]) {
+                                                                                $nomFichierProfil = $value->getNomFichier();
+                                                                                $imageProfil = $imageService->searchImageProfilService($nomFichierProfil);
+                                                                                break;
+                                                                        } else {
+                                                                                $imageProfil = null;
+                                                                        }
+                                                                }
+                                                        } else {
+                                                                $imageProfil = null;
+                                                        }
+
 $auteurAnnonce=((new UtilisateurService())->readByIdService($annonce->getIdUti()))->getPseudo();
 $annoncesTravail=(new AnnoncesService())->readByTypeService('travail');
 $annoncesLoisir=(new AnnoncesService())->readByTypeService('loisir');
 $annoncesImmobilier=(new AnnoncesService())->readByTypeService('immobilier');
 
+
+
 headAnnonce($titleAnnonce);
 navBar();
 if ($annonce->getTypeAnn() == 'immobilier'){
-        bodyAnnonce($annonce, $auteurAnnonce);
+        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);
         cardAnnonceInteret($annoncesTravail, $annoncesLoisir);
 }
 elseif ($annonce->getTypeAnn() == 'travail'){
-        bodyAnnonce($annonce, $auteurAnnonce);
-        cardAnnonceInteret($annoncesImmobilier, $annoncesLoisir);
+        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);
+        cardAnnonceInteret($imageProfil, $annoncesLoisir, $annoncesImmobilier);
 }
 elseif ($annonce->getTypeAnn() == 'loisir'){
-        bodyAnnonce($annonce, $auteurAnnonce);
+        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);
         cardAnnonceInteret($annoncesTravail, $annoncesImmobilier);
 }
 footer();
