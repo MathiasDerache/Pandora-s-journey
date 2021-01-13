@@ -173,6 +173,7 @@ class AnnoncesDao implements InterfDao
             throw new DaoException($f->getCode(), $f->getMessage());
         }
 
+        $tab = [];
         foreach ($array as $value) {
             $annonce = new Annonce();
             $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
