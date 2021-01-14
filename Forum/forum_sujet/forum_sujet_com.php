@@ -32,7 +32,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
         <div class="container-fluid forum m-5">
             <div class="row">
                 <div class="col-sm-8 col-md-8 col-lg-10 col-xl-10 text-white sujetThForum mb-5">
-                    <div class="col-sm-8 col-md-8 col-lg-10 col-xl-10 mx-auto d-block">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto d-block">
 
                         <div class="row justify-content-center mt-5">
                             <div class="title-forum text-white mb-5">
@@ -69,7 +69,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8  rounded mx-auto d-block mt-5 mb-5">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12  rounded mx-auto d-block mt-5 mb-5">
                             <?php
                             if ($sujetTheme) {
                                 $commForum = (new CommentaireForumService())->foundComById($sujetTheme->getIdSujetTh());
@@ -114,7 +114,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                     </div>
                 </div>
 
-                <div class=" col-sm-8 col-md-8 col-lg-2 col-xl-2 mt-5">
+                <div class=" col-sm-4 col-md-4 col-lg-2 col-xl-2 mt-5">
                     <div class="position-fixed">
                         <button type="button" class="mx-auto d-block btn btn-warning rounded-pill boutonSideInfo" data-toggle="modal" data-target="#modalForumAnnonces">
                             <a href="#">
@@ -136,7 +136,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
         <div class="modal fade" id="modalForumAnnonces" tabindex=" -1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modalForum p-4">
-                    <h2 class="modal-title text-white mb-3"><?php if (!$comUpdate) {
+                    <h2 class="modal-title text-white mb-3"><?php if (isset($_GET['action'])) {
                                                                 echo 'modification commentaire sur la thématique';
                                                             } else {
                                                                 echo "Commentaire sur Thematique";
@@ -169,8 +169,6 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
         </footer>
         <!-- ----------------------------------  FIN_FOOTER --------------------------------->
     </body>
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src="style.js"></script>
     <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
