@@ -207,5 +207,5 @@ if (!empty($_GET)) {
         footer();
     }
 ?><script src="app.js" type="text/javascript"></script>
-    <script src="filtre.js" type="text/javascript"></script>
+    <script src="jquery-3.5.1.min.js" type="text/javascript"></script>
 <?php }

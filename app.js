@@ -17,3 +17,7 @@ $(function(){
     })
 
 });
+
+$('#titre').keypress(function (){
+    $('#lignes').empty();
+})
