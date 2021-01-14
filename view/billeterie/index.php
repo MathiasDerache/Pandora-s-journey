@@ -23,10 +23,10 @@
     <div class="container infoVol">
         <div class ="row">
             <div>
-                <h1 class="col-12 h1Section">Départs et vols !</h1>
+                <h1 class="col-12 h1Section">Départs, vols et vie sur Pandora</h1>
             </div>
             <div>
-                <p class="col-12 sousTexte text-center">Tout savoir sur les vols</p>
+                <p class="col-12 sousTexte text-center">Tout savoir avant de partir !</p>
             </div>
         </div>
 
@@ -47,40 +47,62 @@
         </div>
     </div>
     <div class="container Etapes">
-        <div class="row col-lg-6 col-md-12 align-items-center rowEtapes">
+        <div class="row col-lg-12 col-md-12 align-items-center rowEtapes">
+            <div class="preparation">
+                <div class="col">
+                    <img src="images/map.svg">
+                    <h4>Comment s'y rendre ?</h4>
+                    <p>Les Départs se font dans la capital de votre pays</p>
+                    <p>Les horaires dépendent de votre pays</p>
+                </div>
 
-
-            <div class="firstCol col-3">
-                <img src="images/map.svg">
+                <div class="col">
+                    <img src="images/bagage.svg">
+                    <h4>Assurance Voyage</h4>
+                    <p>Pensez à prendre une assurance en cas d'annulation</p>
+                    <p>Une assurance bagage peut aussi être envisagée !</p>
+                </div>
             </div>
-            <div class="secondCol col-9">
-                <h4>Comment s'y rendre ?</h4>
-            </div>
-            <div class="firstCol2 col-3">
-            </div>
-            <div class="secondCol col-9">
-                <p>Les Départs ce font dans la capital de votre pays</p>
-                <p>Les horaires dépendent de votre aéroport</p>
-            </div>
-
-        
-            <div class="firstCol col-3">
-                <img src="images/bagage.svg">
-            </div>
-            <div class="secondCol col-9">
-                <h4>Assurance Voyage</h4>
-            </div>
-            <div class="firstCol2 col-3">
-            </div>
-            <div class="secondCol col-9">
-                <p>Pensez à prendre une assurance en cas d'annulation</p>
-            </div>
-
-
         </div>
     </div>
 </div>
 
+
+<div class="container Preparer">
+    <div class="section-icon-container mx-auto mb-3">
+        <div class="row justify-content-center">
+            <img src="images/planet.svg" class =" col-12 iconPrepare">
+            <h3 class ="titreEtapes">Sur place</h3>
+            <div class="separator"></div>
+        </div>
+    </div>
+    <div class="container Etapes">
+        <div class="row col-lg-12 col-md-12 align-items-center rowEtapes">
+            <div class="preparation">
+                <div class="col">
+                    <img src="images/languages.svg">
+                    <h4>Langue offcielle</h4>
+                    <p>La langue la plus parlé sur Pandora est l'anglais</p>
+                    <p>Vous pouvez trouver des associations d'entre-aide parlant votre langue</p>
+                </div>
+
+                <div class="col">
+                    <img src="images/sun.svg">
+                    <h4>La météo sur Pandora</h4>
+                    <p>Le climat est tropical, équivalent à des température Sud-Américaine</p>
+                    <p>De part son climat tropical, les saisons des pluies sont à prévoir</p>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+<div class="container complementaire">
+    <div class="textComplementaire">
+        <h2>Informations complémentaire ?</h2>
+        <p>Vous avez des questions ou besoin de plus d'infos ? rendez-vous sur le forum, c'est <a href="#">juste ici.</a><br>Envie de passer le pas et réserver votre vol ? c'est en dessous que ça ce passe !</p>
+    </div>
+</div>
 
     <!-- ----------------------------------  FOOTER ---------------------------------> 
     <?php footer() ?>

@@ -252,12 +252,6 @@ svg{
     
 /************************* EN TETE  ******************/
 
-.bloc-background{
-    background-image: url(images/space.jpg);
-    width: 2550px;
-    height: 500px;
-}
-
 .infoVol{
     margin-top: 200px;
 }
@@ -279,8 +273,9 @@ svg{
 .para1{
     color: white;
     line-height: 50px;
-    padding: 150px 150px;
+    padding: 150px 150px 0px 150px;
     font-size: 1.2em;
+    text-align: center;
 }
 
 /************************* SECTION PREPARE  ******************/
@@ -306,28 +301,73 @@ svg{
     height: 10px;
 }
 
-/************************* ETAPES PREPARE  ******************/
+/************************* ETAPES ******************/
 
-.firstCol{
+.Preparer{
+    margin-top: 100px;
+}
+
+.preparation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.col img{
+    /* display: inline-block; */
     width: 80px;
     height: 80px;
 }
-.firstCol2{
-    width: 80px;
-    height: 40px;
-}
 
-.secondCol h4{
+.col h4{
     font-size: 1.6em;
     color: white;
     letter-spacing: 2.5px;
     padding-left: 25px;
     font-weight: bolder;
+    margin-bottom: 25px;
 }
 
-.secondCol p{
+.col p{
     color: white;
     padding-left: 25px;
+    line-height: 20px;
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/************************* Complémentaire  ******************/
+
+.complementaire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.complementaire h2{
+    color: white;
+    text-align: center;
+}
+
+.complementaire p {
+    color: white;
+    line-height: 40px;
+    text-align: center;
+}
+
+.complementaire a {
+
+    color: gold;
 }
 
 
@@ -344,10 +384,45 @@ svg{
 /* ------------------------------------------ MEDIA QUERY 1000px ---------------------------------- */
 @media screen and (max-width : 1000px){
 
-  .navbar-nav{
-    width: 50vh;
-    display: flex;
-    justify-content: center;
+    .navbar-nav{
+        width: 50vh;
+        display: flex;
+        justify-content: center;
 
-  }
+    }
+
+    .navbar-collapse ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .para1{
+        line-height: 50px;
+        padding: 150px 0px 0px 0px;
+        font-size: 1.2em;
+    }
+
+    .preparation{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+    }
+
+    .col{
+        margin-bottom: 100px;
+    }
+}
+
+/* ------------------------------------------ MEDIA QUERY 530px ---------------------------------- */
+
+@media screen and (max-width : 390px){
+
+    .navbar-collapse ul{
+        align-items: flex-start;
+        margin: 10px 0px 0px 10px;
+    }
 }
