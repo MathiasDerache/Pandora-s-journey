@@ -48,7 +48,7 @@ if ($annonce->getTypeAnn() == 'immobilier'){
 }
 elseif ($annonce->getTypeAnn() == 'travail'){
         bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);
-        cardAnnonceInteret($imageProfil, $annoncesLoisir, $annoncesImmobilier);
+        cardAnnonceInteret($annoncesImmobilier, $annoncesLoisir);
 }
 elseif ($annonce->getTypeAnn() == 'loisir'){
         bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);

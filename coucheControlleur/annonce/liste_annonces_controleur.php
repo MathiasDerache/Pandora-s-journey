@@ -8,6 +8,7 @@ require_once("../../view/pages_anonces/body_liste_annonce.php");
 require_once("../../view/pages_anonces/modal_ajout_annonce.php");
 require_once("../../view/pages_anonces/card_annonce.php");
 require_once("../../view/pages_anonces/pagination_annonce.php");
+require_once("../../view/pages_anonces/filtre_annonce.php");
 require_once("../../coucheService/AnnoncesService.php");
 require_once("../../classe_metier/Annonce.php");
 require_once("../../Pandora_nav_footer/nav.php");
@@ -77,8 +78,7 @@ if (!empty($_GET)) {
         footer();
     } elseif (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "delete") {
         (new AnnoncesService)->deleteService($_GET['id']);
-        navBar();
-        bodyListeAnnonces();
+
 
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $title = "Immobilier";
@@ -93,6 +93,9 @@ if (!empty($_GET)) {
             $typeAnnonce = "loisir";
             headAnnonce($title);
         }
+
+        navBar();
+        bodyListeAnnonces();
 
         if (isset($_GET['page'])) {
             $pageActuelle = $_GET['page'];
@@ -139,8 +142,7 @@ if (!empty($_GET)) {
 
         footer();
     } else {
-        navBar();
-        bodyListeAnnonces();
+
 
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $title = "Immobilier";
@@ -155,6 +157,9 @@ if (!empty($_GET)) {
             $typeAnnonce = "loisir";
             headAnnonce($title);
         }
+
+        navBar();        
+        bodyListeAnnonces();
 
         if (isset($_GET['page'])) {
             $pageActuelle = $_GET['page'];
@@ -202,4 +207,5 @@ if (!empty($_GET)) {
         footer();
     }
 ?><script src="app.js" type="text/javascript"></script>
+    <script src="filtre.js" type="text/javascript"></script>
 <?php }

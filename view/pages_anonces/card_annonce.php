@@ -1,5 +1,7 @@
 <?php
 
+
+
 function cardAnnonce($typeannonce, $annonces, $i)
 { ?>
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 lignes">
