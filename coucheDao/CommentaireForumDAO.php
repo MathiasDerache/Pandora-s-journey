@@ -64,11 +64,11 @@ class CommentaireForumDAO implements InterfDao
             $db = $this->db->connectiondb();
             $idCommSuj = $commSujet->getIdCommSuj();
             $pseudoUt = $commSujet->getPseudoUt();                                      // Function update Commentaire
-            $dateCommSuj = $commSujet->getDateCommSuj();
+            $dateCommSuj = $commSujet->getDateCommSuj()->format("Y-m-d");
             $contCommSuj = $commSujet->getContCommSuj();
             $idSuje = $commSujet->getIdSuje();
             $idUti = $commSujet->getIdUti();
-            $stm = $db->prepare("UPDATE commentairefurum SET psodoUt=?, dateComSuj=?, contComSuj=?, idSujetTh=?, idUti=?  WHERE idcommSujet =?");
+            $stm = $db->prepare("UPDATE commentairefurum SET pseudoUt=?, dateComSuj=?, contComSuj=?, idSujetTh=?, idUti=?  WHERE idcommSujet =?");
             $stm->bindValue(1, $pseudoUt);
             $stm->bindValue(2, $dateCommSuj);
             $stm->bindValue(3, $contCommSuj);
@@ -77,7 +77,7 @@ class CommentaireForumDAO implements InterfDao
             $stm->bindValue(6, $idCommSuj,  PDO::PARAM_INT);
             $stm->execute();
         } catch (PDOException $f) {
-            throw new DaoException($f->getCode(), $f->getMessage());
+            throw new DaoException($f->getMessage());
         }
     }
 

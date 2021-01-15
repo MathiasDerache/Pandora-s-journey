@@ -50,8 +50,8 @@ if (!empty($_GET)) { // ici je vérifie que le get n'est pas empty
 
 
     } elseif (
-        isset($_GET["idCommForum"]) && !empty($_GET["idCommForum"]) && isset($_GET["idSujForum"]) && !empty($_GET["idSujForum"]) && isset($_GET["action"])
-        && !empty($_GET["action"]) && $_GET["action"] == "recupe_pour_modif"
+        isset($_GET["idCommForum"]) && !empty($_GET["idCommForum"]) && isset($_GET["idSujForum"]) && !empty($_GET["idSujForum"]) && isset($_GET["actionmodif"])
+        && !empty($_GET["actionmodif"]) && $_GET["actionmodif"] == "recupe_pour_modif"
     ) {
         $idSujet = htmlspecialchars($_GET["idSujForum"]);
         $idCom = htmlspecialchars($_GET["idCommForum"]);
@@ -61,6 +61,20 @@ if (!empty($_GET)) { // ici je vérifie que le get n'est pas empty
 
 
 
+    } elseif (
+        isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] == "modifCommForum"
+        && isset($_GET["idcom"]) && !empty($_GET["idcom"]) && isset($_GET["idSujForum"]) && !empty($_GET["idSujForum"])
+    ) {
+        if (isset($_POST) && !empty($_POST)) {
+            $idcom = htmlspecialchars($_GET["idcom"]);
+            $idSujForum = htmlspecialchars($_GET["idSujForum"]);
+            $contCommSuj = htmlspecialchars($_POST["contCommSuj"]);
+            $comForum = (new CommentaireForumService())->readByIdService($idcom);
+            $comForum->setContCommSuj($contCommSuj);
+            (new CommentaireForumService())->updateService($comForum);
+            header("location: forumcontrolleur.php?sujetforum=$idSujForum");
+        }
+        echo "ok my man!!!";
     } elseif (isset($_GET['action']) && $_GET['action'] == "ajout_Sujet_forum") {
         if (
             isset($_POST['typeSujetTh']) && !empty($_POST['typeSujetTh'])

@@ -17,6 +17,10 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+        <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <title>Forum travail</title>
     </head>
 
@@ -78,7 +82,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                                     <div class="mx-auto d-block col-sm-10 col-md-10 col-lg-10 col-xl-10">
 
                                         <div class="media mt-5 mb-5 rounded-pill bgComm shadow col-sm-12 col-md-12 col-lg-12 col-xl-12 p-2">
-                                            <img class="align-self-center mr-5 border-primary mt-0 rounded-circle shadow-lg ml-5" width="13%" src="images/exempleProfilImage.jpg" alt="Generic placeholder image">
+                                            <img class="align-self-center mr-5 border-primary my-2 rounded-circle shadow-lg ml-5" width="13%" src="images/exempleProfilImage.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="mt-3 mb-3">
                                                     Réponse de: <span class="bg-danger border border-dark p-2 shadow rounded-pill"><?php echo $value->getPseudoUt(); ?></span>
@@ -88,8 +92,8 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                                                 </p>
                                                 <p class="mb-0">Posté le
                                                     <?php echo $value->getDateCommSuj()->format('d-m-Y'); ?>
-                                                    <span class="modifElem float-right  btn btn-warning rounded-pill shadow" data-toggle="modal" data-target="#modalForumAnnonces">
-                                                        <a href="forumcontrolleur.php?idSujForum=<?php echo $value->getIdSuje(); ?>&idCommForum=<?php echo $value->getIdCommSuj(); ?>&action=recupe_pour_modif&#modalForumAnnonces" class="modifierSpan">
+                                                    <span class="modifElem float-right  btn btn-warning rounded-pill shadow">
+                                                        <a href="forumcontrolleur.php?idSujForum=<?php echo $value->getIdSuje(); ?>&idCommForum=<?php echo $value->getIdCommSuj(); ?>&actionmodif=recupe_pour_modif" class="modifierSpan">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
                                                                 <path d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
                                                             </svg>
@@ -129,27 +133,40 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
 
         </div>
         <!-- ----------------------------------  pagination --------------------------------->
-
+        <?php if (isset($_GET['actionmodif']) == "recupe_pour_modif") {
+        ?>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                    $('#modalForumAnnonces').modal('show');
+                });
+            </script>
+        <?php
+        }
+        ?>
         <!-- ---------------------------------- fin forum --------------------------------->
 
         <!-- Modal -->
         <div class="modal fade" id="modalForumAnnonces" tabindex=" -1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modalForum p-4">
-                    <h2 class="modal-title text-white mb-3"><?php if (isset($_GET['action'])) {
-                                                                echo 'modification commentaire sur la thématique';
+                    <h2 class="modal-title text-white mb-3"><?php if (isset($_GET['actionmodif'])) {
+                                                                echo 'Modification commentaire sur la thématique';
                                                             } else {
                                                                 echo "Commentaire sur Thematique";
                                                             } ?> : <?php echo $sujetTheme->getTypeSujetTh(); ?> </h2>
 
-                    <form action=" forumcontrolleur.php?action=<?php if ($comUpdate) {
-                                                                    $com = (new CommentaireForumService())->readByIdService($comUpdate->getIdCommSuj());
-                                                                    echo "modif_comm_forum&idcom=" . $com->getIdCommSuj();
+                    <form action=" forumcontrolleur.php?action=<?php if (isset($_GET['actionmodif'])) {
+                                                                    $com = (new CommentaireForumService())->readByIdService($_GET['idCommForum']);
+                                                                    echo "modifCommForum&idcom=" . $com->getIdCommSuj() . "&idSujForum=" . $_GET['idSujForum'];
                                                                 } else {
                                                                     echo "ajout_comm_forum&idsuj=" . $sujetTheme->getIdSujetTh();
                                                                 } ?>" method="POST">
                         <div class="form-group">
-                            <label for="titeSujet" class="text-white">Votre réponse:</label>
+                            <label for="titeSujet" class="text-white"><?php if (isset($_GET['actionmodif'])) {
+                                                                            echo "redigez votre correction ci-dessous:";
+                                                                        } else {
+                                                                            echo "Votre réponse:";
+                                                                        } ?></label>
                             <textarea class="form-control" name="contCommSuj" id="questionSujet" cols="10" rows="10" placeholder="Rediger votre réponse ici..."></textarea>
                         </div>
                         <div>
@@ -169,10 +186,6 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
         </footer>
         <!-- ----------------------------------  FIN_FOOTER --------------------------------->
     </body>
-    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
     </html>
