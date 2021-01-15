@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg2"
+    viewBox="0 0 964 502.91"
+    version="1.1"
+  >
+  <g
+      id="layer1"
+      transform="translate(110.44 -502.69)"
+    >
+    <path
+        id="path3861"
+        style="block-progression:tb;color:#000000;text-transform:none;text-indent:0"
+        d="m-45.156 502.69c-33.844 0-65.281 25.844-65.281 61.344v54.031c0 35.5 31.438 61.344 65.281 61.344h514v-60.188h-514c-5.138 0-5.0938-2.0223-5.0938-1.1562v-54.031c0 0.86609-0.04425-1.1562 5.0938-1.1562h833.41c5.138 0 5.0938 2.0223 5.0938 1.1562v54.031c0-0.86606 0.0443 1.1562-5.0938 1.1562h-186.13l56.063 60.188h130.06c33.844 0 65.312-25.844 65.312-61.344v-54.031c0-35.5-31.469-61.344-65.312-61.344z"
+    />
+    <path
+        id="rect3820"
+        stroke-linejoin="round"
+        style="color:#000000"
+        d="m-70.659 565.52h316.55v57.62l-316.55-0.73299z"
+        stroke="#000"
+        stroke-linecap="round"
+        stroke-width="42.12"
+    />
+    <g
+        id="g3879"
+        stroke="#000"
+        stroke-width="1px"
+        transform="matrix(.60223 0 0 .60223 -31.552 565.2)"
+      >
+      <path
+          id="path3822"
+          d="m-110.36 243.79h36.429v178.21h70.714v-178.21h36.071v142.14h-142.9z"
+      />
+      <g
+          id="g3867"
+        >
+        <path
+            id="path3824"
+            d="m67.5 243.43h108.21v36.071h-71.786v37.143h70.714v32.857h-71.429v71.786h-36.071z"
+        />
+        <path
+            id="path3826"
+            d="m175.71 279.86h35v35.842h-34.911z"
+        />
+      </g
+      >
+      <g
+          id="g3871"
+        >
+        <path
+            id="path3828"
+            d="m245.71 243.43h106.79v36.071h-71.786v106.43h71.429v36.071h-106.79z"
+        />
+        <path
+            id="path3830"
+            d="m352.86 280.58h35.357v105h-35.357z"
+        />
+      </g
+      >
+      <g
+          id="g3875"
+        >
+        <path
+            id="path3832"
+            d="m423.57 420.93v-141.79h35.357v35.714h71.429v-35.714h36.786v142.5h-36.071v-71.071h-73.214v70.714h-35z"
+        />
+        <path
+            id="path3834"
+            d="m458.93 244.15v34.286h71.429v-34.643z"
+        />
+      </g
+      >
+      <path
+          id="path3836"
+          d="m601.43 243.79h106.79v35.357h-36.429v142.5h-34.643v-143.21h-35.714z"
+      />
+      <path
+          id="path3838"
+          d="m850.36 244.51h-105v176.79h104.64v-35.714h-71.786v-35.714h71.786v-35.714h-71.429v-35.714h71.786z"
+      />
+    </g
+    >
+    <path
+        id="path3848"
+        stroke="#000"
+        stroke-width="1px"
+        d="m501.83 579.74h20.357v21.071h21.429v21.071h18.214v19.643h21.071v19.286h20.357v20.714h20v21.786h20v20h20.714v20h21.071v19.286h20.357v21.786h19.286v21.071h20.357v17.857h-81.429v41.072h20.357v40.714h21.071v40.357h19.643v39.643h-20v20h-40v-20h-18.929v-39.643h-20.357v-40.714h-21.429v-40h-40.714v20h-18.571v19.643h-22.143v20.357h-20.714z"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Update Logo</dc:title
+        >
+        <dc:date
+          >2013-05-28T12:48:36</dc:date
+        >
+        <dc:description
+          >Update Logo\ncreated for my website wiki.vanessalionel.fr (tips for Ubuntu)</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/178684/update-logo-by-cyberscooty-178684</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >cyberscooty</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >computer</rdf:li
+            >
+            <rdf:li
+              >mise &#xC3;&#xA0; jour</rdf:li
+            >
+            <rdf:li
+              >update</rdf:li
+            >
+            <rdf:li
+              >upgrade</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
