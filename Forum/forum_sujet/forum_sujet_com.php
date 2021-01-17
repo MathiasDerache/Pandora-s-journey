@@ -38,8 +38,18 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
             <div class="row">
                 <div class="col-sm-8 col-md-8 col-lg-10 col-xl-10 text-white sujetThForum mb-5">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto d-block">
-
+                        <div class="position-fixed mt-3 ">
+                            <a href="forumcontrolleur.php">
+                                <button type="button" class="btn btn-warning rounded-pill text-white">
+                                    <span class="material-icons" style="vertical-align: middle;">
+                                        west
+                                    </span>
+                                    Tableau thématique
+                                </button>
+                            </a>
+                        </div>
                         <div class="row justify-content-center mt-5">
+
                             <div class="title-forum text-white mb-5">
                                 <h1>Questions sur la thématique: <?php if ($sujetTheme) {
                                                                         echo $sujetTheme->getTypeSujetTh();
@@ -123,7 +133,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                     <div class="position-fixed">
                         <button type="button" class="mx-auto d-block btn btn-warning rounded-pill boutonSideInfo" data-toggle="modal" data-target="#modalForumAnnonces">
                             <a href="#">
-                                <span class="material-icons text-white m-2 font-weight-bold " style="font-size:x-large;">
+                                <span class="material-icons text-white m-1 font-weight-bold " style="font-size:x-large;">
                                     add
                                 </span>
                             </a>
@@ -151,10 +161,10 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
             <div class="modal-dialog" role="document">
                 <div class="modal-content modalForum p-4">
                     <h2 class="modal-title text-white mb-3"><?php if (isset($_GET['actionmodif'])) {
-                                                                echo 'Modification commentaire sur la thématique';
+                                                                echo 'Modification commentaire';
                                                             } else {
-                                                                echo "Commentaire sur Thematique";
-                                                            } ?> : <?php echo $sujetTheme->getTypeSujetTh(); ?> </h2>
+                                                                echo "Ajouter commentaire";
+                                                            } ?> </h2>
 
                     <form action=" forumcontrolleur.php?action=<?php if (isset($_GET['actionmodif'])) {
                                                                     $com = (new CommentaireForumService())->readByIdService($_GET['idCommForum']);
