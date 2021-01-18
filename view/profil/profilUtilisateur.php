@@ -115,7 +115,7 @@ function infoProfil($imageProfil, $dataUtilisateur)
                 <?php } ?>
                 <div class="container">
                     <div class="text-center pt-2">
-                        <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalInfoProfil">Modifier vos information</div>
+                        <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalInfoProfil">Modifier vos informations</div>
                     </div>
                 </div>
             </div>
