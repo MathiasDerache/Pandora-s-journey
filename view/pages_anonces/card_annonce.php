@@ -10,8 +10,9 @@ function cardAnnonce($typeannonce, $annonces, $i)
             <div class="card-body">
                 <h5 class="card-title"><?php echo $annonces[$i]->getTitreAnn() ?></h5>
                 <p class="card-text"><?php echo $annonces[$i]->getDescAnn() ?></p>
-                <a href="annonce_controlleur.php?id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Consulter</button></a>
-                <a href="liste_annonces_controleur.php?type=annonces_<?php echo $typeannonce ?>&action=delete&id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Supprimer</button></a>
+                <a href="annonce_controlleur.php?id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Consulter</button></a></br></br>
+                <a href="liste_annonces_controleur.php?type=annonces_<?php echo $typeannonce ?>&action=delete&id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Supprimer</button></a></br></br>
+                <div type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalModificationAnnonce">Modifier</div>
             </div>
         </div>
     </div>

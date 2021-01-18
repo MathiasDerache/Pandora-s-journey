@@ -56,10 +56,9 @@ class AnnoncesDao implements InterfDao
     {
         try {
             $db = $this->db->connectiondb();
-            $stm = $db->prepare("UPDATE annonces SET DatePubAnn=?,typeannoce=?, titre=?, description=?
-                                ,numcontact=?,numAdresse=?,rue=?,codepostal=?,idUti=? WHERE idannonce=?");
+            $stm = $db->prepare("UPDATE annonces SET TypeAnnonce=?, titre=?, description=?
+                                ,numContact=?,numAdresse=?,rue=?,codePostal=?,idUti=? WHERE idAnnoce=?");
             //recuperation des infos de $object instance de la class Annonce
-            $DatePubAnn = $object->getDatePubAnn();
             $typeAnnonce = $object->getTypeAnn();
             $titre = $object->getTitreAnn();
             $descAnn = $object->getDescAnn();
