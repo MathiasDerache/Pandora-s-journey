@@ -134,7 +134,7 @@ class Utilisateur
     /**
      * Get the value of numTel
      */
-    public function getNumTel(): int
+    public function getNumTel(): ?string
     {
         return $this->numTel;
     }
@@ -144,7 +144,7 @@ class Utilisateur
      *
      * @return  self
      */
-    public function setNumTel(int $numTel): self
+    public function setNumTel(?string $numTel): self
     {
         $this->numTel = $numTel;
 
