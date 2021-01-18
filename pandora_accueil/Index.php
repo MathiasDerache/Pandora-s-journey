@@ -34,7 +34,8 @@ include("../Pandora_nav_footer/footer.php");
 
         <div class="video">
             <video autoplay loop muted class="embed-responsive embed-responsive-16by9">
-                <source src="video/Project 2.mkv">
+                <source src="video/Project 2.mkv" type="video/mkv">
+                <source src="video/Project 2.webm" type="video/webm">
             </video>
             <!-- Scroll Down -->
             <div class="scroll-down">
