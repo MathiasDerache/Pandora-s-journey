@@ -26,60 +26,6 @@ if (!empty($_GET)) {
             ->setCodePost($_POST['codePostalAnnonce'])->setIdUti($_SESSION['id']);
         (new AnnoncesService())->creatService($annonce);
         navBar();
-        bodyListeAnnonces();
-        modalAjoutAnnonce($annonce->getTypeAnn());
-
-        if (isset($_GET['page'])) {
-            $pageActuelle = intval($_GET['page']);
-            $premiereEntree = ($pageActuelle - 1) * $annonceParPage;
-            $total = (new AnnoncesService())->selectAllAsTotalService($annonce->getTypeAnn(), $annonceParPage, $premiereEntree);
-            $nbreDePage = ceil($total / $annonceParPage);
-        } else {
-            $pageActuelle = 1;
-            $premiereEntree = ($pageActuelle - 1) * $annonceParPage;
-            $total = (new AnnoncesService())->selectAllAsTotalService($annonce->getTypeAnn(), $annonceParPage, $premiereEntree);
-            $nbreDePage = ceil($total / $annonceParPage);
-        }
-        if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
-            $title = "Immobilier";
-            headAnnonce($title);
-            $typeAnnonce = "immobilier";
-            $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'immobilier') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
-        } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_travail") {
-            $title = "Travail";
-            headAnnonce($title);
-            $typeAnnonce = "travail";
-            $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'travail') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
-        } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_loisir") {
-            $title = "Loisir";
-            headAnnonce($title);
-            $typeAnnonce = "loisir";
-            $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'loisir') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
-        }
-
-        footer();
-    } elseif (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "delete") {
-        (new AnnoncesService)->deleteService($_GET['id']);
-
-
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $title = "Immobilier";
             $typeAnnonce = "immobilier";
@@ -95,7 +41,6 @@ if (!empty($_GET)) {
         }
 
         navBar();
-        bodyListeAnnonces();
 
         if (isset($_GET['page'])) {
             $pageActuelle = $_GET['page'];
@@ -112,31 +57,72 @@ if (!empty($_GET)) {
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $typeAnnonce = "immobilier";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'immobilier') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_travail") {
             $typeAnnonce = "travail";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'travail') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_loisir") {
             $typeAnnonce = "loisir";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'loisir') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         }
+        paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+
+        modalAjoutAnnonce($typeAnnonce);
+
+        footer();
+    } elseif (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "delete") {
+        (new AnnoncesService)->deleteService($_GET['id']);
+
+        if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
+            $title = "Immobilier";
+            $typeAnnonce = "immobilier";
+            headAnnonce($title);
+        } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_travail") {
+            $title = "Travail";
+            $typeAnnonce = "travail";
+            headAnnonce($title);
+        } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_loisir") {
+            $title = "Loisir";
+            $typeAnnonce = "loisir";
+            headAnnonce($title);
+        }
+
+        navBar();
+
+        if (isset($_GET['page'])) {
+            $pageActuelle = $_GET['page'];
+            $premiereEntree = ($pageActuelle - 1) * $annonceParPage;
+            $total = (new AnnoncesService())->selectAllAsTotalService($typeAnnonce, $annonceParPage, $premiereEntree);
+            $nbreDePage = ceil($total / $annonceParPage);
+        } else {
+            $pageActuelle = 1;
+            $premiereEntree = ($pageActuelle - 1) * $annonceParPage;
+            $total = (new AnnoncesService())->selectAllAsTotalService($typeAnnonce, $annonceParPage, $premiereEntree);
+            $nbreDePage = ceil($total / $annonceParPage);
+        }
+
+        if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
+            $typeAnnonce = "immobilier";
+            $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
+        } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_travail") {
+            $typeAnnonce = "travail";
+            $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
+        } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_loisir") {
+            $typeAnnonce = "loisir";
+            $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
+        }
+        paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
 
         modalAjoutAnnonce($typeAnnonce);
 
@@ -146,8 +132,6 @@ if (!empty($_GET)) {
             ->setNumContAnn($_POST['numeroContactAnnonce'])->setNumAdressAnn($_POST['numeroAdresseAnnonce'])->setRueAnn($_POST['rueAdresseAnnonce'])
             ->setCodePost($_POST['codePostalAnnonce'])->setIdUti($_SESSION['id'])->setIdAnn($_GET['id']);
         (new AnnoncesService())->updateService($annonce);
-
-
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $title = "Immobilier";
             $typeAnnonce = "immobilier";
@@ -163,7 +147,6 @@ if (!empty($_GET)) {
         }
 
         navBar();
-        bodyListeAnnonces();
 
         if (isset($_GET['page'])) {
             $pageActuelle = $_GET['page'];
@@ -180,38 +163,25 @@ if (!empty($_GET)) {
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $typeAnnonce = "immobilier";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'immobilier') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_travail") {
             $typeAnnonce = "travail";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'travail') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_loisir") {
             $typeAnnonce = "loisir";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'loisir') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         }
+        paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
 
         modalAjoutAnnonce($typeAnnonce);
 
         footer();
     } else {
-
-
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $title = "Immobilier";
             $typeAnnonce = "immobilier";
@@ -226,8 +196,7 @@ if (!empty($_GET)) {
             headAnnonce($title);
         }
 
-        navBar();        
-        bodyListeAnnonces();
+        navBar();
 
         if (isset($_GET['page'])) {
             $pageActuelle = $_GET['page'];
@@ -244,34 +213,22 @@ if (!empty($_GET)) {
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $typeAnnonce = "immobilier";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'immobilier') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_travail") {
             $typeAnnonce = "travail";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'travail') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_loisir") {
             $typeAnnonce = "loisir";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
-            for ($i = 0; $i < count($annonces); $i++) {
-                if ($annonces[$i]->getTypeAnn() == 'loisir') {
-                    cardAnnonce($typeAnnonce, $annonces, $i);
-                }
-            }
-            paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
+            bodyListeAnnonces();
+            cardAnnonce($typeAnnonce, $annonces);
         }
+        paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
 
         modalAjoutAnnonce($typeAnnonce);
-        
 
         footer();
     }
