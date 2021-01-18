@@ -166,14 +166,13 @@ try {
     $dataUtilisateur = $utilisateurService->readByIdService($_SESSION["id"]);
 
     // Recherche Sujet
-
-    if ($tab) {
-        $tab = $sujet->readService();
-        foreach ($tab as $value) {
-            if ($value->getIdUti() === $_SESSION["id"]) {
-                $arraySujet[] = $value;
-                $arrayReponse[] = $commForumSujet->foundComById($value->getIdSujetTh());
-            }
+    $tab = $sujet->readService();
+    $arraySujet[] = null;
+    $arrayReponse[] = null;
+    foreach ($tab[0] as $value) {
+        if ($value->getIdUti() === $_SESSION["id"]) {
+            $arraySujet[] = $value;
+            $arrayReponse[] = $commForumSujet->foundComById($value->getIdSujetTh());
         }
     }
 } catch (ServiceException $e) {
