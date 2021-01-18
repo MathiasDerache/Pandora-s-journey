@@ -86,9 +86,7 @@ if (!empty($_GET)) { // ici je vérifie que le get n'est pas empty
             $sujet = (new SujetTheme())->setIdUti($idUtil)->setTypeSujetTh($typeSujetTh)->setQuestionSujet($questionSujet);
             (new SujetForumService())->creatService($sujet);
             $array = (new SujetForumService())->readService();
-            sujetTypeForum($array); //
-
-
+            header("location: forumcontrolleur.php?page=1");
         }
     } elseif (isset($_GET['sujetforum']) && !empty($_GET['sujetforum']) && is_numeric($_GET['sujetforum'])) {
         $idSujetForum = htmlspecialchars($_GET['sujetforum']);
@@ -98,7 +96,6 @@ if (!empty($_GET)) { // ici je vérifie que le get n'est pas empty
 
 
     } elseif (isset($_GET['page']) && !empty($_GET['page'])) {
-        echo "heloooo!";
         $page = htmlspecialchars($_GET['page']);
         $array = (new SujetForumService())->readService($page);
         sujetTypeForum($array);
