@@ -167,8 +167,8 @@ try {
 
     // Recherche Sujet
     $tab = $sujet->readService();
-    $arraySujet[] = null;
-    $arrayReponse[] = null;
+    $arraySujet = [];
+    $arrayReponse = [];
     foreach ($tab[0] as $value) {
         if ($value->getIdUti() === $_SESSION["id"]) {
             $arraySujet[] = $value;
