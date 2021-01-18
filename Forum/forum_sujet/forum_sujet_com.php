@@ -66,7 +66,7 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                                                                     $pseudoUtil = $utilisateur->readByIdService($sujetTheme->getIdUti());
                                                                 }
                                                                 ?>
-                                        <span class="bg-danger border border-dark p-2 shadow rounded-pill"><?php if ($pseudoUtil) {
+                                        <span class="bg-danger border border-dark p-2 shadow rounded-pill"><?php if ($sujetTheme) {
                                                                                                                 echo $pseudoUtil->getPseudo();
                                                                                                             } ?></span><?php
                                                                                                                         ?>

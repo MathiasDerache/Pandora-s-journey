@@ -21,7 +21,7 @@ function footer()
                 <h2>Navigation</h2>
                 <ul>
                     <li><a href="../../pandora_accueil/index.php">Accueil</a></li>
-                    <li><a href="../forum/Pandora_Forum_accueil/forum.php">Forum</a></li>
+                    <li><a href="../coucheControlleur/forum/forumcontrolleur.php">Forum</a></li>
                     <li><a href="#">Billeterie</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
