@@ -247,7 +247,6 @@ function compteARebours()
 
 function banniere($banniereProfil)
 { ?>
-    <!-- <div class="col-sm-12 col-md-12 col-lg-12"> -->
     <?php
     if (empty($banniereProfil)) {
         echo '<img src="../../view/profil/banniereProfil/voyagez.jpg" class="img-fluid shadow-lg banniere_profil">';
@@ -260,7 +259,6 @@ function banniere($banniereProfil)
             <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalBanniere">Modifier la bannière</div>
         </div>
     </div>
-    <!-- </div> -->
 <?php }
 
 function popupFormImageProfil()

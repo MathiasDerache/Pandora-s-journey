@@ -91,7 +91,7 @@ border: solid 2px black;
 
 .banniere_profil{
     width: 100%;
-    height: 250px;
+    height: 350px;
 }
 
 tbody:hover {
@@ -413,9 +413,13 @@ svg{
 }
 
 /* Media query */
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1441px) {
     .navbar ul {
         margin-left: 100px;
+    }
+
+    .banniere_profil{
+        height: 250px;
     }
 }
 
@@ -423,9 +427,13 @@ svg{
     .email {
         overflow: scroll;
     }
+
+    .banniere_profil{
+        height: 200px;
+    }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 991.5px) {
     .logo_footer img {
         width: 240px;
         height: 144px;
@@ -492,5 +500,9 @@ svg{
 
     .email {
         overflow: scroll;
+    }
+
+    .banniere_profil{
+        height: 150px;
     }
 }
