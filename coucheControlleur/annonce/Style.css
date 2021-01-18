@@ -338,6 +338,10 @@
                                                     justify-content: space-around;
                                                 }
 
+                                                .card-body {
+                                                    text-align: center;
+                                                }
+
                                                 /* css annonces */
 
                                                 /* css card infons annonce */
