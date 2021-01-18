@@ -369,7 +369,64 @@ svg{
 
     color: gold;
 }
+/************************* Formulaire de vol  ******************/
 
+
+.form-control {
+    margin-top: 30px;
+    position: relative;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-radius: 0;
+    background-color: #04153E;
+    color: white;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-bottom:  2px solid #222;
+    background-color: #04153E;
+    color: white;
+}
+label {
+
+    font-size: 18px;
+    padding-left: 15px;
+    line-height: 20px;
+    transition: .5s ease;
+    color: wheat;
+}
+
+.formulaire{
+    margin: 40px 0px;
+}
+
+.btnValide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.valide{
+    background: none;
+    margin-bottom: 100px;
+    color: white;
+    width: 240px;
+    height: 80px;
+    border: 1px solid #338;
+    font-size: 25px;
+    border-radius: 4px;
+    transition: .6s;
+}
+
+.valide:hover{
+    background: goldenrod;
+
+}
+#depart{
+    margin-bottom: 35px;
+}
 
 /* ------------------------------------------ MEDIA QUERY 1150px ---------------------------------- */
 @media screen and (max-width : 1150px){
