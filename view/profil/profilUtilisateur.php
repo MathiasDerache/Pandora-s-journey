@@ -165,7 +165,6 @@ function vosSujets($arraySujet, $arrayReponse)
         <h2 class=" mt-5">Vos sujets</h2>
         <div class="row justify-content-center">
             <?php if (!empty($arraySujet)) {
-                krsort($arraySujet);
             ?>
                 <table class="table table-hover ml-3 mt-2 event-table">
                     <thead class="bg-dark text-white">
