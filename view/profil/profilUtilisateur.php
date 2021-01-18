@@ -111,7 +111,7 @@ function boutonFlottant()
 
 function infoProfil($imageProfil, $dataUtilisateur)
 { ?>
-    <div class="col-sm-12 col-md-12 col-lg-4 ">
+    <div class="col-sm-12 col-md-12 col-lg-4 infoUti">
         <div class="card-dark col-12  mt-2 mb-3">
             <div class="card-body">
                 <div class="mb-5">
@@ -165,7 +165,8 @@ function vosSujets($arraySujet, $arrayReponse)
         <h2 class=" mt-5">Vos sujets</h2>
         <div class="row justify-content-center">
             <?php if (!empty($arraySujet)) {
-                krsort($arraySujet); ?>
+                // krsort($arraySujet); 
+            ?>
                 <table class="table table-hover ml-3 mt-2 event-table">
                     <thead class="bg-dark text-white">
                         <tr>
@@ -185,11 +186,9 @@ function vosSujets($arraySujet, $arrayReponse)
                                 <td class="align-middle" data-label="Réponses">
                                     <?php
                                     $compt = 0;
-                                    foreach ($arrayReponse as $val) {
-                                        foreach ($val as $v) {
-                                            if ($value->getIdSujetTh() == $v->getIdSuje()) {
-                                                $compt++;
-                                            }
+                                    foreach ($arrayReponse[0] as $val) {
+                                        if ($value->getIdSujetTh() == $val->getIdSuje()) {
+                                            $compt++;
                                         }
                                     }
                                     echo $compt;

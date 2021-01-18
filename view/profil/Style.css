@@ -424,7 +424,7 @@ svg{
     }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
     .logo_footer img {
         width: 240px;
         height: 144px;
@@ -468,9 +468,17 @@ svg{
         float: left;
         font-weight: bold;
     }
+
+    .infoUti {
+        order: -1;
+    }
+
+    .email {
+        overflow: hidden;
+    }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 457px) {
     .navbar-collapse ul {
         align-items: flex-start;
         margin-left: 10px;
@@ -478,6 +486,10 @@ svg{
     }
 
     .form-container{
+        overflow: scroll;
+    }
+
+    .email {
         overflow: scroll;
     }
 }
