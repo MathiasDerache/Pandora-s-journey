@@ -107,7 +107,6 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "mo
             $nomFichier = explode(".", $value->getNomFichier());
             if ($nomFichier[0] === "banniere_Id" . $_SESSION["id"]) {
                 $banniere = $value;
-                unlink($value->getPathFile());
                 break;
             } else {
                 $banniere = null;
@@ -117,6 +116,7 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "mo
         if (!empty($banniere)) {
             $image->setId($value->getId())->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
             $imageService->updateService($image);
+            unlink($value->getPathFile());
         } else {
             $image->setNomFichier($fileNewName)->setTailleFichier($_FILES["file"]["size"])->setPathFile($fileDestination)->setTypeImage($fileExtension)->setIdUti($_SESSION["id"]);
             $imageService->creatService($image);
