@@ -27,11 +27,11 @@ function navBar()
 
 					<li><a href="../../pandora_accueil/Index.php" class="nav-link text-white">Accueil</a></li>
 
-					<li><a href="liste_annonces_controleur.php?type=annonces_immobilier" class="nav-link text-white">Immobilier</a></li>
+					<li><a href="../annonce/liste_annonces_controleur.php?type=annonces_immobilier" class="nav-link text-white">Immobilier</a></li>
 
-					<li><a href="liste_annonces_controleur.php?type=annonces_travail" action="annonces_travail" class="nav-link text-white">Travail</a></li>
+					<li><a href="../annonce/liste_annonces_controleur.php?type=annonces_travail" action="annonces_travail" class="nav-link text-white">Travail</a></li>
 
-					<li><a href="liste_annonces_controleur.php?type=annonces_loisir" action="annonces_loisir" class="nav-link text-white">Loisir</a></li>
+					<li><a href="../annonce/liste_annonces_controleur.php?type=annonces_loisir" action="annonces_loisir" class="nav-link text-white">Loisir</a></li>
 
 					<li><a href="../page_contact/contact.php" class="nav-link text-white">Contacts</a></li>
 
