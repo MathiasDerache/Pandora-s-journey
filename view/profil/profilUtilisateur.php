@@ -178,7 +178,7 @@ function vosSujets($arraySujet, $arrayReponse)
                             <th class="align-middle event-acceder">Accéder à la discussion</th>
                         </tr>
                     </thead>
-                    <?php foreach (array_slice($arraySujet, 0, 3) as $value) { ?>
+                    <?php foreach (array_slice($arraySujet, 0, 5) as $value) { ?>
                         <tbody class="text-white">
                             <tr>
                                 <td class="align-middle" data-label="Questions sur la thématique" scope="row"><?php echo $value->getQuestionSujet(); ?></td>
