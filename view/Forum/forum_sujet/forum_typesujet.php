@@ -41,14 +41,14 @@ function sujetTypeForum(array $array = [])
 
             <div class="row">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle rounded-pill font-weight-bold" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Choix thématique
                     </button>
                     <div class="dropdown-menu  bg-dark" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item text-danger font-weight-bold" href="#">Immobilier</a>
-                        <a class="dropdown-item text-danger font-weight-bold" href="#">Travail</a>
-                        <a class="dropdown-item text-danger font-weight-bold" href="#">Loisirs</a>
-                        <a class="dropdown-item text-danger font-weight-bold" href="#">Discusions générales</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Immobilier">Immobilier</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Travail">Travail</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Loisirs">Loisirs</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Discusionsgenerales">Discusions générales</a>
                     </div>
                 </div>
                 <table class="table table table-forum">
@@ -68,7 +68,7 @@ function sujetTypeForum(array $array = [])
                     ?>
                             <tbody>
                                 <tr>
-                                    <td scope="row"><?php echo $value->getQuestionSujet(); ?></td>
+                                    <td scope=" row"><?php echo $value->getQuestionSujet(); ?></td>
                                     <td scope="row"><?php echo $value->getTypeSujetTh(); ?></td>
                                     <td>
                                         <?php
