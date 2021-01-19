@@ -15,10 +15,10 @@ class BilletDAO implements InterfDao
     public function creat(Object $billet): void
     {
         $numBillet = $billet->getNumBillet();
-        $dateEmb = $billet->getDateEmb();
+        $dateEmb = $billet->getDateEmb()->format("Y-m-d");
         $idUti = $billet->getIdUti();
         try {
-            $db = $this->db->connection();
+            $db = $this->db->connectiondb();
             $stmt = $db->prepare("INSERT INTO billet VALUES(?,?,?)");
             $stmt->bindValue(1, $numBillet, PDO::PARAM_INT);
             $stmt->bindValue(2, $dateEmb);
@@ -33,7 +33,7 @@ class BilletDAO implements InterfDao
     public function read(int $page = null): array
     {
         try {
-            $db = $this->db->connection();
+            $db = $this->db->connectiondb();
             $stmt = $db->prepare("SELECT * FROM billet");
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -55,7 +55,7 @@ class BilletDAO implements InterfDao
         $dateEmb = $billet->getDateEmb();
         $idUti = $billet->getIdUti();
         try {
-            $db = $this->db->connection();
+            $db = $this->db->connectiondb();
             $stmt = $db->prepare("UPDATE billet SET numeroDeBillet = ?, dateEmb = ? WHERE idUti = ?");
             $stmt->bindValue(1, $numBillet, PDO::PARAM_INT);
             $stmt->bindValue(2, $dateEmb);
@@ -70,7 +70,7 @@ class BilletDAO implements InterfDao
     public function delete(int $id): void
     {
         try {
-            $db = $this->db->connection();
+            $db = $this->db->connectiondb();
             $stmt = $db->prepare("DELETE FROM billet WHERE idUti = ?");
             $stmt->bindValue(1, $id, PDO::PARAM_INT);
             $stmt->execute();

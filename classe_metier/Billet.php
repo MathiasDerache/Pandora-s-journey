@@ -17,7 +17,7 @@ class Billet {
     /**
      * Get the value of numBillet
      */ 
-    public function getNumBillet() : int
+    public function getNumBillet() : ?int
     {
         return $this->numBillet;
     }
@@ -27,7 +27,7 @@ class Billet {
      *
      * @return  self
      */ 
-    public function setNumBillet(int $numBillet) : self
+    public function setNumBillet(?int $numBillet) : self
     {
         $this->numBillet = $numBillet;
 

@@ -113,15 +113,15 @@ function complementaire(){?>
 function formulaireVol(){ ?>
     <!-- Formulaire pour trouver un vol -->
     <div class="container">
-        <form action="billeterieController.php?ajout" method="post">
+        <form action="billeterieController.php?action=ajout" method="post">
             <div class="row">
                 <div class="formulaire col-12 col-md-6">
                     <label for="nom">Nom:</label>
-                    <input type="text" id="nom" class="form-control" placeholder="Entrez votre nom">
+                    <input type="text" id="nom" class="form-control" name="nom" placeholder="Entrez votre nom">
                 </div>
                 <div class="formulaire col-12 col-md-6">
                     <label for="prenom">Prénom:</label>
-                    <input type="text" id="prenom" class="form-control" placeholder="Entrez votre prénom">
+                    <input type="text" id="prenom" class="form-control" name="prenom" placeholder="Entrez votre prénom">
                 </div>
             </div>
 <?php
@@ -400,7 +400,7 @@ function suiteFormulaireVol(){ ?>
             <div class="row">
                 <div class="formulaire col-12">
                     <label for="passager">Nombre de passagers</label>  
-                    <input type="number" class="form-control" id="passager" min="1" placeholder="Entrez le nombre de passagers">  
+                    <input type="number" class="form-control" id="passager" name="passager" min="1" placeholder="Entrez le nombre de passagers">  
                 </div>
             </div>
                 <div class="btnValide">

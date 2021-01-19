@@ -4,13 +4,19 @@ include_once __DIR__ . "/InterfService.php";
 
 class BilletService implements interfService
 {
+
     // factorisation de l'instansiation d'objet BilletDao
     public function __construct()
     {
         $this->service = new BilletDAO();
     }
 
-    // transmet l'objet reçu depuis la couche controller à la couche DAO
+    /**
+     * recupère une instance de la couche controlleur et la transmet à la couche dao
+     *
+     * @param object $object
+     * @return object
+     */
     public function creatService(?Object $billet): ?object
     {
         return $this->service->creat($billet);
