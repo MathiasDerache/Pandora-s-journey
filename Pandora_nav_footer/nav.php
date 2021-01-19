@@ -33,9 +33,9 @@ function navBar()
 
 					<li><a href="../annonce/liste_annonces_controleur.php?type=annonces_loisir" action="annonces_loisir" class="nav-link text-white">Loisir</a></li>
 
-					<li><a href="../page_contact/contact.php" class="nav-link text-white">Contacts</a></li>
+					<li><a href="../contact/contactControlleur.php" class="nav-link text-white">Contacts</a></li>
 
-					<li><a href="#" class="nav-link text-white">Billet</a></li>
+					<li><a href="../billeterie/BilleterieController.php" class="nav-link text-white">Billet</a></li>
 
 				</ul>
 			</div>
