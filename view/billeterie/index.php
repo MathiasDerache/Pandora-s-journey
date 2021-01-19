@@ -414,3 +414,12 @@ function suiteFormulaireVol(){ ?>
     </html>
 <?php
 }
+
+function billetValidation(){ ?>
+    <div class="billetValidation">
+        <div class="alert alert-success " role="alert">
+            Billet réservé ! un mail de confirmation a été envoyer sur votre boîte mail.
+        </div>
+    </div>
+<?php    
+}

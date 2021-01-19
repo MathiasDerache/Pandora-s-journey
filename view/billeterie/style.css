@@ -428,6 +428,12 @@ label {
     margin-bottom: 35px;
 }
 
+.billetValidation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 130px;
+}
 /* ------------------------------------------ MEDIA QUERY 1150px ---------------------------------- */
 @media screen and (max-width : 1150px){
     
