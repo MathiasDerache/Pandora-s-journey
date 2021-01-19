@@ -42,7 +42,7 @@ class BilletDAO implements InterfDao
         }
         foreach ($array as $value) {
             $billet = new Billet();
-            $billet->setNumBillet($value["numeroDeBillet"])->setDateEmb($value["dateEmb"])->setIdUti($value["idUti"]);
+            $billet->setNumBillet($value["numeroDeBillet"])->setDateEmb(new DateTime($value["dateEmb"]))->setIdUti($value["idUti"]);
             $tab[] = $billet;
         }
         return $tab;
@@ -52,7 +52,7 @@ class BilletDAO implements InterfDao
     public function update(Object $billet): void
     {
         $numBillet = $billet->getNumBillet();
-        $dateEmb = $billet->getDateEmb();
+        $dateEmb = $billet->getDateEmb()->format("Y-m-d");
         $idUti = $billet->getIdUti();
         try {
             $db = $this->db->connectiondb();
@@ -98,8 +98,33 @@ class BilletDAO implements InterfDao
 
         foreach ($array as $value) {
             $billet = new Billet();
-            $billet->setNumBillet($value["numeroDeBillet"])->setDateEmb($value["dateEmb"])->setIdUti($value["idUti"]);
+            $billet->setNumBillet($value["numeroDeBillet"])->setDateEmb(new DateTime($value["dateEmb"]))->setIdUti($value["idUti"]);
         }
         return $billet;
+    }
+
+    /**
+     * recupere dans un array avec le billet par idUti
+     *
+     * @return array
+     */
+    public function readByIdUti(?int $id): ?array
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM billet WHERE idUti=? ORDER BY dateEmb");
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+        $tab = [];
+        foreach ($array as $value) {
+            $billet = new Billet();
+            $billet->setNumBillet($value["numeroDeBillet"])->setDateEmb(new DateTime($value["dateEmb"]))->setIdUti($value["idUti"]);
+            $tab[] = $billet;
+        }
+        return $tab;
     }
 }
