@@ -1,8 +1,8 @@
 <?php
-include_once __DIR__ . "/../../Pandora_nav_footer/nav.php";
-include_once __DIR__ . "/../../Pandora_nav_footer/footer.php";
-include_once __DIR__ . "/../../coucheService/UtilisateurService.php";
-include_once __DIR__ . "/../../coucheService/CommentaireForumService.php";
+include_once __DIR__ . "/../../../Pandora_nav_footer/nav.php";
+include_once __DIR__ . "/../../../Pandora_nav_footer/footer.php";
+include_once __DIR__ . "/../../../coucheService/UtilisateurService.php";
+include_once __DIR__ . "/../../../coucheService/CommentaireForumService.php";
 
 
 function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)

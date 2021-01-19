@@ -2,11 +2,11 @@
 session_start();
 $_SESSION['id'] = 1;
 $_SESSION['pseudo'] = 'pseudo1';
-include_once __DIR__ . "/../../Forum/forum_sujet/forum_typesujet.php";
+include_once __DIR__ . "/../../view/Forum/forum_sujet/forum_typesujet.php";
 include_once __DIR__ . "/../../coucheService/SujetForumService.php";
 include_once __DIR__ . "/../../classe_metier/SujetTheme.php";
 include_once __DIR__ . "/../../classe_metier/CommentaireSujet.php";
-include_once __DIR__ . "/../../Forum/forum_sujet/forum_sujet_com.php";
+include_once __DIR__ . "/../../view/Forum/forum_sujet/forum_sujet_com.php";
 include_once __DIR__ . "/../../coucheService/CommentaireForumService.php";
 
 
