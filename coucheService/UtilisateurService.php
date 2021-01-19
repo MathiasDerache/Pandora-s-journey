@@ -32,10 +32,10 @@ class UtilisateurService implements interfService
         return $result;
     }
 
-    public function readService(int $page = null): ?array
+    public function readService(int $page = null, $theme = null): ?array
     {
         try {
-            $array = $this->service->read($page);
+            $array = $this->service->read($page, $theme);
         } catch (DaoException $e) {
             throw new ServiceException($e->getMessage(), $e->getCode());
         }

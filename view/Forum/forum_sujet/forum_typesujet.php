@@ -45,6 +45,7 @@ function sujetTypeForum(array $array = [])
                         Choix thématique
                     </button>
                     <div class="dropdown-menu  bg-dark" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php">Retour à la thématique générale</a>
                         <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Immobilier">Immobilier</a>
                         <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Travail">Travail</a>
                         <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Loisirs">Loisirs</a>

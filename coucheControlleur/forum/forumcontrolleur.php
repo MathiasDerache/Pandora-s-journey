@@ -97,7 +97,11 @@ if (!empty($_GET)) { // ici je vérifie que le get n'est pas empty
 
     } elseif (isset($_GET['page']) && !empty($_GET['page'])) {
         $page = htmlspecialchars($_GET['page']);
-        $array = (new SujetForumService())->readService($page);
+        $theme = htmlspecialchars($_GET['theme']);
+        $array = (new SujetForumService())->readService(
+            $page,
+            $theme
+        );
         sujetTypeForum($array);
     }
 }

@@ -17,9 +17,9 @@ class CommentaireForumService implements interfService
         return $this->service->creat($object);              // Function create Commentaire
     }
 
-    public function readService(int $page = null): ?array
+    public function readService(int $page = null, $theme = null): ?array
     {
-        return $this->service->read($page);              // Function Read Commentaires
+        return $this->service->read($page, $theme);              // Function Read Commentaires
     }
 
     /**

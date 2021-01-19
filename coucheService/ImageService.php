@@ -36,10 +36,10 @@ class ImageService implements
     }
 
     // Récupère le tableau reçu depuis la couche DAO et transmet à la couche controleur
-    public function readService(int $page = null): ?array
+    public function readService(int $page = null, $theme = null): ?array
     {
         try {
-            $object = $this->service->read($page);
+            $object = $this->service->read($page, $theme);
         } catch (DaoException $e) {
             throw new ServiceException($e->getMessage(), $e->getCode());
         }

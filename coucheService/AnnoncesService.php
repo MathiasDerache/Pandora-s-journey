@@ -40,9 +40,9 @@ class AnnoncesService implements interfService
      *
      * @return array
      */
-    public function readService(int $page = null): ?array
+    public function readService(int $page = null, $theme = null): ?array
     {
-        return $this->service->read($page);
+        return $this->service->read($page, $theme);
     }
 
     /**

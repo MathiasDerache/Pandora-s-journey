@@ -29,9 +29,9 @@ class BilletService implements interfService
     }
 
     // transmet le tableau reçu depuis la couche controller à la couche DAO
-    public function readService(int $page = null): ?array
+    public function readService(int $page = null, $theme = null): ?array
     {
-        return $this->service->read($page);
+        return $this->service->read($page, $theme,);
     }
 
     /**
