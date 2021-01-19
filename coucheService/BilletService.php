@@ -31,7 +31,7 @@ class BilletService implements interfService
     // transmet le tableau reçu depuis la couche controller à la couche DAO
     public function readService(int $page = null, $theme = null): ?array
     {
-        return $this->service->read($page, $theme,);
+        return $this->service->read($page, $theme);
     }
 
     /**
@@ -48,5 +48,11 @@ class BilletService implements interfService
     public function deleteService(?int $id): ?int
     {
         return $this->service->delete($id);
+    }
+
+    // transmet le tableau reçu depuis la couche DAO à la couche controlleur
+    public function readByIdUtiService(int $page = null): ?array
+    {
+        return $this->service->readByIdUti($page);
     }
 }
