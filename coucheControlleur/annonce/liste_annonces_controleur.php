@@ -73,6 +73,7 @@ if (!empty($_GET)) {
         paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
 
         modalAjoutAnnonce($typeAnnonce);
+        modalModificationAnnonce($typeAnnonce, $annonces);
 
         footer();
     } elseif (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "delete") {
@@ -125,6 +126,7 @@ if (!empty($_GET)) {
         paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
 
         modalAjoutAnnonce($typeAnnonce);
+        modalModificationAnnonce($typeAnnonce, $annonces);
 
         footer();
     } elseif (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == "update") {
@@ -132,6 +134,7 @@ if (!empty($_GET)) {
             ->setNumContAnn($_POST['numeroContactAnnonce'])->setNumAdressAnn($_POST['numeroAdresseAnnonce'])->setRueAnn($_POST['rueAdresseAnnonce'])
             ->setCodePost($_POST['codePostalAnnonce'])->setIdUti($_SESSION['id'])->setIdAnn($_GET['id']);
         (new AnnoncesService())->updateService($annonce);
+
         if (isset($_GET['type']) && $_GET['type'] == "annonces_immobilier") {
             $title = "Immobilier";
             $typeAnnonce = "immobilier";
@@ -179,6 +182,7 @@ if (!empty($_GET)) {
         paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
 
         modalAjoutAnnonce($typeAnnonce);
+        modalModificationAnnonce($typeAnnonce, $annonces);
 
         footer();
     } else {
@@ -223,12 +227,16 @@ if (!empty($_GET)) {
         } elseif (isset($_GET['type']) && $_GET['type'] == "annonces_loisir") {
             $typeAnnonce = "loisir";
             $annonces = (new AnnoncesService())->readPaginationService($typeAnnonce, $premiereEntree, $annonceParPage);
+            $annonceType = (new AnnoncesService)->readByTypeService($typeAnnonce);
             bodyListeAnnonces();
             cardAnnonce($typeAnnonce, $annonces);
         }
         paginationAnnonce($nbreDePage, $pageActuelle, $_GET['type']);
 
+
+
         modalAjoutAnnonce($typeAnnonce);
+        modalModificationAnnonce($typeAnnonce, $annonces);
 
         footer();
     }
