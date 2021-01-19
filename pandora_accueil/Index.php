@@ -27,7 +27,7 @@ include("../Pandora_nav_footer/footer.php");
                     <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_travail">Travail</a></li>
                     <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/annonce/liste_annonces_controleur.php?type=annonces_loisir">Loisir</a></li>
                     <li class="col-md-1 col-lg-2"><a href="../page_contact/contact.php">Contacts</a></li>
-                    <li class="col-md-1 col-lg-2"><a href="../billerterie/billeterieController.php">Billet</a></li>
+                    <li class="col-md-1 col-lg-2"><a href="../coucheControlleur/billeterie/billeterieController.php">Billet</a></li>
                 </ul>
             </div>
         </div>

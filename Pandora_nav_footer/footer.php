@@ -14,7 +14,7 @@ function footer()
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 logo_footer">
-                <img src="images/Logo.png" alt="Logo">
+                <img src="../images/Logo.png" alt="Logo">
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 nav_footer">

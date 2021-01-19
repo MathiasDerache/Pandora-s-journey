@@ -113,7 +113,7 @@ function complementaire(){?>
 function formulaireVol(){ ?>
     <!-- Formulaire pour trouver un vol -->
     <div class="container">
-        <form action="" method="post">
+        <form action="#" method="post">
             <div class="row">
                 <div class="formulaire col-12 col-md-6">
                     <label for="nom">Nom:</label>
