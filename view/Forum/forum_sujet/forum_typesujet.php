@@ -40,6 +40,17 @@ function sujetTypeForum(array $array = [])
             </div>
 
             <div class="row">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Choix thématique
+                    </button>
+                    <div class="dropdown-menu  bg-dark" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item text-danger font-weight-bold" href="#">Immobilier</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="#">Travail</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="#">Loisirs</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="#">Discusions générales</a>
+                    </div>
+                </div>
                 <table class="table table table-forum">
                     <thead class="bg-dark text-white">
                         <tr>
@@ -103,7 +114,6 @@ function sujetTypeForum(array $array = [])
                             <div class="form-group">
                                 <label class="text-white" for="typeSujetTh">Selectionnez un thème:</label>
                                 <select class="form-control" name="typeSujetTh" id="typeSujetTh">
-                                    <option class="font-weight-bold" value="Annonces" selected>Annonces</option>
                                     <option class="font-weight-bold" value="Travail">Travail</option>
                                     <option class="font-weight-bold" value="Loisirs">Loisirs</option>
                                     <option class="font-weight-bold" value="Immobilier">Immobilier</option>
