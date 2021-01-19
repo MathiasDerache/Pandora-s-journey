@@ -30,7 +30,7 @@ class BilletDAO implements InterfDao
     }
 
     // Transmets un tableau avec toutes les données à la couche Service
-    public function read(int $page = null): array
+    public function read(int $page = null, $theme = null): array
     {
         try {
             $db = $this->db->connectiondb();

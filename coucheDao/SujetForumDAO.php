@@ -30,13 +30,17 @@ class SujetForumDAO implements InterfDao
         }
     }
 
-    public function read(int $page = null): array
+    public function read(int $page = null, $theme = null): array
     {
         try {
             $db = $this->db->connectiondb();
-
+            if ($theme) {
+                $request = "SELECT COUNT('id') FROM sujetfurum WHERE typeSujetTh = '$theme'";
+            } else {
+                $request = "SELECT COUNT('id') FROM sujetfurum";
+            }
             // ici je recupère le nombre de sujet présentr dans ma bdd et je converti le résultat en entier
-            $count = (int) $db->query("SELECT COUNT('id') FROM sujetfurum")->fetch()[0];
+            $count = (int) $db->query($request)->fetch()[0];
             // je fait un sorte que $page par défaut soit un entier égal à 1
             $pageCourante = (int) ($page ?? 1);
             if ($pageCourante < 1) {
@@ -49,8 +53,13 @@ class SujetForumDAO implements InterfDao
             // calcul du point de départ dynamique
             $offset = $nbrSujetPage * ($pageCourante - 1);
 
+            if ($theme) {
+                $reqsql = "SELECT * FROM sujetfurum WHERE typeSujetTh = '$theme' ORDER BY idSujetTh DESC LIMIT $offset ,$nbrSujetPage";
+            } else {
+                $reqsql = "SELECT * FROM sujetfurum ORDER BY idSujetTh DESC LIMIT $offset ,$nbrSujetPage";
+            }
 
-            $stm = $db->prepare("SELECT * FROM sujetfurum ORDER BY idSujetTh DESC LIMIT $offset ,$nbrSujetPage");
+            $stm = $db->prepare($reqsql);
             $stm->execute();
             $array = $stm->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $f) {

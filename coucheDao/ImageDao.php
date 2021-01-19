@@ -76,7 +76,7 @@ class ImageDao implements
      *
      * @return array
      */
-    public function read(int $page = null): array
+    public function read(int $page = null, $theme = null): array
     {
         try {
             $db = $this->db->connectiondb();

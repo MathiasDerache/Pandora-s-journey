@@ -23,7 +23,7 @@ function sujetTypeForum(array $array = [])
     <body class="position-relative">
         <!-- ----------------------------------  navbar --------------------------------->
         <?php
-        navBar()
+        navBar();
         ?>
         <!-- ----------------------------------  navbar --------------------------------->
 
@@ -49,7 +49,7 @@ function sujetTypeForum(array $array = [])
                         <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Immobilier">Immobilier</a>
                         <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Travail">Travail</a>
                         <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Loisirs">Loisirs</a>
-                        <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Discusionsgenerales">Discusions générales</a>
+                        <a class="dropdown-item text-danger font-weight-bold" href="forumcontrolleur.php?page=<?php echo $_GET['page']; ?>&theme=Discussionsgenerales">Discusions générales</a>
                     </div>
                 </div>
                 <table class="table table table-forum">
@@ -144,7 +144,9 @@ function sujetTypeForum(array $array = [])
                                 <li class="page-item <?php if ($_GET['page'] == 1) {
                                                             echo "disabled";
                                                         } ?>">
-                                    <a class="page-link " href="forumcontrolleur.php?page=<?php if ($_GET['page'] > 1) {
+                                    <a class="page-link " href="forumcontrolleur.php?page=<?php if ($_GET['page'] > 1 && isset($_GET['theme'])) {
+                                                                                                echo ($_GET['page'] - 1) . "&theme=" . $_GET['theme'];
+                                                                                            } elseif ($_GET['page'] > 1) {
                                                                                                 echo $_GET['page'] - 1;
                                                                                             }  ?>" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
@@ -157,14 +159,21 @@ function sujetTypeForum(array $array = [])
                                                                 echo "disabled";
                                                             }
                                                             ?> ">
-                                        <a class="page-link" href="forumcontrolleur.php?page=<?php echo $i; ?>"><?php echo $i; ?>
+                                        <a class="page-link" href="forumcontrolleur.php?page=<?php if (isset($_GET['theme'])) {
+                                                                                                    echo $i . "&theme=" . $_GET['theme'];
+                                                                                                } else {
+                                                                                                    echo $i;
+                                                                                                }
+                                                                                                ?>"><?php echo $i; ?>
                                         </a>
                                     </li><?php
                                         } ?>
                                 <li class="page-item <?php if ($_GET['page'] >= $array[1]) {
                                                             echo "disabled";
                                                         } ?>">
-                                    <a class="page-link" href="forumcontrolleur.php?page=<?php if ($_GET['page'] <= $array[1]) {
+                                    <a class="page-link" href="forumcontrolleur.php?page=<?php if ($_GET['page'] <= $array[1] && isset($_GET['theme'])) {
+                                                                                                echo ($_GET['page'] + 1) . "&theme=" . $_GET['theme'];
+                                                                                            } elseif ($_GET['page'] <= $array[1]) {
                                                                                                 echo $_GET['page'] + 1;
                                                                                             }  ?>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
