@@ -1,6 +1,6 @@
 <?php
-include_once("../coucheDao/BilletDAO.php");
-include_once("InterfService.php");
+include_once __DIR__ . "/../coucheDao/BilletDao.php";
+include_once __DIR__ . "/InterfService.php";
 
 class BilletService implements interfService
 {
@@ -11,13 +11,13 @@ class BilletService implements interfService
     }
 
     // transmet l'objet reçu depuis la couche controller à la couche DAO
-    public function creatService(?Billet $billet): ?object
+    public function creatService(?Object $billet): ?object
     {
         return $this->service->creat($billet);
     }
 
     // transmet l'objet reçu depuis la couche controller à la couche DAO
-    public function updateService(?Billet $billet): ?object
+    public function updateService(?Object $billet): ?object
     {
         return $this->service->update($billet);
     }

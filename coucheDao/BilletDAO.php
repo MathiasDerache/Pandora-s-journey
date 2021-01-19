@@ -1,8 +1,8 @@
 <?php
 
-include_once("interfDAO.php");
-include_once("connectionBaseDonnees.php");
-include_once("../classe_metier/Billet.php");
+include_once __DIR__ . '/InterfDao.php';
+include_once __DIR__ . '/../classe_metier/Billet.php';
+include_once __DIR__ . '/ConnectionBaseDonnees.php';
 
 class BilletDAO implements InterfDao
 {
@@ -12,7 +12,7 @@ class BilletDAO implements InterfDao
     }
 
     // Récupère l'objet transmis par la couche Service afin de créer le billet dans la base de données
-    public function creat(Billet $billet): void
+    public function creat(Object $billet): void
     {
         $numBillet = $billet->getNumBillet();
         $dateEmb = $billet->getDateEmb();
@@ -49,7 +49,7 @@ class BilletDAO implements InterfDao
     }
 
     // Récupère l'objet transmis par la couche Service afin de modifier le billet dans la base de données
-    public function update(Billet $billet): void
+    public function update(Object $billet): void
     {
         $numBillet = $billet->getNumBillet();
         $dateEmb = $billet->getDateEmb();
