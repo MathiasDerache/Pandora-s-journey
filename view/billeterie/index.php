@@ -104,7 +104,7 @@ function complementaire(){?>
     <div class="container complementaire">
         <div class="textComplementaire">
             <h2>Informations complémentaire ?</h2>
-            <p>Vous avez des questions ou besoin de plus d'infos ? rendez-vous sur le forum, c'est <a href="#">juste ici.</a><br>Envie de passer le pas et réserver votre vol ? c'est en dessous que ça ce passe !</p>
+            <p>Vous avez des questions ou besoin de plus d'infos ? rendez-vous sur le forum, c'est <a href="../forum/forumcontrolleur.php">juste ici.</a><br>Envie de passer le pas et réserver votre vol ? c'est en dessous que ça ce passe !</p>
         </div>
     </div>
 <?php
