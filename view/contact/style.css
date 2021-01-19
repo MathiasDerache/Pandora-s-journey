@@ -1,0 +1,418 @@
+/* ↓↓ Page ↓↓ */
+
+body {
+    background-color: #04153E;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    margin-top: 100px;
+}
+
+/*   ↓↓ Information contact ↓↓ */
+
+.info{
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.info h3{
+    display: inline-block;
+    text-decoration: underline;
+    text-underline-position: under;
+    margin-bottom: 20px;
+}
+
+.info p{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Formulaire de contact */
+
+.contact{
+    color: white;
+    margin-top: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.contact input{
+    color: white;
+    outline: none;
+    background: none;
+    width: auto;
+    border: none;
+    border-bottom: 3px solid #F1A431;
+}
+
+.contact ::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+.contact :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    opacity: 1;
+}
+   
+.contact ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+    opacity: 1;
+}
+
+.radio{
+    display: flex;
+    align-items: baseline;
+}
+
+.radio label{
+    padding-left: 5px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.radio input{
+    cursor: pointer;
+}
+
+.nom_prenom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nom_prenom input{
+    width: 45%;
+}
+
+.email_tel{
+    display: flex;
+    justify-content: space-between;
+}
+
+.email_tel input{
+    width: 45%;
+}
+
+.message textarea{
+    color: white;
+    outline: none;
+    background: none;
+    width: 100%;
+    height: auto;
+    border: none;
+    border-bottom: 3px solid #F1A431;
+}
+
+.condition {
+    display: flex;
+    align-items: baseline;
+    margin-top: 30px;
+}
+
+.condition label{
+    padding-left: 10px;
+}
+
+.contact p{
+    margin-top: 20px;
+    text-align: end;
+    opacity: 0.5;
+}
+
+.submit{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.submit input{
+    border-bottom: none;
+    background-color: #ffc107;
+    width: 200px;
+    height: 50px;
+}
+
+/* Styles pour le conteneur de la forme */
+.form-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #04153E;
+}
+
+/* Footer */
+
+.footer{
+    background-color: #040753;
+    font-family: 'Playfair Display', serif;
+    
+    }
+    
+    footer h2{
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    }
+    
+    footer a{
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.2em;
+    }
+    
+    footer p{
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 0px;
+    }
+    
+                                        /*   ↓↓ COORDONNEES ↓↓ */
+    
+    .coordonnees_footer a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    display:block;
+    text-align:center;
+    padding: 8px;
+    }
+    
+                                        /*   ↓↓ LOGO ↓↓ */
+    
+    .logo_footer img{
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+    }
+    
+    
+                                        /*   ↓↓ NAV ↓↓ */
+    
+    .nav_footer li{
+    text-align: center;
+    list-style: none;
+    padding: 3px;
+    } 
+    
+    .nav_footer h2{
+    margin-top: 5px;
+    }
+
+    .nav_footer ul {
+        width: 100%;
+        padding-left: 0px;
+    }
+    
+    .nav_footer ul li a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    
+    }
+    
+    .copyright{
+    margin-bottom: 10px;
+    }
+    
+    /* css navbar */
+    nav{
+    position: absolute;
+    position: fixed;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    background-color: #040753;
+    }
+    
+    .h2{
+    width: 436px;
+    margin-top: 10px;
+    }
+    
+    a{
+    text-decoration: none;
+    margin-top: 10px;
+    }
+
+    /* ****************Nav Responsiv******************* */
+.navbar
+{
+	background-color: #040753 !important;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+  border-bottom: 1px solid rgb(24, 31, 90);
+}
+
+.navbar .container
+{
+  padding: 0px;
+}
+
+nav .h2{
+  box-shadow: 1px 1px 1px black;
+  }
+  nav ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 1px black;
+  }
+
+  .navbar-toggler{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    visibility: hidden;
+  }
+
+  .navbar-nav{
+    width: 100vh;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .navbar-collapse li{ 
+    text-align: center;
+    width: 30%;
+ }
+
+/* ******************HAMBURGER COLLAPSE*********************** */
+
+.menu-icon{
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    width: 54px;
+    height: 54px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: transform 0.5s;
+    visibility: visible!important;
+}
+
+.menu-icon .icon_span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); 
+    width: 22px;
+    height: 2px;
+    background-color: #fff;
+    transition: background 0.5s, transform 0.5s;
+    transition: background 0.5s steps(1, end);
+}
+
+.icon_span::before, .icon_span::after{
+    transform-origin: 100% 50%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 22px;
+    height: 2px;
+    transform: translateY(-8px);
+    background-color: #fff;
+    transition: transform 0.5s;
+}
+
+.icon_span::after{
+    transform: translateY(8px);
+}
+
+.menu-icon:hover .icon_span::before{
+    transform: translateY(-10px);
+}
+
+.menu-icon:hover .icon_span::after{
+    transform: translateY(10px);
+}
+
+svg{
+    opacity: 0;
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 22 230;
+    transition: stroke-dasharray 0.5s, stroke-dashoffset 0.5s, opacity 0.5s steps(1, end);
+}
+
+.menu-icon.is-opened .icon_span{
+    transition: background 0.5s steps(1, start);
+    background-color: transparent;
+}
+
+.menu-icon.is-opened svg{
+    opacity: 1;
+    stroke-dasharray: 160;
+    stroke-dashoffset: -65;
+    transition: stroke-dasharray 0.5s, stroke-dashoffset 0.5s, opacity 0.5s steps(1, start);
+}
+
+.menu-icon.is-opened .icon_span::before{
+    transform: translateX(-3px) translateY(-8px) rotate(-45deg);
+}
+
+.menu-icon.is-opened .icon_span::after{
+    transform: translateX(-3px) translateY(8px) rotate(45deg);
+}
+
+/***************** ANIMATION LIENS NAV **********************/
+     
+.navbar-nav li a::after{
+content: "";
+display: block;
+width: 100%;
+height: 2px;
+background:goldenrod;
+transform: scale(0);
+transition: transform 0.2s ease-in-out;
+}
+
+.navbar-nav li a:hover::after{
+transform: scale(1);
+}
+
+/* Media query */
+@media screen and (max-width: 1441px) {
+    .navbar ul {
+        margin-left: 100px;
+    }
+}
+
+@media screen and (max-width: 1270px) {
+    .banniere_profil{
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 991.5px) {
+    .logo_footer img {
+        width: 240px;
+        height: 144px;
+        margin-bottom: -30px;
+        margin-top: -15px;
+    }
+
+    .navbar-collapse ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .navbar-nav{
+        width: 50vh;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 457px) {
+    .navbar-collapse ul {
+        align-items: flex-start;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+}
