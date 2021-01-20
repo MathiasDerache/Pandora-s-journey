@@ -14,7 +14,6 @@ function cardAnnonce($typeAnnonce, $annonces)
                     <a href="annonce_controlleur.php?id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Consulter</button></a>
                     <a href="liste_annonces_controleur.php?type=annonces_<?php echo $typeAnnonce ?>&action=delete&id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Supprimer</button></a>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalModificationAnnonce">Modifier</button>
-                    <?php echo $annonces[$i]->getIdAnn() ?>
                 </div>
             </div>
         </div>
