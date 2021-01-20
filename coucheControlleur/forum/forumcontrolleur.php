@@ -8,6 +8,7 @@ include_once __DIR__ . "/../../classe_metier/SujetTheme.php";
 include_once __DIR__ . "/../../classe_metier/CommentaireSujet.php";
 include_once __DIR__ . "/../../view/Forum/forum_sujet/forum_sujet_com.php";
 include_once __DIR__ . "/../../coucheService/CommentaireForumService.php";
+include_once __DIR__ . "/../../coucheService/ServiceException.php";
 
 
 
@@ -26,10 +27,12 @@ if (!empty($_GET)) { // ici je vérifie que le get n'est pas empty
 
             //je crée un new commentaire et donne les valeur de mes variables aux atributs de cette classe
             $commSuj = (new CommentaireSujet())->setPseudoUt($pseudo)->setIdUti($idUt)->setContCommSuj($contCommSuj)->setIdSuje($idSujetForum);
-            (new CommentaireForumService())->creatService($commSuj); //je donne mon objet commsuj à mon dao en passant par la couche service en passant par la methode creatservice
-
-
-            $sujet = (new SujetForumService())->readByIdService($idSujetForum); //je recupère l'objet sujet lié à mon commentaire
+            try {
+                (new CommentaireForumService())->creatService($commSuj); //je donne mon objet commsuj à mon dao en passant par la couche service en passant par la methode creatservice
+                $sujet = (new SujetForumService())->readByIdService($idSujetForum); //je recupère l'objet sujet lié à mon commentaire
+            } catch (ServiceException $th) {
+                //throw $th;
+            }
             SujetThemeForum($sujet, null); // j'affiche la page sujet forum en lien avec mon commentaire après avoir mis en argu à ma fonction mon objet sujet
 
 
