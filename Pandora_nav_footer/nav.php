@@ -25,7 +25,7 @@ function navBar()
 
 				<ul class="navbar-nav">
 
-					<li><a href="../../pandora_accueil/Index.php" class="nav-link text-white">Accueil</a></li>
+					<li><a href="../accueil/accueilController.php" class="nav-link text-white">Accueil</a></li>
 
 					<li><a href="../annonce/liste_annonces_controleur.php?type=annonces_immobilier" class="nav-link text-white">Immobilier</a></li>
 
