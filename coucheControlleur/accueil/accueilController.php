@@ -13,3 +13,4 @@ section3();
 footer();
 modalConnexion();
 modalInscription();
+popupValidation();

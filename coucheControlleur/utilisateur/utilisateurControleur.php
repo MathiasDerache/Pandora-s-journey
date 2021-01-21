@@ -3,7 +3,7 @@ session_start();
 // Deconnexion
 if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] == "deconnexion") {
     session_destroy();
-    header('Location: ../../pandora_accueil/Index.php');
+    header('Location: ../accueil/accueilController.php');
 }
 
 require_once __DIR__ . "/../../classe_metier/Utilisateur.php";
@@ -39,7 +39,7 @@ if (
                 $_SESSION["profil"] = $connexionData->getProfil();
                 $_SESSION["dateNaissance"] = $connexionData->getDateNaissance();
                 $_SESSION["civilite"] = $connexionData->getCivilite();
-                header('Location: ../../pandora_accueil/Index.php?VousEtesConnecte');
+                header('Location: ../accueil/accueilController.php?action=connexion');
             } else {
                 echo "erreur mdp";
             }
@@ -54,22 +54,22 @@ if (
 elseif (
     isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "inscription"
     && isset($_POST["nom"]) && !empty($_POST["nom"])
-    && isset($_POST["prenom"]) && !empty($_POST["prenom"])
+    && isset($_POST["prénom"]) && !empty($_POST["prénom"])
     && isset($_POST["pseudo"]) && !empty($_POST["pseudo"])
     && isset($_POST["email"]) && !empty($_POST["email"])
-    && isset($_POST["numTel"]) && !empty($_POST["numTel"])
+    && isset($_POST["téléphone"]) && !empty($_POST["téléphone"])
     && isset($_POST["password"]) && !empty($_POST["password"])
-    && isset($_POST["dateNaissance"]) && !empty($_POST["dateNaissance"])
-    && isset($_POST["civilite"]) && !empty($_POST["civilite"])
+    && isset($_POST["date"]) && !empty($_POST["date"])
+    && isset($_POST["civilité"]) && !empty($_POST["civilité"])
 ) {
     $nom = htmlentities($_POST["nom"]);
-    $prenom = htmlentities($_POST["prenom"]);
+    $prenom = htmlentities($_POST["prénom"]);
     $pseudo = htmlentities($_POST["pseudo"]);
     $email = htmlentities($_POST["email"]);
-    $numTel = htmlentities($_POST["numTel"]);
+    $numTel = htmlentities($_POST["téléphone"]);
     $password = htmlentities($_POST["password"]);
-    $dateNaissance = htmlentities($_POST["dateNaissance"]);
-    $civilite = htmlentities($_POST["civilite"]);
+    $dateNaissance = htmlentities($_POST["date"]);
+    $civilite = $_POST["civilité"];
     $profil = "user";
 
     $utilisateur->setNom($nom)
@@ -86,7 +86,7 @@ elseif (
         $userData = $utilisateurService->searchByEmailService($email);
         if (!isset($userData)) {
             $utilisateurService->creatService($utilisateur);
-            header('Location: ../../pandora_accueil/Index.php?VousEtesInscrit');
+            header('Location: ../accueil/accueilController.php?action=inscription');
         } else {
             echo "erreur searchByEmail";
         }

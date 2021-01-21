@@ -1,6 +1,8 @@
 <?php
 session_start();
-$_SESSION["id"] = 1;
+if (empty($_SESSION)) {
+    header("Location: ../accueil/accueilController.php");
+}
 require_once("../../view/profil/profilUtilisateur.php");
 require_once("../../classe_metier/Image.php");
 require_once("../../coucheService/ImageService.php");
