@@ -25,6 +25,8 @@ class UtilisateurService implements interfService
     public function updateService(?object $object): ?object
     {
         try {
+            $passwordHash = password_hash($object->getPassword(), PASSWORD_DEFAULT);
+            $object->setPassword($passwordHash);
             $result = $this->service->update($object);
         } catch (DaoException $e) {
             throw new ServiceException($e->getMessage(), $e->getCode());
@@ -81,6 +83,9 @@ class UtilisateurService implements interfService
     {
         $passwordVerify = password_verify($utilisateur->getPassword(), $userData->getPassword());
         if ($passwordVerify) {
+            return $userData;
+        } else {
+            $userData = null;
             return $userData;
         }
     }

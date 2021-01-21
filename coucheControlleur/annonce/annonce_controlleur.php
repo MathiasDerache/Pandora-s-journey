@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION['id'] = 1;
 require_once("../../Pandora_nav_footer/nav.php");
 require_once("../../Pandora_nav_footer/footer.php");
 require_once("../../view/pages_anonces/head_annonce.php");
@@ -22,7 +21,7 @@ $arrayImage = (new ImageService())->readService();
 if (!empty($arrayImage)) {
         foreach ($arrayImage as $value) {
                 $nomFichierProfil = strstr($value->getNomFichier(), '.', true);
-                if ($nomFichierProfil === "profil_Id" . $_SESSION["id"]) {
+                if ($nomFichierProfil === "profil_Id" . $annonce->getIdUti()) {
                         $nomFichierProfil = $value->getNomFichier();
                         $imageProfil = (new ImageService())->searchImageProfilService($nomFichierProfil);
                         break;

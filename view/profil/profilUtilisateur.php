@@ -173,6 +173,9 @@ function vosSujets($arraySujet, $arrayReponse)
             <?php
             } else { ?>
                 <h3>Vous n'avez pas posté de sujet</h3>
+                <div class="container pb-3">
+                    <a href="../forum/forumcontrolleur.php"><button style="font-size: 25px" class="btn btn-warning rounded-pill text-white">Forum</button></a>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -235,6 +238,13 @@ function popupFormImageProfil()
         <div class="modal-dialog" role="document">
             <div class="modal-content form-container p-4">
                 <h2 class="modal-title text-white mb-3">Changer l'image du profil</h2>
+                <div class="text-white">
+                    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_telechargement_profil_image") {
+                        echo "Erreur lors du téléchargement, Veuillez réessayait plus tard.";
+                    } elseif (isset($_GET["action"]) && $_GET["action"] == "erreur_type_image_profil") {
+                        echo "Le type de votre image n'est pas autorisé.";
+                    } ?>
+                </div>
                 <form action="profilControleur.php?action=modifImageProfil" method="post" enctype="multipart/form-data" class="form-container">
                     <div class="form-group">
                         <input type="file" name="file" required class="text-white"><br>
@@ -247,6 +257,14 @@ function popupFormImageProfil()
             </div>
         </div>
     </div>
+    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_telechargement_profil_image" || isset($_GET["action"]) && $_GET["action"] == "erreur_type_image_profil") { ?>
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#modalProfil').modal('show');
+            });
+        </script>
+    <?php
+    } ?>
 <?php }
 
 function popupFormBanniereProfil()
@@ -256,6 +274,13 @@ function popupFormBanniereProfil()
         <div class="modal-dialog" role="document">
             <div class="modal-content form-container p-4">
                 <h2 class="modal-title text-white mb-3">Changer la banniere</h2>
+                <div class="text-white">
+                    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_telechargement_banniere_image") {
+                        echo "Erreur lors du téléchargement, Veuillez réessayait plus tard.";
+                    } elseif (isset($_GET["action"]) && $_GET["action"] == "erreur_type_image_banniere") {
+                        echo "Le type de votre image n'est pas autorisé.";
+                    } ?>
+                </div>
                 <form action="profilControleur.php?action=modifBanniereProfil" method="post" enctype="multipart/form-data" class="form-container">
                     <div class="form-group">
                         <input type="file" name="file" required class="text-white"><br>
@@ -268,6 +293,14 @@ function popupFormBanniereProfil()
             </div>
         </div>
     </div>
+    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_telechargement_banniere_image" || isset($_GET["action"]) && $_GET["action"] == "erreur_type_image_banniere") { ?>
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#modalBanniere').modal('show');
+            });
+        </script>
+    <?php
+    } ?>
 <?php }
 
 function popupErreur($erreur)

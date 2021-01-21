@@ -2,7 +2,7 @@
 function navBar()
 {
 ?>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	<nav class="navbar navbar-expand-xl navbar-light bg-light fixed-top">
 
 		<div class="container">
 
@@ -32,6 +32,8 @@ function navBar()
 					<li><a href="../annonce/liste_annonces_controleur.php?type=annonces_travail" action="annonces_travail" class="nav-link text-white">Travail</a></li>
 
 					<li><a href="../annonce/liste_annonces_controleur.php?type=annonces_loisir" action="annonces_loisir" class="nav-link text-white">Loisir</a></li>
+
+					<li><a href="../forum/forumcontrolleur.php" class="nav-link text-white">Forum</a></li>
 
 					<li><a href="../contact/contactControlleur.php" class="nav-link text-white">Contacts</a></li>
 

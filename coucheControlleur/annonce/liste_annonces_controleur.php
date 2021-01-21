@@ -1,14 +1,12 @@
 <?php
 
 session_start();
-$_SESSION['id'] = 1;
 
 require_once("../../view/pages_anonces/head_annonce.php");
 require_once("../../view/pages_anonces/body_liste_annonce.php");
 require_once("../../view/pages_anonces/modal_annonce.php");
 require_once("../../view/pages_anonces/card_annonce.php");
 require_once("../../view/pages_anonces/pagination_annonce.php");
-require_once("../../view/pages_anonces/filtre_annonce.php");
 require_once("../../coucheService/AnnoncesService.php");
 require_once("../../classe_metier/Annonce.php");
 require_once("../../Pandora_nav_footer/nav.php");

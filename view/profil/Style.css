@@ -435,6 +435,10 @@ svg{
     .banniere_profil{
         height: 200px;
     }
+
+    .navbar ul {
+        margin-left: 200px;
+    }
 }
 
 @media screen and (max-width: 991.5px) {

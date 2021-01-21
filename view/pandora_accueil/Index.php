@@ -32,6 +32,7 @@ function video()
                         <li class="col-md-1 col-lg-2"><a href="../annonce/liste_annonces_controleur.php?type=annonces_immobilier">Immobilier</a></li>
                         <li class="col-md-1 col-lg-2"><a href="../annonce/liste_annonces_controleur.php?type=annonces_travail">Travail</a></li>
                         <li class="col-md-1 col-lg-2"><a href="../annonce/liste_annonces_controleur.php?type=annonces_loisir">Loisir</a></li>
+                        <li class="col-md-1 col-lg-2"><a href="../forum/forumcontrolleur.php">Forum</a></li>
                         <li class="col-md-1 col-lg-2"><a href="../contact/contactControlleur.php">Contacts</a></li>
                         <li class="col-md-1 col-lg-2"><a href="../billeterie/billeterieController.php">Billet</a></li>
                     </ul>
@@ -66,13 +67,23 @@ function section1()
                 <div class="btn-menu">
                     <div class="ligne"></div>
                 </div>
-
-                <div class="blob blob-1">
-                    <button data-toggle="modal" data-target="#modalConnexion"><img src="../../view/pandora_accueil/images/user.svg" alt="icone" class="icone"></button>
-                </div>
-                <div class="blob blob-2">
-                    <button data-toggle="modal" data-target="#modalInscription"><img src="../../view/pandora_accueil/images/inscription.svg" alt="icone" class="icone"></button>
-                </div>
+                <?php
+                if (isset($_SESSION) && !empty($_SESSION)) { ?>
+                    <div class="blob blob-1 text-white">
+                        <button><a href="../profil/profilControleur.php"><img src="../../view/pandora_accueil/images/user.svg" alt="icone" class="icone"></a></button>
+                    </div>
+                    <div class="blob blob-2">
+                        <button><a href="../utilisateur/utilisateurControleur.php?action=deconnexion"><img src="../../view/pandora_accueil/images/deconnexion.svg" alt="icone" class="icone"></a></button>
+                    </div>
+                <?php } else { ?>
+                    <div class="blob blob-1">
+                        <button data-toggle="modal" data-target="#modalConnexion"><img src="../../view/pandora_accueil/images/user.svg" alt="icone" class="icone"></button>
+                    </div>
+                    <div class="blob blob-2">
+                        <button data-toggle="modal" data-target="#modalInscription"><img src="../../view/pandora_accueil/images/inscription.svg" alt="icone" class="icone"></button>
+                    </div>
+                <?php }
+                ?>
             </div>
 
             <!-- Section 1 -->
@@ -145,8 +156,14 @@ function section1()
                 <h2 class="modal-title text-white mb-3">Connexion</h2>
                 <form action="../utilisateur/utilisateurControleur.php?action=connexion" method="post">
                     <label for="email">Adresse E-mail</label></br>
+                    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_email") {
+                        echo "Email inconnu.";
+                    } ?>
                     <input class="form-control" type="email" name="email" id="mail" pattern="^[a-zA-Z0-9_.-]{2,}@[a-zA-Z0-9_.-]{2,}\.[a-zA-Z]{2,}$" required></br>
                     <label for="password">Mot de passe</label></br>
+                    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_mdp") {
+                        echo "Mot de passe incorrect.";
+                    } ?>
                     <input class="form-control" type="password" name="password" id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[\w\W]{8,20}$" required></br>
                     <button type="submit" class="btn btn-warning rounded-pill text-white">Soumettre</button>
                     <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
@@ -154,7 +171,14 @@ function section1()
             </div>
         </div>
     </div>
-<?php
+    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_mdp" || isset($_GET["action"]) && $_GET["action"] == "erreur_email") { ?>
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#modalConnexion').modal('show');
+            });
+        </script>
+    <?php
+        }
     }
 
 
@@ -167,6 +191,9 @@ function section1()
                 <h2 class="modal-title text-white mb-3">Inscription</h2>
                 <form action="../utilisateur/utilisateurControleur.php?action=inscription" method="post">
                     <label for="email">Adresse E-mail</label></br>
+                    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_inscription_email") {
+                        echo "Email deja utiliser.";
+                    } ?>
                     <input class="form-control" type="email" name="email" id="mail" pattern="^[a-zA-Z0-9_.-]{2,}@[a-zA-Z0-9_.-]{2,}\.[a-zA-Z]{2,}$" required></br>
                     <label for="password">Mot de passe</label></br>
                     <input class="form-control" type="password" name="password" id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[\w\W]{8,20}$" required></br>
@@ -196,35 +223,15 @@ function section1()
         </div>
     </div>
     <script src="../../view/pandora_accueil/app.js" type="text/javascript"></script>
+    <?php if (isset($_GET["action"]) && $_GET["action"] == "erreur_inscription_email") { ?>
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#modalInscription').modal('show');
+            });
+        </script>
+    <?php
+        } ?>
 
     </html>
 <?php
-    }
-
-    function popupValidation()
-    { ?>
-    <!-- Modal -->
-    <div class="modal fade text-center" id="modalValidation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content form-container p-4 text-white">
-                <?php
-                if ($_GET["action"] === "connexion") {
-                    echo "<p>Vous êtes bien connecté</p>";
-                } elseif ($_GET["action"] === "inscription") {
-                    echo "<p>Vos êtes bien inscrits. vous pouvez vous connecter</p>";
-                }
-                ?>
-                <div>
-                    <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php if ($_GET["action"] == "connexion" || $_GET["action"] == "inscription") { ?>
-        <script type="text/javascript">
-            $(window).on('load', function() {
-                $('#modalValidation').modal('show');
-            });
-        </script>
-<?php }
     }

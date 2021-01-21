@@ -130,6 +130,7 @@ nav .h2{
   justify-content: space-around;
   font-size: 1.5em;
   text-shadow: 1px 1px 1px black;
+  margin-left: 100px;
   }
 
   .navbar-toggler{
@@ -433,6 +434,12 @@ label {
     justify-content: center;
     align-items: center;
     margin-top: 130px;
+}
+/* ------------------------------------------ MEDIA QUERY 1430px ---------------------------------- */
+@media screen and (max-width : 1430px){
+    .navbar ul {
+        margin-left: 200px;
+    }
 }
 /* ------------------------------------------ MEDIA QUERY 1150px ---------------------------------- */
 @media screen and (max-width : 1150px){

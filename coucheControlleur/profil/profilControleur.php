@@ -75,7 +75,13 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "co
             if ($_FILES["file"]["error"] === 0) {
                 $fileNewName = "profil_Id" . $_SESSION["id"] . "." . $fileExtension;  // Change le nom du fichier
                 $fileDestination = "../../view/profil/imageProfil/" . $fileNewName;  // Change le nom de la destination du fichier
+            } else {
+                header('Location: profilControleur.php?action=erreur_telechargement_profil_image');
+                die;
             }
+        } else {
+            header('Location: profilControleur.php?action=erreur_type_image_profil');
+            die;
         }
 
         try {  //Supprime l'ancienne image profil dans dossier imageProfil
@@ -114,10 +120,12 @@ if (isset($_GET["action"]) && !empty($_GET["action"]) && $_GET["action"] === "co
                 $fileNewName = "banniere_Id" . $_SESSION["id"] . "." . $fileExtension;  // Change le nom du fichier
                 $fileDestination = "../../view/profil/banniereProfil/" . $fileNewName;  // Change le nom de la destination du fichier
             } else {
+                header('Location: profilControleur.php?action=erreur_telechargement_banniere_image');
                 echo "il y a eu une erreur durant le téléchargement de l'image";
                 die;
             }
         } else {
+            header('Location: profilControleur.php?action=erreur_type_image_banniere');
             echo "Type d'image non autorisé";
             die;
         }

@@ -100,12 +100,15 @@ function sujetTypeForum(array $array = [])
                     } ?>
                 </table>
             </div>
-
-            <div class=" row justify-content-end ajout-sujet">
-                <div>
-                    <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalForumAnnonces">Ajouter un sujet</div>
+            <?php
+            if (isset($_SESSION) && !empty($_SESSION)) { ?>
+                <div class=" row justify-content-end ajout-sujet">
+                    <div>
+                        <div type="button" class="btn btn-warning rounded-pill text-white" data-toggle="modal" data-target="#modalForumAnnonces">Ajouter un sujet</div>
+                    </div>
                 </div>
-            </div>
+            <?php }
+            ?>
             <!-- Modal -->
             <div class="modal fade" id="modalForumAnnonces" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -123,7 +126,7 @@ function sujetTypeForum(array $array = [])
                             </div>
                             <div class="form-group">
                                 <label for="titeSujet" class="text-white">Posez votre question:</label>
-                                <textarea class="form-control" name="questionSujet" id="questionSujet" cols="1" rows="1"></textarea>
+                                <textarea class="form-control" name="questionSujet" id="questionSujet" cols="1" rows="1" required></textarea>
                             </div>
                             <div>
                                 <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">Fermer</button>

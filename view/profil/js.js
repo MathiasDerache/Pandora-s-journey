@@ -48,11 +48,11 @@ httpRequest.onreadystatechange = function () {
             var a = document.createElement("a");
             a.href = "../billeterie/billeterieController.php";
             var t = document.createTextNode("Billeterie");
-            boutton.style.fontSize = "large";
+            boutton.style.fontSize = "25px";
             boutton.style.textShadow = "black 1px 1px 1px"
             boutton.appendChild(t);
-            boutton.appendChild(a);
-            div2.appendChild(boutton);
+            a.appendChild(boutton);
+            div2.appendChild(a);
             div1.appendChild(div2);
             countDown.appendChild(div1);
         }

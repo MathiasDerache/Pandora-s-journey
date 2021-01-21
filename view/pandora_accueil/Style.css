@@ -114,6 +114,7 @@ a {
 
 .navbar .container {
   padding: 0px;
+  padding-left: 100px;
 }
 
 nav .h2 {
@@ -256,6 +257,7 @@ svg {
   position: absolute;
   top: 20px;
   z-index: 100;
+  margin-left: 60px;
 }
 
 /* Partie Nav de la video */
@@ -764,6 +766,14 @@ label {
     border: solid 2px black;
   }
 }
+
+/* ------------------------------------------ MEDIA QUERY 1250px ---------------------------------- */
+@media screen and (max-width: 1250px) {
+  .navbar .container {
+    padding-left: 120px;
+  }
+}
+
 /* ------------------------------------------ MEDIA QUERY 1150px ---------------------------------- */
 @media screen and (max-width: 1150px) {
   .section1 {

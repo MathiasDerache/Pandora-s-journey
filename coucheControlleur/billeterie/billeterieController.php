@@ -11,14 +11,14 @@ include_once("../../coucheDAO/BilletDAO.php");
 head();
 navBar();
 
-if (!empty($_POST) && isset($_GET["action"]) && $_GET["action"] == "ajout") { 
+if (!empty($_POST) && isset($_GET["action"]) && $_GET["action"] == "ajout") {
 
-        $billet = new Billet();                                          
+    $billet = new Billet();
 
-        $date = htmlentities($_POST['date']);
+    $date = htmlentities($_POST['date']);
 
-        $billet->setDateEmb(new DateTime ($date))->setIdUti($_SESSION["id"]);
-        try{
+    $billet->setDateEmb(new DateTime($date))->setIdUti($_SESSION["id"]);
+    try {
 
         $service = new BilletService();
         $service->creatService($billet);      // ajout billet
@@ -31,17 +31,17 @@ if (!empty($_POST) && isset($_GET["action"]) && $_GET["action"] == "ajout") {
         \nNous vous souhaitons bon voyage, 
         \nL'équipe Pandora's Journey";
         mail($_SESSION["email"], "Confirmation de votre vol", $reponse);
-        
-        billetValidation();
 
-        }catch(ServiceException $se){
+        billetValidation();
+    } catch (ServiceException $se) {
         afficheErreurAjout($se->getMessage(), $se->getCode());
-        }          
     }
+}
 etapes();
 complementaire();
-formulaireVol();
-select();
-suiteFormulaireVol();
+if (isset($_SESSION) && !empty($_SESSION)) {
+    formulaireVol();
+    select();
+    suiteFormulaireVol();
+}
 footer();
-?>

@@ -39,12 +39,12 @@ if (
                 $_SESSION["profil"] = $connexionData->getProfil();
                 $_SESSION["dateNaissance"] = $connexionData->getDateNaissance();
                 $_SESSION["civilite"] = $connexionData->getCivilite();
-                header('Location: ../accueil/accueilController.php?action=connexion');
+                header('Location: ../profil/profilControleur.php');
             } else {
-                echo "erreur mdp";
+                header('Location: ../accueil/accueilController.php?action=erreur_mdp');
             }
         } else {
-            echo "utilisateur inconnu";
+            header('Location: ../accueil/accueilController.php?action=erreur_email');
         }
     } catch (ServiceException $e) {
         echo $e->getMessage();
@@ -86,9 +86,20 @@ elseif (
         $userData = $utilisateurService->searchByEmailService($email);
         if (!isset($userData)) {
             $utilisateurService->creatService($utilisateur);
-            header('Location: ../accueil/accueilController.php?action=inscription');
+            $userData = $utilisateurService->searchByEmailService($email);
+            $_SESSION["id"] = $userData->getIdUti();
+            $_SESSION["nom"] = $userData->getNom();
+            $_SESSION["prenom"] = $userData->getPrenom();
+            $_SESSION["pseudo"] = $userData->getPseudo();
+            $_SESSION["email"] = $userData->getEmail();
+            $_SESSION["numTel"] = $userData->getNumTel();
+            $_SESSION["password"] = $userData->getPassword();
+            $_SESSION["profil"] = $userData->getProfil();
+            $_SESSION["dateNaissance"] = $userData->getDateNaissance();
+            $_SESSION["civilite"] = $userData->getCivilite();
+            header('Location: ../profil/profilControleur.php');
         } else {
-            echo "erreur searchByEmail";
+            header('Location: ../accueil/accueilController.php?action=erreur_inscription_email');
         }
     } catch (ServiceException $e) {
         echo $e->getMessage();

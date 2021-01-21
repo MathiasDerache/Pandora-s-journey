@@ -3,6 +3,7 @@ include_once __DIR__ . "/../../../Pandora_nav_footer/nav.php";
 include_once __DIR__ . "/../../../Pandora_nav_footer/footer.php";
 include_once __DIR__ . "/../../../coucheService/UtilisateurService.php";
 include_once __DIR__ . "/../../../coucheService/CommentaireForumService.php";
+include_once __DIR__ . "/../../../coucheService/ImageService.php";
 
 
 function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
@@ -58,7 +59,29 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                         </div>
                         <div class="row mx-auto d-block">
                             <div class="media ml-5 pt-5">
-                                <img class="align-self-center mr-5 border-primary mt-0 rounded-circle shadow-lg ml-5" width="13%" src="images/exempleProfilImage.jpg" alt="Generic placeholder image">
+                                <?php
+                                $imageService = new ImageService();
+                                $arrayImage = $imageService->readService();
+                                if (!empty($arrayImage)) {
+                                    foreach ($arrayImage as $val) {
+                                        $nomFichierProfil = strstr($val->getNomFichier(), '.', true);
+                                        if ($nomFichierProfil === "profil_Id" . $sujetTheme->getIdUti()) {
+                                            $nomFichierProfil = $val->getNomFichier();
+                                            $imageProfil = $imageService->searchImageProfilService($nomFichierProfil);
+                                            break;
+                                        } else {
+                                            $imageProfil = null;
+                                        }
+                                    }
+                                } else {
+                                    $imageProfil = null;
+                                }
+                                if (empty($imageProfil)) {
+                                    echo '<img src="../../view/profil/imageProfil/exempleProfilImage.jpg" class="align-self-center mr-5 border-primary mt-0 rounded-circle shadow-lg ml-5" width="13%">';
+                                } else {
+                                    echo '<img src="../../view/profil/imageProfil/' . $imageProfil[0]["NomFichier"] . '" class="align-self-center mr-5 border-primary mt-0 rounded-circle shadow-lg ml-5" width="13%">';
+                                }
+                                ?>
                                 <div class="media-body mt-5">
                                     <h5 class="mt-0 ">Auteur : <?php
                                                                 if ($sujetTheme) {
@@ -93,7 +116,29 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                                     <div class="mx-auto d-block col-sm-10 col-md-10 col-lg-10 col-xl-10">
 
                                         <div class="media mt-5 mb-5 rounded-pill bgComm shadow col-sm-12 col-md-12 col-lg-12 col-xl-12 p-2">
-                                            <img class="align-self-center mr-5 border-primary my-2 rounded-circle shadow-lg ml-5" width="13%" src="images/exempleProfilImage.jpg" alt="Generic placeholder image">
+                                            <?php
+                                            $imageService = new ImageService();
+                                            $arrayImage = $imageService->readService();
+                                            if (!empty($arrayImage)) {
+                                                foreach ($arrayImage as $val) {
+                                                    $nomFichierProfil = strstr($val->getNomFichier(), '.', true);
+                                                    if ($nomFichierProfil === "profil_Id" . $value->getIdUti()) {
+                                                        $nomFichierProfil = $val->getNomFichier();
+                                                        $imageProfil = $imageService->searchImageProfilService($nomFichierProfil);
+                                                        break;
+                                                    } else {
+                                                        $imageProfil = null;
+                                                    }
+                                                }
+                                            } else {
+                                                $imageProfil = null;
+                                            }
+                                            if (empty($imageProfil)) {
+                                                echo '<img src="../../view/profil/imageProfil/exempleProfilImage.jpg" class="align-self-center mr-5 border-primary my-2 rounded-circle shadow-lg ml-5" width="13%">';
+                                            } else {
+                                                echo '<img src="../../view/profil/imageProfil/' . $imageProfil[0]["NomFichier"] . '" class="align-self-center mr-5 border-primary my-2 rounded-circle shadow-lg ml-5" width="13%">';
+                                            }
+                                            ?>
                                             <div class="media-body">
                                                 <h5 class="mt-3 mb-3">
                                                     Réponse de: <span class="bg-danger border border-dark p-2 shadow rounded-pill"><?php echo $value->getPseudoUt(); ?></span>
@@ -103,20 +148,23 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                                                 </p>
                                                 <p class="mb-0">Posté le
                                                     <?php echo $value->getDateCommSuj()->format('d-m-Y'); ?>
-                                                    <span class="modifElem float-right  btn btn-warning rounded-pill shadow">
-                                                        <a href="forumcontrolleur.php?idSujForum=<?php echo $value->getIdSuje(); ?>&idCommForum=<?php echo $value->getIdCommSuj(); ?>&actionmodif=recupe_pour_modif" class="modifierSpan">
-                                                            <span class="material-icons m-1" style="font-size:x-large;">
-                                                                create
-                                                            </span>
-                                                        </a>
-                                                    </span>
-                                                    <span class="float-right  btn btn-danger rounded-pill shadow  mr-2">
-                                                        <a href="forumcontrolleur.php?idCommForum=<?php echo $value->getIdCommSuj(); ?>&idSujForum=<?php echo $value->getIdSuje(); ?>&action=delete" class="text-white">
-                                                            <span class="material-icons m-1 " style="font-size:x-large;">
-                                                                clear
-                                                            </span>
-                                                        </a>
-                                                    </span>
+                                                    <?php
+                                                    if (isset($_SESSION) && !empty($_SESSION) && $_SESSION["id"] == $value->getIdUti()) { ?>
+                                                        <span class="modifElem float-right  btn btn-warning rounded-pill shadow">
+                                                            <a href="forumcontrolleur.php?idSujForum=<?php echo $value->getIdSuje(); ?>&idCommForum=<?php echo $value->getIdCommSuj(); ?>&actionmodif=recupe_pour_modif" class="modifierSpan">
+                                                                <span class="material-icons m-1" style="font-size:x-large;">
+                                                                    create
+                                                                </span>
+                                                            </a>
+                                                        </span>
+                                                        <span class="float-right  btn btn-danger rounded-pill shadow  mr-2">
+                                                            <a href="forumcontrolleur.php?idCommForum=<?php echo $value->getIdCommSuj(); ?>&idSujForum=<?php echo $value->getIdSuje(); ?>&action=delete" class="text-white">
+                                                                <span class="material-icons m-1 " style="font-size:x-large;">
+                                                                    clear
+                                                                </span>
+                                                            </a>
+                                                        </span>
+                                                    <?php } ?>
                                                 </p>
                                             </div>
                                         </div>
@@ -129,17 +177,20 @@ function SujetThemeForum(SujetTheme $sujetTheme, ?CommentaireSujet $comUpdate)
                     </div>
                 </div>
 
-                <div class=" col-sm-4 col-md-4 col-lg-2 col-xl-2 mt-5">
-                    <div class="position-fixed">
-                        <button type="button" class="mx-auto d-block btn btn-warning rounded-pill boutonSideInfo" data-toggle="modal" data-target="#modalForumAnnonces">
-                            <a href="#">
-                                <span class="material-icons text-white m-1 font-weight-bold " style="font-size:x-large;">
-                                    add
-                                </span>
-                            </a>
-                        </button>
+                <?php
+                if (isset($_SESSION) && !empty($_SESSION)) { ?>
+                    <div class=" col-sm-4 col-md-4 col-lg-2 col-xl-2 mt-5">
+                        <div class="position-fixed">
+                            <button type="button" class="mx-auto d-block btn btn-warning rounded-pill boutonSideInfo" data-toggle="modal" data-target="#modalForumAnnonces">
+                                <a href="#">
+                                    <span class="material-icons text-white m-1 font-weight-bold " style="font-size:x-large;">
+                                        add
+                                    </span>
+                                </a>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
 
         </div>

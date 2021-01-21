@@ -12,8 +12,12 @@ function cardAnnonce($typeAnnonce, $annonces)
                     <h5 class="card-title"><?php echo $annonces[$i]->getTitreAnn() ?></h5>
                     <p class="card-text"><?php echo $annonces[$i]->getDescAnn() ?></p>
                     <a href="annonce_controlleur.php?id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Consulter</button></a>
-                    <a href="liste_annonces_controleur.php?type=annonces_<?php echo $typeAnnonce ?>&action=delete&id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Supprimer</button></a>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#modalModificationAnnonce">Modifier</button>
+                    <?php
+                    if (isset($_SESSION) && !empty($_SESSION) && $_SESSION["id"] == $annonces[$i]->getIdUti()) { ?>
+                        <a href="liste_annonces_controleur.php?type=annonces_<?php echo $typeAnnonce ?>&action=delete&id=<?php echo $annonces[$i]->getIdAnn() ?>"><button class="btn btn-primary">Supprimer</button></a>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#modalModificationAnnonce">Modifier</button>
+                    <?php }
+                    ?>
                 </div>
             </div>
         </div>
