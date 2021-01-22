@@ -222,4 +222,29 @@ class AnnoncesDao implements InterfDao
         }
         return $tab;
     }
+
+    public function readByTitre(?string $titre): ?object
+    {
+        try {
+            $db = $this->db->connectiondb();
+            $stm = $db->prepare("SELECT * FROM annonces WHERE titre=?");
+            $stm->bindValue(1, $titre);
+            $stm->execute();
+            $array = $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $f) {
+            throw new DaoException($f->getCode(), $f->getMessage());
+        }
+
+        foreach ($array as $value) {
+            $annonce = new Annonce();
+            $annonce->setIdAnn($value['idAnnoce'])->setTypeAnn($value['typeAnnonce'])->setTitreAnn($value['titre'])->setDescAnn($value['description'])
+                ->setNumContAnn($value['numContact'])->setNumAdressAnn($value['numAdresse'])
+                ->setRueAnn($value['rue'])->setCodePost($value['codePostal'])->setIdUti($value['idUti']);
+        }
+        if (isset($annonce)) {
+            return $annonce;
+        } else {
+            return $annonce = null;
+        }
+    }
 }

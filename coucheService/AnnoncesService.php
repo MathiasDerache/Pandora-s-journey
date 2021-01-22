@@ -90,4 +90,9 @@ class AnnoncesService implements interfService
     {
         return $this->service->readPagination($typeAnnonce, $premiereEntree, $annonceParPage);
     }
+
+    public function readByTitreService(?string $titreAnnonce): ?object
+    {
+        return $this->service->readByTitre($titreAnnonce);
+    }
 }

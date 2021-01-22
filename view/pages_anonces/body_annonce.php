@@ -1,4 +1,4 @@
-<?php function bodyAnnonce($imageProfil, $annonce, $auteurAnnonce)
+<?php function bodyAnnonce($imageProfil, $annonce, $auteurAnnonce, $imageAnnonce)
 { ?>
 
     <body class="position-relative">
@@ -12,7 +12,7 @@
                                 if ($imageProfil == null) {
                                     echo '<img src="../../view/profil/imageProfil/exempleProfilImage.jpg" height="100" width="100" class="rounded-circle mx-auto d-block m-2 shadow-lg img_profil">';
                                 } else {
-                                    echo '<img src="imageProfil/' . $imageProfil[0]["NomFichier"] . '" class="rounded-circle mx-auto d-block m-2 shadow-lg img_profil">';
+                                    echo '<img src="../../view/profil/imageProfil/' . $imageProfil[0]["NomFichier"] . '" height="100" width="100" class="rounded-circle mx-auto d-block m-2 shadow-lg img_profil">';
                                 }
                                 ?>
                             </div>
@@ -34,23 +34,29 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="d-block w-100 img-fluid" alt="...">
+                                            <?php
+                                            if ($imageAnnonce == null) {
+                                                echo '<img src="images/OIP.iKCOkz0Ud8Hk2532a5bvxgHaEE.jpg" class="d-block w-100 img-fluid" alt="...">';
+                                            } else {
+                                                echo '<img src="../../view/profil/imageAnnonce/' . $imageAnnonce[0]["NomFichier"] . '" class="d-block w-100 img-fluid" alt="...">';
+                                            }
+                                            ?>
                                         </div>
-                                        <div class="carousel-item">
+                                        <!-- <div class="carousel-item">
                                             <img src="images/Logo_v2.png" class="d-block w-100 img-fluid" alt="...">
                                         </div>
                                         <div class="carousel-item">
                                             <img src="images/Logo_v5.png" class="d-block w-100 img-fluid" alt="...">
-                                        </div>
+                                        </div> -->
                                     </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
-                                    </a>
+                                    </a> -->
                                 </div>
                                 <div class="card-body">
                                     <h1 class="card-title"><?php echo $annonce->getTitreAnn() ?></h1>

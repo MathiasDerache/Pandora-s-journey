@@ -29,8 +29,19 @@ if (!empty($arrayImage)) {
                         $imageProfil = null;
                 }
         }
+        foreach ($arrayImage as $value) {
+                $nomFichierProfil = strstr($value->getNomFichier(), '.', true);
+                if ($nomFichierProfil === "annonce_Id" . $annonce->getIdAnn()) {
+                        $nomFichierProfil = $value->getNomFichier();
+                        $imageAnnonce = (new ImageService())->searchImageProfilService($nomFichierProfil);
+                        break;
+                } else {
+                        $imageAnnonce = null;
+                }
+        }
 } else {
         $imageProfil = null;
+        $imageAnnonce = null;
 }
 
 $auteurAnnonce = ((new UtilisateurService())->readByIdService($annonce->getIdUti()))->getPseudo();
@@ -41,16 +52,16 @@ $annoncesImmobilier = (new AnnoncesService())->readByTypeService('immobilier');
 
 
 headAnnonce($titleAnnonce);
-navBar();
+// navBar();
 if ($annonce->getTypeAnn() == 'immobilier') {
-        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);
+        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce, $imageAnnonce);
         cardAnnonceInteret($annoncesTravail, $annoncesLoisir);
 } elseif ($annonce->getTypeAnn() == 'travail') {
-        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);
+        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce, $imageAnnonce);
         cardAnnonceInteret($annoncesImmobilier, $annoncesLoisir);
 } elseif ($annonce->getTypeAnn() == 'loisir') {
-        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce);
+        bodyAnnonce($imageProfil, $annonce, $auteurAnnonce, $imageAnnonce);
         cardAnnonceInteret($annoncesTravail, $annoncesImmobilier);
 }
-footer();
+// footer();
 ?><script src="app.js" type="text/javascript"></script><?php
