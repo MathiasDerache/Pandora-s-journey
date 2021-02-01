@@ -52,7 +52,7 @@ $annoncesImmobilier = (new AnnoncesService())->readByTypeService('immobilier');
 
 
 headAnnonce($titleAnnonce);
-// navBar();
+navBar();
 if ($annonce->getTypeAnn() == 'immobilier') {
         bodyAnnonce($imageProfil, $annonce, $auteurAnnonce, $imageAnnonce);
         cardAnnonceInteret($annoncesTravail, $annoncesLoisir);
@@ -63,5 +63,5 @@ if ($annonce->getTypeAnn() == 'immobilier') {
         bodyAnnonce($imageProfil, $annonce, $auteurAnnonce, $imageAnnonce);
         cardAnnonceInteret($annoncesTravail, $annoncesImmobilier);
 }
-// footer();
+footer();
 ?><script src="app.js" type="text/javascript"></script><?php
